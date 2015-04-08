@@ -2,7 +2,7 @@ Welcome to the IoT.js wiki!
 
 ## IoT.js(TBD)
 - Project Overview
-- License
+- [License](https://github.com/Samsung/IoT.js/wiki/License)
 <br>
 
 ## Getting Started(TBD) - Developer guide
