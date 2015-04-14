@@ -10,8 +10,8 @@ The IoT.js Project development process is marked by the following highlights:
 * The above steps are repeated until the community reaches a consensus according to the Community Guidelines.
 * After a consensus is reached, the author proceeds with the implementation and testing of the feature.
 * After the author is confident their code is ready for integration:
-  ** The author generates a patch and signs off on their code.
-  ** The author submits a patch by [opening a pull request](https://guides.github.com/activities/hello-world/#pr).
+  - The author generates a patch and signs off on their code.
+  - The author submits a patch by [opening a pull request](https://guides.github.com/activities/hello-world/#pr).
 * The _committers_ watch the pull request for the patch, test the code, and accept or reject the patch accordingly.
 * After the code passes code review, the _committers_ accept the code(integrated into the master branch), which completes the development process.
 * After a patch has been accepted, it remains the authoring developer's responsibility to maintain the code throughout its lifecycle, and to provide security and feature updates as needed.
