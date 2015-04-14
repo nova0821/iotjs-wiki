@@ -23,13 +23,13 @@ The IoT.js Project development process is marked by the following highlights:
 If you have a question about IoT.js code, have trouble any documentation, would like to suggest new feature, or find a bug, review the current IoT.js issues in GitHub, and if necessary, create a new issue.
 
 There are several labels on the Issue. Please choose proper labels on the purpose.
-bug
-* community : any issues on the community operation
-* enhancement : feature enhancement proposal
-* help wanted
-* new feature : new feature proposal
-* project announcement : general announcement on the project such as new release, new committer and so on
-* question : any questions on the project
+* **bug**
+* **community** : any issues on the community operation
+* **enhancement** : feature enhancement proposal
+* **help wanted**
+* **new feature** : new feature proposal
+* **project announcement** : general announcement on the project such as new release, new committer and so on
+* **question** : any questions on the project
 
 **Tips on GitHub Issues**
 
