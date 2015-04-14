@@ -39,4 +39,4 @@ IoT.js is open source software under the BSD licenses. Complete license and copy
 ### Open Source Software
 
 The following Open Source software supports IoT.js:
-* Libuv 
+* **_Libuv(project link)_** licensed under [MIT License](http://opensource.org/licenses/MIT)
