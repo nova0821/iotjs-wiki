@@ -15,9 +15,8 @@ The IoT.js project uses the signed-off-by language and process, to give us a cle
 
 We have the same requirements for using the signed-off-by process as the Linux kernel. In short, you need to include a signed-off-by tag in every patch:
 
-"Signed-off-by:" this is a developer's certification that he or she has the right to submit the patch for inclusion into the project. It is an agreement to the Developer's Certificate of Origin (above). **Code without a **
-**proper signoff cannot be merged into the mainline.**
+"Signed-off-by:" this is a developer's certification that he or she has the right to submit the patch for inclusion into the project. It is an agreement to the Developer's Certificate of Origin (above). **Code without a proper signoff cannot be merged into the mainline.**
 
 You should use your real name and email address in the format below:
 
-IoT.js-DCO-1.0-Signed-off-by: Random J Developer random@developer.example.org
+> IoT.js-DCO-1.0-Signed-off-by: Random J Developer random@developer.example.org
