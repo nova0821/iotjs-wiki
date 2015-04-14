@@ -22,6 +22,7 @@ It happens all the time, for many reasons, and not necessarily because the code 
 If you have a solid technical reason to disagree with feedback and you feel that reason has been overlooked, take the time to thoroughly explain it in your response.
 
 **5. Code review**
+
 Code review can be performed by all the members of the Project (not just **_committers_**). Members can review code changes and share their opinion by comments with the following principles:
 * Discuss code; never discuss the code's author.
 * Respect and acknowledge contributions, suggestions, and comments.
