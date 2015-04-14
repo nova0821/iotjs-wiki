@@ -9,11 +9,11 @@ Community participants must adhere to these simple rules:
 
 ### Community Consensus and Lazy Consensus
 
-Community consensus about a Project issue means that the issue has been submitted to and discussed by Contributors and _Committers_, and that ALL discussing member agree about the issue.<p>
-Lazy consensus means that Contributors may proceed with work when they have reason to believe that other Contributors in the community will agree with the direction of their work, and do not need to stop or initiate unnecessary discussion about the work. Contributors should publish their work (that is, merge proposals to master branch) in a timely manner to allow others to possibly raise issues about the work. When the Contributor is not sure there will be consensus, they should raise a proposal to the community via any method(_currently Github issue is possible way to achieve this_)
+Community consensus about a Project issue means that the issue has been submitted to and discussed by Contributors and **_committers_**, and that ALL discussing member agree about the issue.<p>
+Lazy consensus means that Contributors may proceed with work when they have reason to believe that other Contributors in the community will agree with the direction of their work, and do not need to stop or initiate unnecessary discussion about the work. Contributors should publish their work (that is, merge proposals to master branch) in a timely manner to allow others to possibly raise issues about the work. When the Contributor is not sure there will be consensus, they should raise a proposal to the community via any method(**_currently Github issues is possible way to achieve this_**)
 
 <br>
 
 ### Meritocracy
 
-Responsibilities in the Project (including decision making) are given to those who exhibit both the technical skill and dedication to project via their ongoing valuable contributions. Decision making happens inside the community, with more weight given to those who are more familiar with the code.
+Responsibilities in the project (including decision making) are given to those who exhibit both the technical skill and dedication to project via their ongoing valuable contributions. Decision making happens inside the community, with more weight given to those who are more familiar with the code.
