@@ -2,6 +2,8 @@ It is the responsibility of IoT.js **_committers_** to decide whether submitted 
 
 Individual developers maintain a local copy of the IoT.js codebase using the git revision control system. Git ensures that all participants are working with a common and up-to-date code base at all times. Each developer works to develop, debug, build, and validate their own code against the current codebase, so that when the time comes to integrate into the master branch of the project, their changes apply cleanly and with a minimum amount of merging effort.
 
+### Feature development process
+
 The IoT.js Project development process is marked by the following highlights:
 * The feature development process starts with an author discussing a proposed feature with the **_committers_**
 * The **_committers_** evaluate the idea, give feedback, and finally approve or reject the proposal.
