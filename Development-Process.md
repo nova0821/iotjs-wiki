@@ -7,7 +7,7 @@ The IoT.js Project development process is marked by the following highlights:
 * The _committers_ evaluate the idea, give feedback, and finally approve or reject the proposal.
 * The author shares the proposal with the community via _github issues with 'new feature' label_
 * The community provides feedback which can be used by the author to modify their proposal and share it with the community again.
-* The above steps are repeated until the community reaches a consensus according to the Community Guidelines.
+* The above steps are repeated until the community reaches a consensus according to the [Community Guidelines](https://github.com/Samsung/IoT.js/wiki/Community-Guidelines).
 * After a consensus is reached, the author proceeds with the implementation and testing of the feature.
 * After the author is confident their code is ready for integration:
   - The author generates a patch and signs off on their code.
