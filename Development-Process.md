@@ -19,7 +19,7 @@ If you have a question about IoT.js code, have trouble any documentation, would 
 
 The IoT.js Project development process is marked by the following highlights:
 * The feature development process starts with an author discussing a proposed feature with the **_committers_**
-  - open the issue with label 'new feature request(proposal)'
+  - Open the issue with label 'new feature request(proposal)'
 * The **_committers_** evaluate the idea, give feedback, and finally approve or reject the proposal.
 * The author shares the proposal with the community via **_Github issues with 'new feature' label_**
 * The community provides feedback which can be used by the author to modify their proposal and share it with the community again.
