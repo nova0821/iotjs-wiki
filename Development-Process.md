@@ -18,4 +18,21 @@ The IoT.js Project development process is marked by the following highlights:
 * After the code passes code review, the **_committers_** accept the code(integrated into the master branch), which completes the development process.
 * After a patch has been accepted, it remains the authoring developer's responsibility to maintain the code throughout its lifecycle, and to provide security and feature updates as needed.
 
+### Get Answers and Report a Bug
+
+If you have a question about IoT.js code, have trouble any documentation, or find a bug, review the current IoT.js issues in GitHub, and if necessary, create a new issue.
+
+**Tips on GitHub Issues**
+
+* Check existing [IoT.js issues](https://github.com/Samsung/IoT.js/issues) for the answer to your issue.
+Duplicating an issue slows you and others. Search through open and closed issues to see if the problem you are running into has already been addressed.
+* If necessary, [open a new issue](https://github.com/Samsung/IoT.js/issues/new).
+  - Clearly describe the issue. 
+     + What did you expect to happen?
+     + What actually happened instead?
+     + How can someone else recreate the problem?
+  - Include system details(such as the hardware, library, and operating system you are using and their versions).
+  - Paste error output and logs in the issue or in a Gist(https://gist.github.com/). 
+  - When pasting in the issue, wrap code in three backticks: ``` so that it renders nicely.
+
 For more information about GitHub issues, refer to the [GitHub issues guidelines](https://guides.github.com/features/issues/).
