@@ -20,7 +20,16 @@ The IoT.js Project development process is marked by the following highlights:
 
 ### Get Answers and Report a Bug
 
-If you have a question about IoT.js code, have trouble any documentation, or find a bug, review the current IoT.js issues in GitHub, and if necessary, create a new issue.
+If you have a question about IoT.js code, have trouble any documentation, would like to suggest new feature, or find a bug, review the current IoT.js issues in GitHub, and if necessary, create a new issue.
+
+There are several labels on the Issue. Please choose proper labels on the purpose.
+1. bug
+2. community : any issues on the community operation
+3. enhancement : feature enhancement proposal
+4. help wanted
+5. new feature : new feature proposal
+6. project announcement : general announcement on the project such as new release, new committer and so on
+7. question : any questions on the project
 
 **Tips on GitHub Issues**
 
@@ -33,6 +42,5 @@ Duplicating an issue slows you and others. Search through open and closed issues
      + How can someone else recreate the problem?
   - Include system details(such as the hardware, library, and operating system you are using and their versions).
   - Paste error output and logs in the issue or in a Gist(https://gist.github.com/). 
-  - When pasting in the issue, wrap code in three backticks: ``` so that it renders nicely.
 
 For more information about GitHub issues, refer to the [GitHub issues guidelines](https://guides.github.com/features/issues/).
