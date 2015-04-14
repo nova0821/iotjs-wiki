@@ -1,4 +1,4 @@
-The following guidelines on the submission process are provided to help you be more effective when submitting code to the IoT.js Project.
+The following guidelines on the submission process are provided to help you be more effective when submitting code to the IoT.js project.
 
 When development is complete, a patch set should be submitted via Github pull requests. A review of the patch set will take place. When accepted, the patch set will be integrated into the master branch, verified, and tested. It is then the responsibility of the authoring developer to maintain the code throughout its lifecycle.
 
