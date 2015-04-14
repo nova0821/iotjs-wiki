@@ -2,6 +2,19 @@ It is the responsibility of IoT.js **_committers_** to decide whether submitted 
 
 Individual developers maintain a local copy of the IoT.js codebase using the git revision control system. Git ensures that all participants are working with a common and up-to-date code base at all times. Each developer works to develop, debug, build, and validate their own code against the current codebase, so that when the time comes to integrate into the master branch of the project, their changes apply cleanly and with a minimum amount of merging effort.
 
+### Proposals, Get Answers and Report a Bug via Github Issues
+
+If you have a question about IoT.js code, have trouble any documentation, would like to suggest new feature, or find a bug, [review the current IoT.js issues](https://github.com/Samsung/IoT.js/issues) in GitHub, and if necessary, [create a new issue](https://github.com/Samsung/IoT.js/issues/new).
+
+**There are several labels on the Issue. Please choose proper labels on the purpose.**
+* **bug**
+* **community** : any issues on the community operation
+* **enhancement** : feature enhancement proposal
+* **help wanted**
+* **new feature** : new feature proposal
+* **project announcement** : general announcement on the project such as new release, new committer and so on
+* **question** : any questions on the project
+
 ### Feature development process
 
 The IoT.js Project development process is marked by the following highlights:
@@ -18,18 +31,6 @@ The IoT.js Project development process is marked by the following highlights:
 * After the code passes code review, the **_committers_** accept the code(integrated into the master branch), which completes the development process.
 * After a patch has been accepted, it remains the authoring developer's responsibility to maintain the code throughout its lifecycle, and to provide security and feature updates as needed.
 
-### Proposals, Get Answers and Report a Bug via Github Issues
-
-If you have a question about IoT.js code, have trouble any documentation, would like to suggest new feature, or find a bug, [review the current IoT.js issues](https://github.com/Samsung/IoT.js/issues) in GitHub, and if necessary, [create a new issue](https://github.com/Samsung/IoT.js/issues/new).
-
-**There are several labels on the Issue. Please choose proper labels on the purpose.**
-* **bug**
-* **community** : any issues on the community operation
-* **enhancement** : feature enhancement proposal
-* **help wanted**
-* **new feature** : new feature proposal
-* **project announcement** : general announcement on the project such as new release, new committer and so on
-* **question** : any questions on the project
 
 ### Tips on GitHub Issues
 
