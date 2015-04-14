@@ -24,12 +24,12 @@ If you have a question about IoT.js code, have trouble any documentation, would 
 
 There are several labels on the Issue. Please choose proper labels on the purpose.
 1. bug
-2. community : any issues on the community operation
-3. enhancement : feature enhancement proposal
-4. help wanted
-5. new feature : new feature proposal
-6. project announcement : general announcement on the project such as new release, new committer and so on
-7. question : any questions on the project
+1. community : any issues on the community operation
+1. enhancement : feature enhancement proposal
+1. help wanted
+1. new feature : new feature proposal
+1. project announcement : general announcement on the project such as new release, new committer and so on
+1. question : any questions on the project
 
 **Tips on GitHub Issues**
 
