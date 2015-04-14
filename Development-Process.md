@@ -20,7 +20,7 @@ The IoT.js Project development process is marked by the following highlights:
 
 ### Proposals, Get Answers and Report a Bug via Github Issues
 
-If you have a question about IoT.js code, have trouble any documentation, would like to suggest new feature, or find a bug, review the current IoT.js issues in GitHub, and if necessary, create a new issue.
+If you have a question about IoT.js code, have trouble any documentation, would like to suggest new feature, or find a bug, review the current IoT.js issues in GitHub, and if necessary, [create a new issue](https://github.com/Samsung/IoT.js/issues/new).
 
 **There are several labels on the Issue. Please choose proper labels on the purpose.**
 * **bug**
