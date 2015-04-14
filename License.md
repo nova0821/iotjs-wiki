@@ -35,3 +35,8 @@ IoT.js is open source software under the BSD licenses. Complete license and copy
 > either expressed or implied, of Samsung Electronics Co., Ltd..
 
 ※ [IoT.js Developer's Certificate of Origin 1.0](https://github.com/Samsung/IoT.js/wiki/IoT.js-Developer's-Certificate-of-Origin-1.0) applies from **_xxth xxx in 2015_**
+
+### Open Source Software
+
+The following Open Source software supports IoT.js:
+* Libuv 
