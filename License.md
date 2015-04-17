@@ -11,4 +11,4 @@ IoT.js is open source software under the [Apache 2.0 license](https://www.apache
 ### Open Source Software
 
 The following Open Source software supports IoT.js:
-* **_libuv(project link)_** licensed under [MIT License](http://opensource.org/licenses/MIT)
+* **_libuv([project link](https://github.com/libuv/libuv)_** licensed under [MIT License](http://opensource.org/licenses/MIT)
