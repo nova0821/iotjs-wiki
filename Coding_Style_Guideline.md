@@ -1,6 +1,6 @@
 # Coding Style Guideline for C/C++
 
-This coding standard follows google c++ coding standard(https://google-styleguide.googlecode.com/svn/trunk/cppguide.html) unless otherwise mentioned.
+This coding standard is based on google c++ coding standard(https://google-styleguide.googlecode.com/svn/trunk/cppguide.html)
 
 
 ## Header Files
@@ -16,6 +16,8 @@ Use #define guard in all header files. `<PROJECT>_<PATH>_<FILE>_H_` format is re
 ### Inline functions
 Inline function is allowed only if it is less than 10 lines. 
 	
+### Parameter order
+Input parameters should precede output pamameters.
 
 ## Formatting
 
@@ -164,6 +166,38 @@ Use either // or /* */ style comments. However, // style is much prefered.
 
 # Coding Style Guideline for Javarscript
 
-This coding standard follows google javarscript coding standard(https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml) unless otherwise mentioned.
+This coding standard is based on google javarscript coding standard(https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
+# Javarscript Language Rules
+
+## var
+Declare variable before use.
+
+## Semocolons
+Always use semicolons.
+
+## Function Declaration in blocks
+Do not declare functions within a block.
+
+## Wrapper objects of primitive types
+Do not use wrapper objects for primitive types.
+
+## with
+Do not use `with` statement.
+
+# Javarscript Style Rules
+
+## Naming
+Use lowerCamelCase for varible names.
+Use UpperCamelCase for function names.
+
+	var myFirstVariable;
+	function MyFirstFunction {
+		...
+	}
+
+## Formatting
+Follow C/C++ formatting above.
+
+
 
 
