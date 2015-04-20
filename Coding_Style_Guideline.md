@@ -62,27 +62,68 @@ Short conditional statements may be written in a line unless it has no else part
 	if (condition)
 		DoSomething();  // ok
 
+### Class formatting
+The open curly brace should be at the same line.
+Declare public, protect, and private sections in order with 1 space indent.
+
+	class MyClass : public ParentClass {
+	 public:
+	  MyClass();
+	  ~MyClass();
+
+	 private:
+	  void DoTheings();
+	  int my_variable;
+	};
+
 
 ## Naming
 
-### Class name
-Use UpperCamelCase for class name. No underscore.
+### Type names
+Use UpperCamelCase for class names. No underscore.
+Type names include classes, structs, typedefs, and enums. 
 
-### Variable name
-Use lower cases and underscore for variable name.
+	Class MyClassName {
+		...
+	}
+
+	typedef MyTypeName {
+		...
+	}
+	
+
+### Variable names
+Use lower cases and underscore for variable names.
 
 	int lower_case_variable; 
 
-### Constant name
+### Constant names
 Use a 'k' followed by UpperCamelCase.
 
 	#define kConstantUse
 
-### Funtion name
-Use UpperCamelCase for regular function name. No underscore.
+### Funtion names
+Use UpperCamelCase for regular function names. No underscore.
 
+### Namespace names
+Use lower cases. 
 
- 
+### Enumerator names
+Use constant style(a 'k' followed by UpperCamelCase.)
+
+	enum MyEnum {
+	  kOK = 0,                  // OK
+	  kNotOK,
+	  kError,
+	};
+	
+	enum MyEnum {
+	  OK = 0,                  // not allowed
+	  NOT_OK,
+	  ERROR,
+	};
+
 ## Comments
 
-Use either // or /* */ style comments.
+### Comment style
+Use either // or /* */ style comments. However, // style is much prefered.
