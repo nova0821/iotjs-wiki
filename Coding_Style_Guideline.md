@@ -9,7 +9,7 @@ This coding standard is based on google c++ coding standard(https://google-style
 Use #define guard in all header files. `<PROJECT>_<PATH>_<FILE>_H_` format is recommended.
 
 	#ifndef PROJECT_PATH_FILE_H_
-	#define
+	#define PROJECT_PATH_FILE_H_
 		...
 	#endif // PROJECT_PATH_FILE_H_
 
@@ -172,7 +172,7 @@ This coding standard is based on google javarscript coding standard(https://goog
 ## var
 Declare variable before use.
 
-## Semocolons
+## Semicolons
 Always use semicolons.
 
 ## Function Declaration in blocks
@@ -183,6 +183,9 @@ Do not use wrapper objects for primitive types.
 
 ## with
 Do not use `with` statement.
+
+## Modifying prototypes of builtin objects
+Do not modify prototypes of builtin objects
 
 # Javarscript Style Rules
 
