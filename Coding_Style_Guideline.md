@@ -1,4 +1,4 @@
-Coding Style Guideline for C/C++
+## Coding Style Guideline for C/C++
 
 This coding standard follows google c++ coding standard(https://google-styleguide.googlecode.com/svn/trunk/cppguide.html) with few exceptions.
 
