@@ -2,6 +2,21 @@
 
 This coding standard follows google c++ coding standard(https://google-styleguide.googlecode.com/svn/trunk/cppguide.html) unless otherwise mentioned.
 
+
+## Header Files
+
+### #define guard
+Use #define guard in all header files. `<PROJECT>_<PATH>_<FILE>_H_` format is recommended.
+
+	#ifndef PROJECT_PATH_FILE_H_
+	#define
+		...
+	#endif // PROJECT_PATH_FILE_H_
+
+### Inline functions
+Inline function is allowed only if it is less than 10 lines. 
+	
+
 ## Formatting
 
 ### Line length 
@@ -116,7 +131,7 @@ Use a 'k' followed by UpperCamelCase.
 
 	#define kConstantUse
 
-### Funtion names
+### Function names
 Use UpperCamelCase for regular function names. No underscore.
 
 ### Namespace names
@@ -136,6 +151,9 @@ Use constant style(a 'k' followed by UpperCamelCase.)
 	  NOT_OK,
 	  ERROR,
 	};
+
+
+
 
 ## Comments
 
