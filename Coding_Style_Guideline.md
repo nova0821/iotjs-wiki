@@ -1,6 +1,6 @@
 # Coding Style Guideline for C/C++
 
-This coding standard follows google c++ coding standard(https://google-styleguide.googlecode.com/svn/trunk/cppguide.html) with few exceptions.
+This coding standard follows google c++ coding standard(https://google-styleguide.googlecode.com/svn/trunk/cppguide.html) unless otherwise mentioned.
 
 ## Formatting
 
@@ -61,6 +61,20 @@ Short conditional statements may be written in a line unless it has no else part
 	if (condition) DoSomething(); // ok
 	if (condition)
 		DoSomething();  // ok
+
+### Loops and Switches
+Use a space between the switch and loops(for,while,do-while) and open brace. Open brace on the same line as the switch and loops.
+
+	while (condition) {
+		...
+	}
+
+Single loop body statement may be written without braces.
+
+	while (condition) DoSomething(); // ok
+	for (condition)
+		DoSomething();  // ok
+
 
 ### Class formatting
 The open curly brace should be at the same line.
@@ -127,3 +141,11 @@ Use constant style(a 'k' followed by UpperCamelCase.)
 
 ### Comment style
 Use either // or /* */ style comments. However, // style is much prefered.
+
+
+
+# Coding Style Guideline for Javarscript
+
+This coding standard follows google javarscript coding standard(https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml) unless otherwise mentioned.
+
+
