@@ -117,7 +117,7 @@ With successful compilation, you'll get nuttx and nuttx.bin files.
 
 #### Prepare flashing to target board
 
-Flashing to STM32F4 board needs another tool called _stlink_. You can download it from [here](https://github.com/texane/stlink)
+Flashing to STM32F4 board needs another tool called _stlink_. You can download it from [here](https://github.com/texane/stlink) or follow below steps;
 
 ```
 cd harmony
@@ -142,5 +142,17 @@ INFO src/stlink-common.c: Flash written and verified! jolly good!
 ```
 
 
+### Running IoT.js
 
+You can connect STM32F4 board by 1) USB as ttyACM0, or 2) telnet as telnet daemon is enabled for iotjs. We use [minicom](https://help.ubuntu.com/community/Minicom) for USB ttyACM0.
 
+```
+minicom --device=/dev/ttyACM0
+```
+You may need to enable _Add Carriage Return_ option. Press Ctrl-A + Z + U for short.
+
+As micro SD is enable, you can copy any script file to it and run with nsh for example;
+```
+NuttShell (NSH)
+nsh> iotjs /mnt/sdcard/test.js
+```
