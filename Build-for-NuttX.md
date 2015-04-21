@@ -149,10 +149,22 @@ You can connect STM32F4 board by 1) USB as ttyACM0, or 2) telnet as telnet daemo
 ```
 minicom --device=/dev/ttyACM0
 ```
-You may need to enable _Add Carriage Return_ option. Press Ctrl-A + Z + U for short.
+You may need to enable _Add Carriage Return_ option. Press Ctrl-A + Z + U for short in minicom screen.
+
+Press _Enter_ key several times to trigger NuttShell to start.
 
 As micro SD is enable, you can copy any script file to it and run with nsh for example;
 ```
 NuttShell (NSH)
 nsh> iotjs /mnt/sdcard/test.js
 ```
+
+If you see
+```
++-----------------------------+                  
+|                             |                  
+|  Cannot open /dev/ttyACM0!  |                  
+|                             |                  
++-----------------------------+ 
+```
+and it stay on screen, something is wrong. Press black(reset) button on the board and try again. If you still see this warning message begin with original NuttX code and check your board, USB line and other softwares are working OK.
