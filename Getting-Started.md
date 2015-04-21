@@ -4,8 +4,8 @@ Current supporting platforms are Linux and NuttX
 
 #### Source repositories
 * IoT.js: this
-* JerryScript: https://github.com/Samsung/JerryScript.git
-* IoT.js-libuv: https://github.com/Samsung/IoT.js-libuv.git
+* JerryScript: https://github.com/Samsung/jerryscript.git
+* libuv: https://github.com/Samsung/libuv-iotjs.git
 
 ### Build for Linux
 Ubuntu 14.04 is used as a base version.
