@@ -6,12 +6,12 @@ This coding standard is based on google c++ coding standard(https://google-style
 ## Header Files
 
 ### #define guard
-Use #define guard in all header files. `<PROJECT>_<PATH>_<FILE>_H_` format is recommended.
+Use #define guard in all header files. `<FILE>_H` format is recommended.
 
-	#ifndef PROJECT_PATH_FILE_H_
-	#define PROJECT_PATH_FILE_H_
+	#ifndef FILE_H
+	#define FILE_H
 		...
-	#endif // PROJECT_PATH_FILE_H_
+	#endif // FILE_H
 
 ### Inline functions
 Inline function is allowed only if it is less than 10 lines. 
