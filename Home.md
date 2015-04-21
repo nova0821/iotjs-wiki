@@ -6,14 +6,14 @@ Welcome to the IoT.js!
 ### IoT.js
 - Project Overview
 > IoT.js is a platform similar to node.js for "internet of things" built on
-> [JerryScript](https://github.com/Samsung/JerryScript), lightweight JavaScript interpreter,
+> [JerryScript](https://github.com/Samsung/jerryscript), lightweight JavaScript interpreter,
 > and libuv for event driven, non-blocking I/O model to provide same programming experience
 > who already had with node.js.
 
-- [License](https://github.com/Samsung/IoT.js/wiki/License)
+- [License](https://github.com/Samsung/iotjs/wiki/License)
 <br>
 
 
-### [Getting Started](https://github.com/Samsung/IoT.js/wiki/Getting-Started) - Developer guide
-### [Getting Involved](https://github.com/Samsung/IoT.js/wiki/Getting-involved)
+### [Getting Started](https://github.com/Samsung/iotjs/wiki/Getting-Started) - Developer guide
+### [Getting Involved](https://github.com/Samsung/iotjs/wiki/Getting-involved)
 ### Roadmap(TBD)
