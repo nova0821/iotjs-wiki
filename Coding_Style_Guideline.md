@@ -211,4 +211,6 @@ Follow C/C++ formatting above.
 
 
 
+# Python Language Rules
 
+The coding conventions for Python code follows [PEP 8 - Style Guide for Python Code](https://www.python.org/dev/peps/pep-0008/)
