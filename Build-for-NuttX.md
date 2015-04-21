@@ -35,11 +35,11 @@ sudo make install
 sudo ldconfig
 ```
 
-### Directory structure assumption
+### Directory structure
 Assume harmony as the root folder so it may look like this
 * harmony
-** iotjs
-** nuttx
+ * iotjs
+ * nuttx
 
 ### 1. Get the sources
 
