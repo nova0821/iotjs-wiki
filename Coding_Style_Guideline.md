@@ -38,12 +38,12 @@ Do not insert spaces after open paren and before close paren.
 					arg3);
 
 ### Function Declaration and Definition
-Use named parameters in funtion declaration.
+Use named parameters in function declaration.
 
 	ReturnType FunctionName(int, char); // not allowed
 	ReturnType FunctionName(int arg1, char arg2); // Use this
 	
-Return type should be on the same line as funtion name and parameters if it fits. If not, break between them aligned with the first argument.
+Return type should be on the same line as function name and parameters if it fits. If not, break between them aligned with the first argument.
 
 	ReturnType FunctionName(int arg1,
 	                        char arg2);
@@ -155,6 +155,13 @@ Use constant style(a 'k' followed by UpperCamelCase.)
 	};
 
 
+## Classes
+
+### Explicit Constructors
+Always use `explicit` keyword when declaring callable constructors.
+
+### Structs vs. Classes
+Use struct when handling data without any operation. Otherwise, use class. 
 
 
 ## Comments
@@ -167,10 +174,11 @@ Use either // or /* */ style comments. However, // style is much prefered.
 # Coding Style Guideline for Javarscript
 
 This coding standard is based on google javarscript coding standard(https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
+
 # Javarscript Language Rules
 
 ## var
-Declare variable before use.
+Always declare variable before use.
 
 ## Semicolons
 Always use semicolons.
