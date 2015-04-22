@@ -6,7 +6,7 @@
 5. Build NuttX
 
 ### Problems working with NuttX
-Please acknowledge that we are also not experts on NuttX and may have trouble understanding each problems. For general NuttX issue please read documents at [NuttX Home page](http://nuttx.org/). Visiting and asking to [NuttX forum](https://groups.yahoo.com/neo/groups/nuttx/info) also can be a help.
+Please acknowledge that we are not experts on NuttX and may have trouble to understand each problems. For general NuttX issue, please read documents at [NuttX Home page](http://nuttx.org/). Visiting and asking to [NuttX forum](https://groups.yahoo.com/neo/groups/nuttx/info) also can be a help.
 
 ### Build Host
 We recommend Ubuntu 14.04. Other platforms can be used but not verified by us.
