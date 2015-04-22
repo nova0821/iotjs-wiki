@@ -16,6 +16,11 @@ This document assumes 'harmony' as the root directory. JerryScript and libuv are
    * jerry
    * libuv
 
+#### Prerequisite
+
+_Todo: add needed package lists_
+
+
 ### 1. Get the sources
 
 Clone from our repo to look around and test it. If you get interested and want to try more or add something more interesting please fork.
