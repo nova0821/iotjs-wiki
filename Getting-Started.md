@@ -1,5 +1,5 @@
 ### Overview
-IoT.js is built based on JerryScript JavaScript engine and libuv for asynchronous I/O event handling.
+IoT.js is built based on JerryScript(lightweight JavaScript engine) and libuv for asynchronous I/O event handling.
 
 #### Source repositories
 * IoT.js: https://github.com/Samsung/iotjs.git
