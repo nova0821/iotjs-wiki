@@ -76,7 +76,7 @@ The patch include some fixes that occurred when working with current version of 
 Please refer [this](http://www.st.com/web/en/catalog/tools/FM116/SC959/SS1532/LN1199/PF255417) page.
 
 ##### Relation with STM board?
-We do not have any business relation with STM board. It is selected cause it has enough RAM and Flash ROM and have lots of pins to play with. (Our company is big so others in our company may have, but IoT.js related developers have no relation)
+We do not have any business relation with STM board. It is selected cause it has enough RAM and Flash ROM and have lots of pins to play with.
 
 ### 2. Configure NuttX
  
