@@ -2,7 +2,6 @@
 1. Get the sources
 2. Build options
 3. Build all at once
-4. Using latest libuv or latest jerry
 
 #### Build Host
 Ubuntu 14.04 is recommended. Any other Unix like platforms can be used. If you are trying other platforms and don't seem to work properly, please look in side or add an issue in [Issues](https://github.com/Samsung/iotjs/issues) so someone already tried can help.
@@ -72,7 +71,7 @@ To build debug version.
 
 If you want to build 32bit version and debug
 ```
-./tools/build.py --target-arch=x86 --buildtype=debug
+./tools/build.py --target-arch=i686 --buildtype=debug
 ```
 
 If you want to modify iotjs source and just want to build with **'make'**,
@@ -85,7 +84,7 @@ You may as well get inside jerry or libuv if you
 
 #### How to execute?
 
-Executable name is **'iotjs'** and resides in (target-arch)-(target-os)/iotjs. To run greetings JavaScript in test folder,
+Executable name is **'iotjs'** and resides in (target-arch)-(target-os)/iotjs. To run greetings JavaScript in test folder for example,
 
 ```
 ./build/x86_64-linux/iotjs/iotjs ./test/hello_iot.js
@@ -105,12 +104,8 @@ Just remove the folder like
 ```
 rm -rf build
 ```
-or it you want to rebuild one submodule, for example libuv
+or it you want to clean for rebuild one submodule, for example libuv
 ```
 rm -rf build/x86_64-linux/deps/libuv
 ```
 
-
-### 4. Using latest libuv or latest jerry
-
-Todo
