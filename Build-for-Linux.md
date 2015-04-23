@@ -19,7 +19,11 @@ This document assumes 'harmony' as the root directory. JerryScript and libuv are
 
 #### Prerequisite
 
-_Todo: add needed package lists_
+You need to install some packages to build IoT.js, follow as;
+
+```
+sudo apt-get install gyp cmake build-essential
+```
 
 
 ### 1. Get the sources
