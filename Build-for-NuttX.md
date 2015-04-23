@@ -20,7 +20,6 @@ You may need these packages installed as like;
 sudo apt-get install autoconf libtool gperf flex bison
 sudo apt-get install libusb-1.0-0-dev
 sudo apt-get install libsgutils2-dev
-sudo apt-get install libsgutils2-dev
 ```
 
 ##### kconfig frontend
@@ -45,7 +44,7 @@ Assume harmony as the root folder so it may look like this
 
 ```
 mkdir harmony; cd harmony
-git clone https://github.com/Samsung/iotjs.git iotjs
+git clone https://github.com/Samsung/iotjs.git
 git clone http://git.code.sf.net/p/nuttx/git nuttx
 ```
 
@@ -56,7 +55,7 @@ cd harmony
 wget ???
 cd nuttx
 git checkout -b iotjs 2eba8afab5e8bdc32a0f6365de070eaa7f383149
-git patch -p1 < ../iotjs-nuttx-20150421.patch
+patch -p1 < ../iotjs-nuttx-20150421.patch
 ```
 
 ##### What is it about the patch?
@@ -100,8 +99,43 @@ Select items as follows and change to your address
 > There are _locally administered addresses_ in MAC address.
 > just google "free mac address for development" and you may know what to do.
 
-### 3. Build libuv, jerryscript and iotjs
+### 3. Build iotjs and libuv, jerryscript
+
+As noted in build linux page, you need to give additional options for NuttX.
+
+```
+--target-arch=arm 
+--target-os=nuttx 
+--nuttx-home=(nuttx home where .config file exist)
+```
+
+To build IoT.js for nuttx, first, you need to build NuttX to create configuration file, nuttx/config.h.
+
+```
+cd harmony/nuttx/nuttx
+make
+```
+
+It will show errors that libuv.a cannot be found. It is ok for now.
+
+Now, back to building IoT.js.
+
+```
+cd harmony/iotjs
+./tools/build.py --target-arch=arm --target-os=nuttx --nuttx-home=/home/(your_id)/harmony/nuttx/nuttx
+```
+
 ### 4. Copy libraries to nuttx/nuttx/lib folder
+
+For the moment, lib files need to be copied manually.
+
+```
+cp build/arm-nuttx/libs/libjerrycore.a ../nuttx/nuttx/lib/libjerry.a
+cp build/arm-nuttx/libs/libuv.a ../nuttx/nuttx/lib
+cp build/arm-nuttx/iotjs/liblibiotjs.a ../nuttx/nuttx/lib/libiotjs.a
+```
+
+
 ### 5. Build NuttX
 
 Enter nuttx and configure with _make menuconfig_ with your taste
