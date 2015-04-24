@@ -6,6 +6,7 @@ Buffer class is a global type. you can create a buffer object in several way.
 * new Buffer(size)
 * new Buffer(buffer)
 * new Buffer(str[,encoding])
+
 ### Class Methods
 * Buffer.byteLength(string[,encoding])
 * Buffer.isBuffer(obj)
