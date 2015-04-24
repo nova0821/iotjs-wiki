@@ -24,13 +24,13 @@ This document assumes 'harmony' as the root directory. JerryScript and libuv are
 
 #### Prerequisite
 
-You need to install some packages to build IoT.js, follow as;
+You need to install some packages to build IoT.js, as follows;
 
 ```
 sudo apt-get install gyp cmake build-essential
 ```
 
-gcc/g++ compiler at least version 4.8 is required to compile. If you have problem upgrading to 4.8, please google. One of that helped me is [how-to-install-gcc-4-8](http://askubuntu.com/questions/271388/how-to-install-gcc-4-8)
+gcc/g++ compiler 4.8 and upper versions are required to compile. If you have problem upgrading to 4.8, please google. One of that helped me is [how-to-install-gcc-4-8](http://askubuntu.com/questions/271388/how-to-install-gcc-4-8)
 
 
 ### 1. Get the sources
