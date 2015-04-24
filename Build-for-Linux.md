@@ -3,6 +3,10 @@
 2. Set build options
 3. Build all at once
 
+
+***
+
+
 #### Build Host
 Ubuntu 14.04 is recommended. Any other Unix like platforms can be used. If you are trying other platforms and don't seem to work properly, please look in side or add an issue in [Issues](https://github.com/Samsung/iotjs/issues), someone may have already tried. It you can't find any, please leave an issue so anyone can be a help.
 
