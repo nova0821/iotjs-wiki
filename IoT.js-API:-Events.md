@@ -3,7 +3,7 @@ The application programming model of IoT.js is based on event-driven programming
 ## Class: EventEmitter
 You cannot directly create a instance of `EventEmitter` since `EventEmitter` is an abstract trait which defines and grants its behavior to classes that inherit `EventEmitter`. 
 
-## Instance of EventEmitter
+## Methods of EventEmitter instance
 * emitter.on(event, listener)
 * emitter.addListener(event, listener)
 * emitter.once(event, listener)
