@@ -5,14 +5,22 @@
 4. Copy libraries to nuttx/nuttx/lib folder
 5. Build NuttX
 
-### Problems working with NuttX
-Please acknowledge that we are not experts on NuttX and may have trouble to understand each problems. For general NuttX issue, please read documents at [NuttX Home page](http://nuttx.org/). Visiting and asking to [NuttX forum](https://groups.yahoo.com/neo/groups/nuttx/info) also can be a help.
+#### Problems working with NuttX
+Please acknowledge that we are not experts on NuttX and may have trouble to understand each problems you may send. For general NuttX issue, please read documents at [NuttX Home page](http://nuttx.org/). Visiting and asking to [NuttX forum](https://groups.yahoo.com/neo/groups/nuttx/info) also can be a help.
 
-### Build Host
+#### Build Host
 We recommend Ubuntu 14.04. Other platforms can be used but not verified by us.
 
+#### Target board
+
+Our work and this document uses STM32F4-discovery with BB as reference development. Please refer [this](http://www.st.com/web/en/catalog/tools/FM116/SC959/SS1532/LN1199/PF255417) page.
+
+##### Relation with STM board?
+We do not have any business relation with STM board. It is selected cause it has enough RAM and Flash ROM and have lots of pins to play with.
+
+
 #### Toolchain 
-We recommend gcc-arm-none-eabi version 4.8. Refer to [this](https://pixhawk.org/dev/toolchain_installation_lin) page how to install if you do not have installed yet.
+As for STM32F4-discovery uses ARM, we recommend gcc-arm-none-eabi version 4.8. Refer to [this](https://pixhawk.org/dev/toolchain_installation_lin) page how to install if you do not have installed yet.
 
 #### Packages 
 You may need these packages installed as like;
@@ -22,7 +30,7 @@ sudo apt-get install libusb-1.0-0-dev
 sudo apt-get install libsgutils2-dev
 ```
 
-##### kconfig frontend
+#### kconfig frontend
 To use menuconfig in NuttX, you may need to install kconfig frontend.
 ```
 git clone https://github.com/jameswalmsley/kconfig-frontends.git
@@ -34,13 +42,15 @@ sudo make install
 sudo ldconfig
 ```
 
-### Directory structure
-Assume harmony as the root folder so it may look like this
+### 1. Get the sources
+
+If you haven't read [Build for Linux](https://github.com/Samsung/iotjs/wiki/Build-for-Linux) page, it would be better to read it. Some explanations may bee skipped in this document.
+
+#### Directory structure
+Assume harmony as the root folder so it may look like this;
 * harmony
  * iotjs
  * nuttx
-
-### 1. Get the sources
 
 ```
 mkdir harmony; cd harmony
@@ -50,6 +60,7 @@ git clone http://git.code.sf.net/p/nuttx/git nuttx
 
 #### Apply patch to NuttX for IoT.js
 Download [this](???) file to harmony folder and extract it
+
 ```
 cd harmony
 wget ???
@@ -71,11 +82,6 @@ The patch include some fixes that occurred when working with current version of 
 * fix net accept() error return
 * fix syscall CSV file for generating proxy source codes
 
-##### STM32F4-discovery with BB ?
-Please refer [this](http://www.st.com/web/en/catalog/tools/FM116/SC959/SS1532/LN1199/PF255417) page.
-
-##### Relation with STM board?
-We do not have any business relation with STM board. It is selected cause it has enough RAM and Flash ROM and have lots of pins to play with.
 
 ### 2. Configure NuttX
  
@@ -107,6 +113,7 @@ As noted in build linux page, you need to give additional options for NuttX.
 --target-arch=arm 
 --target-os=nuttx 
 --nuttx-home=(nuttx home where .config file exist)
+--buildlib
 ```
 
 To build IoT.js for nuttx, first, you need to build NuttX to create configuration file, nuttx/config.h.
@@ -116,13 +123,19 @@ cd harmony/nuttx/nuttx
 make
 ```
 
-It will show errors that libuv.a cannot be found. It is ok for now.
+It will show errors that libuv.a cannot be found. It is ok for now. If you just want to try nuttx only before proceeding, please turn off three options in ".config" file.
+
+```
+CONFIG_SYSTEM_IOTJS=n
+CONFIG_LIBUV=n
+CONFIG_LIBJERRY=n
+```
 
 Now, back to building IoT.js.
 
 ```
 cd harmony/iotjs
-./tools/build.py --target-arch=arm --target-os=nuttx --nuttx-home=/home/(your_id)/harmony/nuttx/nuttx
+./tools/build.py --target-arch=arm --target-os=nuttx --nuttx-home=/home/(your_id)/harmony/nuttx/nuttx --buildlib
 ```
 
 ### 4. Copy libraries to nuttx/nuttx/lib folder
@@ -151,7 +164,7 @@ With successful compilation, you'll get nuttx and nuttx.bin files.
 
 #### Prepare flashing to target board
 
-Flashing to STM32F4 board needs another tool called _stlink_. You can download it from [here](https://github.com/texane/stlink) or follow below steps;
+Flashing to STM32F4-discovery board needs another tool called _stlink_. You can download it from [here](https://github.com/texane/stlink) or follow below steps;
 
 ```
 cd harmony
@@ -162,6 +175,9 @@ cd stlink
 ./configure
 make
 ```
+
+Relative path is used when executing stlink tools. You may have to change them when not cloned in harmony folder.
+
 
 #### Flash
 
@@ -178,7 +194,7 @@ INFO src/stlink-common.c: Flash written and verified! jolly good!
 
 ### Running IoT.js
 
-You can connect STM32F4 board by 1) USB as ttyACM0, or 2) telnet as telnet daemon is enabled for iotjs. We use [minicom](https://help.ubuntu.com/community/Minicom) for USB ttyACM0.
+You can connect STM32F4-discovery board by 1) USB as ttyACM0, or 2) telnet as telnet daemon is running. We use [minicom](https://help.ubuntu.com/community/Minicom) for USB ttyACM0.
 
 ```
 minicom --device=/dev/ttyACM0
@@ -201,4 +217,4 @@ If you see
 |                             |                  
 +-----------------------------+ 
 ```
-and it stay on screen, something is wrong. Press black(reset) button on the board and try again. If you still see this warning message begin with original NuttX code and check your board, USB line and other softwares are working OK.
+and it stays on the screen, something is wrong. Blue LED may blink if NuttX is in abnormal state. Press black(reset) button on the board and try again. If you still see this warning message, begin with original NuttX code and check your board, USB line and other softwares.
