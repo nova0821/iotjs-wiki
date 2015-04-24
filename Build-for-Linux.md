@@ -20,7 +20,7 @@ This document assumes 'harmony' as the root directory. JerryScript and libuv are
             * jerry
             * libuv
 
-※ harmony? It began from our project internal code name. (_Sounds good, isn't it? :)_)
+※ harmony? It's from initial code name of our project. (_Sounds good, isn't it? :)_)
 
 #### Prerequisite
 
