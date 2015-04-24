@@ -14,7 +14,7 @@ Current supported platforms are **Linux and NuttX**
 * Planning OSX 10.10 
 
 ### Porting to other platforms
-It's depending on the platform you're working on whether it's easy or quite complicated to port to another platform. If you've tried both Linux and NuttX, you can see that it's quite different. Below link will show you an example of the steps.
+It's depending on the platform you're working on whether it's easy or quite complicated to port to another platform. Below link will show you an example of the steps.
 
 * Porting guide to Raspberian for [Raspberry Pi](https://www.raspberrypi.org/downloads/)
 
