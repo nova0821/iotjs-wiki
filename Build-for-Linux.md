@@ -1,6 +1,6 @@
 ### Overall steps to build for Linux
 1. Get the sources
-2. Build options
+2. Set build options
 3. Build all at once
 
 #### Build Host
@@ -46,7 +46,7 @@ cd iotjs
 Sub modules libuv and jerryscript source will be pulled and matching hash will be checked out for your current IoT.js version when you run the build script.
 
 
-### 2. Build options
+### 2. Set build options
 
 Some basic options are provided.
 
