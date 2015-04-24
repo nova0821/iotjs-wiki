@@ -11,10 +11,13 @@ Buffer class is a global type. you can create a buffer object in several way.
 * Buffer.byteLength(string[,encoding])
 * Buffer.isBuffer(obj)
 
-## Properties of Buffer instance
-* buf.length
+## Instance of Buffer
+Once you get buffer object in some way, you can handle the buffer using the following API:
 
-## Methods of Buffer instance
-* buf.write(string[,offset[,length]][,encoding])
-* buf.toString([encoding][,start][,end])
-* buf.copy(targetBuffer[,targetStart][,sourceStart[,sourceEnd]]) 
+### Properties
+buf.length
+
+### Methods
+buf.write(string[,offset[,length]][,encoding])
+buf.toString([encoding][,start][,end])
+buf.copy(targetBuffer[,targetStart][,sourceStart[,sourceEnd]])
