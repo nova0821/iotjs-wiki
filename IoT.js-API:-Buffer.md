@@ -15,9 +15,9 @@ Buffer class is a global type. you can create a buffer object in several way.
 Once you get buffer object in some way, you can handle the buffer using the following API:
 
 ### Properties
-buf.length
+* buf.length
 
 ### Methods
-buf.write(string[,offset[,length]][,encoding])
-buf.toString([encoding][,start][,end])
-buf.copy(targetBuffer[,targetStart][,sourceStart[,sourceEnd]])
+* buf.write(string[,offset[,length]][,encoding])
+* buf.toString([encoding][,start][,end])
+* buf.copy(targetBuffer[,targetStart][,sourceStart[,sourceEnd]])
