@@ -8,11 +8,11 @@
 
 
 #### Build Host
-Ubuntu 14.04 is recommended. Any other Unix like platforms can be used. If you are trying other platforms and don't seem to work properly, please look in side or add an issue in [Issues](https://github.com/Samsung/iotjs/issues), someone may have already tried. It you can't find any, please leave an issue so anyone can be a help.
+Ubuntu 14.04 is recommended. Any other Unix like platforms can be used. If you are trying other platforms and it doesn't seem to work properly, please look into [Issues](https://github.com/Samsung/iotjs/issues). Someone may have already tried. If you can't find any related one, please leave an issue for help.
 
 #### Directory structure
 
-This document assumes 'harmony' as the root directory. JerryScript and libuv are included as submodules in deps folder.
+This document assumes 'harmony' as the root directory. JerryScript and libuv are included as sub-modules in deps folder.
 
 * harmony
     * iotjs
