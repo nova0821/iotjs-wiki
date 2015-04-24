@@ -12,7 +12,7 @@ Ubuntu 14.04 is recommended. Any other Unix like platforms can be used. If you a
 
 #### Directory structure
 
-This document assumes 'harmony' as the root directory. JerryScript and libuv are included as sub-modules in deps folder.
+This document assumes 'harmony' as the root directory. _JerryScript_ and _libuv_ are included as sub-modules in deps folder.
 
 * harmony
     * iotjs
@@ -30,21 +30,21 @@ You need to install some packages to build IoT.js, as follows;
 sudo apt-get install gyp cmake build-essential
 ```
 
-gcc/g++ compiler 4.8 and upper versions are required to compile. If you have problem upgrading to 4.8, please google. One of that helped me is [how-to-install-gcc-4-8](http://askubuntu.com/questions/271388/how-to-install-gcc-4-8)
+gcc/g++ compiler 4.8 and upper versions are required to compile. If you have any problems upgrading to 4.8, please google. One of that helped me is [how-to-install-gcc-4-8](http://askubuntu.com/questions/271388/how-to-install-gcc-4-8).
 
 
 ### 1. Get the sources
 
-Clone from our repo to look around and test it. If it attracts you and want to try something interesting, please fork and send us requests.
+Clone our repository to look around and test it. If it attracts you and want to try something interests, please fork it.
 
-To get the source for this repo, 
+To get the source for this repository, 
 ```
 cd harmony
 git clone https://github.com/Samsung/iotjs.git
 cd iotjs
 ```
 
-Sub modules libuv and jerryscript source will be pulled and matching hash will be checked out for your current IoT.js version when you run the build script.
+Sub modules _libuv_ and _jerryscript_ source will be pulled. And matching hash will be checked out for your current IoT.js version when you run the build script.
 
 
 ### 2. Set build options
@@ -62,17 +62,17 @@ make-flags=-j9 (options to send to make)
 nuttx-home= (no default value)
 ```
 
-options that may need explanations
+Options that may need explanations
 * builddir: compile intermediate and output files are generated here. 
 * buildlib: generating iotjs to a library if true such as for NuttX. It doesn't need value, just --buildlib will do it.
 * nuttx-home: it's NuttX platform specific, to tell where the NuttX configuration and header files are.
 
-To give the option, please use two dashes '--' before the option name as described in next section.
+To give options, please use two dashes '--' before the option name as described in next section.
 
 
 ### 3. Build all at once
 
-IoT.js and required submodules are generated all at once with build.py in tools folder.
+IoT.js and required sub-modules are generated all at once in tools folder with build.py.
 
 ```
 cd iotjs
