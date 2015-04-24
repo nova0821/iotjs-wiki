@@ -1,6 +1,6 @@
 # IoT.js modules
 * [Buffer](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Buffer)
 * Console
-* Events
+* [Events](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Events)
 * Global
 * Stream
