@@ -13,16 +13,20 @@ We recommend Ubuntu 14.04. Other platforms can be used but not verified by us.
 
 #### Target board
 
-Our work and this document uses STM32F4-discovery with BB as reference development. Please refer [this](http://www.st.com/web/en/catalog/tools/FM116/SC959/SS1532/LN1199/PF255417) page.
+Our work and this document uses [STM32F4-discovery with BB](http://www.st.com/web/en/catalog/tools/FM116/SC959/SS1532/LN1199/PF255417) as reference target. 
 
 ##### Relation with STM board?
-We do not have any business relation with STM board. It is selected cause it has enough RAM and Flash ROM and have lots of pins to play with.
+We do not have any business relation with STM board. It is selected cause it has enough RAM and Flash ROM so that development can be more comfortable and have lots of pins to play with. 
+
+When IoT.js gets build up and optimised in the future it may work in devices having smaller resource.
 
 
 #### Toolchain 
-As for STM32F4-discovery uses ARM, we recommend gcc-arm-none-eabi version 4.8. Refer to [this](https://pixhawk.org/dev/toolchain_installation_lin) page how to install if you do not have installed yet.
+
+As for STM32F4-discovery uses ARM, we recommend gcc-arm-none-eabi version 4.8. Refer [this](https://pixhawk.org/dev/toolchain_installation_lin) page how to install if you do not have installed yet.
 
 #### Packages 
+
 You may need these packages installed as like;
 ```
 sudo apt-get install autoconf libtool gperf flex bison
@@ -31,7 +35,9 @@ sudo apt-get install libsgutils2-dev
 ```
 
 #### kconfig frontend
+
 To use menuconfig in NuttX, you may need to install kconfig frontend.
+
 ```
 git clone https://github.com/jameswalmsley/kconfig-frontends.git
 cd kconfig-frontends
@@ -42,11 +48,14 @@ sudo make install
 sudo ldconfig
 ```
 
+
 ### 1. Get the sources
 
 If you haven't read [Build for Linux](https://github.com/Samsung/iotjs/wiki/Build-for-Linux) page, it would be better to read it. Some explanations may bee skipped in this document.
 
+
 #### Directory structure
+
 Assume harmony as the root folder so it may look like this;
 * harmony
  * iotjs
@@ -59,6 +68,7 @@ git clone http://git.code.sf.net/p/nuttx/git nuttx
 ```
 
 #### Apply patch to NuttX for IoT.js
+
 Download [this](???) file to harmony folder and extract it
 
 ```
@@ -69,7 +79,9 @@ git checkout -b iotjs 2eba8afab5e8bdc32a0f6365de070eaa7f383149
 patch -p1 < ../iotjs-nuttx-20150421.patch
 ```
 
+
 ##### What is it about the patch?
+
 This patch includes settings for IoT.js on NuttX with STM32F4-discovery with BB.
 It's one of our reference target board that we are working on to make development easier. Some to list are;
 * added libuv, libjerry, iotjs in configuration
@@ -93,10 +105,12 @@ cd ..
 ```
 
 You may need to change your IP and MAC address.
+
 ```
 # assume you are in nuttx folder where .config resides
 make menuconfig
 ```
+
 Select items as follows and change to your address
 * Application Configuration > NSH Library > Networking Configuration > IP Address Configuration
 * Application Configuration > NSH Library > Networking Configuration > Fixed MAC address 
@@ -104,6 +118,7 @@ Select items as follows and change to your address
 > How to set MAC address for development?
 > There are _locally administered addresses_ in MAC address.
 > just google "free mac address for development" and you may know what to do.
+
 
 ### 3. Build iotjs and libuv, jerryscript
 
