@@ -41,7 +41,7 @@ git clone https://github.com/Samsung/iotjs.git
 cd iotjs
 ```
 
-Sub modules(_jerryscript_ and _libuv_) will be pulled. And matching hash will be checked out for your current IoT.js version when you run the build script.
+Sub modules(_JerryScript_ and _libuv_) will be pulled. And matching hash will be checked out for your current IoT.js version when you run the build script.
 
 
 ### 2. Set build options
@@ -90,9 +90,9 @@ If you want to build 32bit version in x86_64 and debug only a library,
 ./tools/build.py --target-arch=i686 --buildtype=debug --buildlib
 ```
 
-#### Build only _iotjs_ with given build option
+#### Build only IoT.js with given build option
 
-If you had some modification and build only IoT.js this explains how. IoT.js uses [CMake](http://www.cmake.org/) for makefile generation. You can go inside the build folder and just build with 'make' command. Go inside where your target platform name, for example x86_64 linux,
+This section for explaining how to build only IoT.js when you did some modification. IoT.js uses [CMake](http://www.cmake.org/) for makefile generation. You can go inside the build folder and build with 'make' command. Go inside where your target platform name is, for example x86_64 linux,
 ```
 cd build/x86_64-linux/iotjs
 make
@@ -100,7 +100,8 @@ make
 
 #### How to execute?
 
-Executable name is **'iotjs'** and resides in (target-arch)-(target-os)/iotjs. To run greetings JavaScript in test folder for example,
+Executable name is **'iotjs'** and resides in (target-arch)-(target-os)/iotjs. 
+To run greetings JavaScript in test folder, for example;
 
 ```
 ./build/x86_64-linux/iotjs/iotjs ./test/hello_iot.js
@@ -108,19 +109,19 @@ Executable name is **'iotjs'** and resides in (target-arch)-(target-os)/iotjs. T
 
 #### What build script does
 
-1. It will clone submodules jerryscript and libuv, this is done only once when version hash has not changed.
-2. Checkout matching version for each submodules.
-3. Build submodules, you can see the outputs at build/(target-arch)-(target-os)/libs folder.
-4. Build iotjs
+1. It will clone sub-modules(JerryScript and libuv), this will be done only once when version hash has not changed.
+2. Checkout matching version for each sub-modules.
+3. Build sub-modules, you can see the outputs at build/(target-arch)-(target-os)/libs folder.
+4. Build IoT.js
 
 
 #### How to clean
 
-Just remove the folder like
+Just remove the folder as follows;
 ```
 rm -rf build
 ```
-or it you want to clean for rebuild one submodule, for example libuv
+or it you want to clean for rebuild one sub-module, for example libuv;
 ```
 rm -rf build/x86_64-linux/deps/libuv
 ```
