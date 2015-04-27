@@ -14,7 +14,7 @@ Ubuntu 14.04 is recommended. Other Unix like platforms can be used. If it doesn'
 
 This document assumes 'harmony' as the root directory. _JerryScript_ and _libuv_ are included as sub-modules in deps folder.
 
-* harmonywkek
+* harmony
     * iotjs
         * deps
             * jerry
@@ -64,11 +64,11 @@ nuttx-home= (no default value)
 
 Options that may need explanations.
 * builddir: compile intermediate and output files are generated here. 
-* buildlib: generating iotjs to a library if true such as for NuttX. It doesn't need value, just --buildlib will do it.
+* buildlib: generating _iotjs_ to a library if true(e.g. for NuttX) it doesn't need value. _--buildlib_ is same as '--buildlib=true'.
 * nuttx-home: it's NuttX platform specific, to tell where the NuttX configuration and header files are.
 
-To give options, please use two dashes '--' before the option name as described in next section.
-
+To give options, please use two dashes '--' before the option name as described in following sections.
+ 
 
 ### 3. Build all at once
 
@@ -81,19 +81,19 @@ cd iotjs
 
 #### Options example
 
-It's a good practice to build in separate folder, like 'build'. IoT.js generates all outputs into separate **'build'** folder. You can change this by --builddir option. Usually you won't need to use this option. Target and architecture name is used as a name for a folder inside 'build' folder.
+It's a good practice to build in separate folder, like 'build'. IoT.js generates all outputs into separate **'build'** folder. You can change this by --builddir option. Usually you won't need to use this option. Target and architecture name are used as a name for a folder inside 'build' folder.
 
 To build debug version and results to 'output' folder
 ```
 ./tools/build.py --buildtype=debug --builddir=output
 ```
 
-If you want to build 32bit version in x86_64 and debug ony a library,
+If you want to build 32bit version in x86_64 and debug only a library,
 ```
 ./tools/build.py --target-arch=i686 --buildtype=debug --buildlib
 ```
 
-#### Build only iotjs with given build option
+#### Build only _iotjs_ with given build option
 
 If you had some modification and build only IoT.js this explains how. IoT.js uses [CMake](http://www.cmake.org/) for makefile generation. You can go inside the build folder and just build with 'make' command. Go inside where your target platform name, for example x86_64 linux,
 ```
