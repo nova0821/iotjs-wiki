@@ -1,0 +1,2873 @@
+diff --git a/.gitignore b/.gitignore
+index 83f6546..50c8ccc 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -10,3 +10,4 @@ Make.dep
+ core
+ .gdbinit
+ cscope.out
++.DS_Store
+diff --git a/apps/include/.gitignore b/apps/include/.gitignore
+index bee9a73..133b443 100644
+--- a/apps/include/.gitignore
++++ b/apps/include/.gitignore
+@@ -1 +1,2 @@
+ /pcode
++uv*.h
+diff --git a/apps/netutils/ftpd/ftpd.c b/apps/netutils/ftpd/ftpd.c
+index d3d523a..747087e 100644
+--- a/apps/netutils/ftpd/ftpd.c
++++ b/apps/netutils/ftpd/ftpd.c
+@@ -70,7 +70,9 @@
+  * Pre-processor Definitions
+  ****************************************************************************/
+ 
++#ifndef __NUTTX__
+ #define __NUTTX__ 1 /* Flags some unusual NuttX dependencies */
++#endif
+ 
+ /****************************************************************************
+  * Private Function Prototypes
+diff --git a/apps/nshlib/nsh_fscmds.c b/apps/nshlib/nsh_fscmds.c
+index afde1e1..7e6882b 100644
+--- a/apps/nshlib/nsh_fscmds.c
++++ b/apps/nshlib/nsh_fscmds.c
+@@ -111,7 +111,7 @@ typedef int (*direntry_handler_t)(FAR struct nsh_vtbl_s *, const char *,
+  * connection.
+  */
+ 
+-static char g_iobuffer[IOBUFFERSIZE];
++static char g_iobuffer[IOBUFFERSIZE] __attribute__((aligned(0x4)));
+ #endif
+ 
+ /****************************************************************************
+diff --git a/apps/nshlib/nsh_romfsimg.h b/apps/nshlib/nsh_romfsimg.h
+index 49b0ad1..a280c84 100644
+--- a/apps/nshlib/nsh_romfsimg.h
++++ b/apps/nshlib/nsh_romfsimg.h
+@@ -1,6 +1,6 @@
+ unsigned char romfs_img[] = {
+-  0x2d, 0x72, 0x6f, 0x6d, 0x31, 0x66, 0x73, 0x2d, 0x00, 0x00, 0x01, 0x50,
+-  0x9f, 0x13, 0x82, 0x87, 0x4e, 0x53, 0x48, 0x49, 0x6e, 0x69, 0x74, 0x56,
++  0x2d, 0x72, 0x6f, 0x6d, 0x31, 0x66, 0x73, 0x2d, 0x00, 0x00, 0x01, 0xf0,
++  0x17, 0xd5, 0x68, 0x92, 0x4e, 0x53, 0x48, 0x49, 0x6e, 0x69, 0x74, 0x56,
+   0x6f, 0x6c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x49,
+   0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0xd1, 0xff, 0xff, 0x97,
+   0x2e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+@@ -12,34 +12,34 @@ unsigned char romfs_img[] = {
+   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa0,
+   0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00, 0x00, 0xd1, 0xff, 0xff, 0x00,
+   0x2e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x3a, 0x00, 0x00, 0x00, 0x00,
+-  0x00, 0x00, 0x00, 0x6e, 0x8d, 0x9c, 0xab, 0x58, 0x72, 0x63, 0x53, 0x00,
+-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-  0x23, 0x20, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x20, 0x61, 0x20, 0x52,
+-  0x41, 0x4d, 0x44, 0x49, 0x53, 0x4b, 0x20, 0x61, 0x6e, 0x64, 0x20, 0x6d,
+-  0x6f, 0x75, 0x6e, 0x74, 0x20, 0x69, 0x74, 0x20, 0x61, 0x74, 0x20, 0x2f,
+-  0x74, 0x6d, 0x70, 0x0a, 0x0a, 0x6d, 0x6b, 0x72, 0x64, 0x20, 0x2d, 0x6d,
+-  0x20, 0x32, 0x20, 0x2d, 0x73, 0x20, 0x35, 0x31, 0x32, 0x20, 0x31, 0x30,
+-  0x32, 0x34, 0x0a, 0x6d, 0x6b, 0x66, 0x61, 0x74, 0x66, 0x73, 0x20, 0x2f,
+-  0x64, 0x65, 0x76, 0x2f, 0x72, 0x61, 0x6d, 0x32, 0x0a, 0x6d, 0x6f, 0x75,
+-  0x6e, 0x74, 0x20, 0x2d, 0x74, 0x20, 0x76, 0x66, 0x61, 0x74, 0x20, 0x2f,
+-  0x64, 0x65, 0x76, 0x2f, 0x72, 0x61, 0x6d, 0x32, 0x20, 0x2f, 0x74, 0x6d,
+-  0x70, 0x0a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20,
+-  0x00, 0x00, 0x00, 0x00, 0xd1, 0xd1, 0xff, 0xe0, 0x2e, 0x2e, 0x00, 0x00,
+-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xda, 0x00, 0x00, 0x00, 0x00,
++  0x00, 0x00, 0x01, 0x09, 0x8d, 0x9c, 0xaa, 0x1d, 0x72, 0x63, 0x53, 0x00,
++  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++  0x23, 0x20, 0x62, 0x69, 0x6e, 0x66, 0x73, 0x20, 0x61, 0x6e, 0x64, 0x20,
++  0x70, 0x72, 0x6f, 0x63, 0x66, 0x73, 0x0a, 0x6d, 0x6f, 0x75, 0x6e, 0x74,
++  0x20, 0x2d, 0x74, 0x20, 0x62, 0x69, 0x6e, 0x66, 0x73, 0x20, 0x2f, 0x62,
++  0x69, 0x6e, 0x0a, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x20, 0x2d, 0x74, 0x20,
++  0x70, 0x72, 0x6f, 0x63, 0x66, 0x73, 0x20, 0x2f, 0x70, 0x72, 0x6f, 0x63,
++  0x0a, 0x0a, 0x23, 0x20, 0x73, 0x64, 0x63, 0x61, 0x72, 0x64, 0x2c, 0x20,
++  0x6c, 0x65, 0x61, 0x76, 0x65, 0x20, 0x69, 0x74, 0x20, 0x66, 0x61, 0x69,
++  0x6c, 0x20, 0x69, 0x66, 0x20, 0x6e, 0x6f, 0x74, 0x20, 0x73, 0x75, 0x70,
++  0x70, 0x6f, 0x72, 0x74, 0x20, 0x6f, 0x72, 0x20, 0x6e, 0x6f, 0x20, 0x73,
++  0x64, 0x63, 0x61, 0x72, 0x64, 0x0a, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x20,
++  0x2d, 0x74, 0x20, 0x76, 0x66, 0x61, 0x74, 0x20, 0x2f, 0x64, 0x65, 0x76,
++  0x2f, 0x6d, 0x6d, 0x63, 0x73, 0x64, 0x30, 0x20, 0x2f, 0x6d, 0x6e, 0x74,
++  0x2f, 0x73, 0x64, 0x63, 0x61, 0x72, 0x64, 0x0a, 0x0a, 0x23, 0x20, 0x43,
++  0x72, 0x65, 0x61, 0x74, 0x65, 0x20, 0x61, 0x20, 0x52, 0x41, 0x4d, 0x44,
++  0x49, 0x53, 0x4b, 0x20, 0x61, 0x6e, 0x64, 0x20, 0x6d, 0x6f, 0x75, 0x6e,
++  0x74, 0x20, 0x69, 0x74, 0x20, 0x61, 0x74, 0x20, 0x22, 0x2f, 0x74, 0x6d,
++  0x70, 0x22, 0x0a, 0x0a, 0x6d, 0x6b, 0x72, 0x64, 0x20, 0x2d, 0x6d, 0x20,
++  0x31, 0x20, 0x2d, 0x73, 0x20, 0x35, 0x31, 0x32, 0x20, 0x36, 0x34, 0x0a,
++  0x6d, 0x6b, 0x66, 0x61, 0x74, 0x66, 0x73, 0x20, 0x2f, 0x64, 0x65, 0x76,
++  0x2f, 0x72, 0x61, 0x6d, 0x31, 0x0a, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x20,
++  0x2d, 0x74, 0x20, 0x76, 0x66, 0x61, 0x74, 0x20, 0x2f, 0x64, 0x65, 0x76,
++  0x2f, 0x72, 0x61, 0x6d, 0x31, 0x20, 0x22, 0x2f, 0x74, 0x6d, 0x70, 0x22,
++  0x0a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++  0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0xd1, 0xd1, 0xff, 0xe0,
++  0x2e, 0x2e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+diff --git a/apps/system/Kconfig b/apps/system/Kconfig
+index 978cdba..ce1158a 100644
+--- a/apps/system/Kconfig
++++ b/apps/system/Kconfig
+@@ -106,3 +106,7 @@ endmenu
+ menu "Zmodem Commands"
+ source "$APPSDIR/system/zmodem/Kconfig"
+ endmenu
++
++menu "IoT.js"
++source "$APPSDIR/system/iotjs/Kconfig"
++endmenu
+diff --git a/apps/system/Make.defs b/apps/system/Make.defs
+index 62c2958..8fdf893 100644
+--- a/apps/system/Make.defs
++++ b/apps/system/Make.defs
+@@ -137,3 +137,7 @@ endif
+ ifeq ($(CONFIG_SYSTEM_ZMODEM),y)
+ CONFIGURED_APPS += system/zmodem
+ endif
++
++ifeq ($(CONFIG_SYSTEM_IOTJS),y)
++CONFIGURED_APPS += system/iotjs
++endif
+diff --git a/apps/system/Makefile b/apps/system/Makefile
+index cf77709..28b6cf8 100644
+--- a/apps/system/Makefile
++++ b/apps/system/Makefile
+@@ -40,6 +40,7 @@
+ SUBDIRS  = cdcacm cle composite cu flash_eraseall free i2c hex2bin inifile
+ SUBDIRS += install lm75 mdio nxplayer poweroff ramtest ramtron readline
+ SUBDIRS += sdcard stackmonitor sudoku sysinfo usbmonitor usbmsc vi zmodem
++SUBDIRS += iotjs
+ 
+ # Create the list of installed runtime modules (INSTALLED_DIRS)
+ 
+diff --git a/apps/system/iotjs/.gitignore b/apps/system/iotjs/.gitignore
+new file mode 100644
+index 0000000..d8f73be
+--- /dev/null
++++ b/apps/system/iotjs/.gitignore
+@@ -0,0 +1,12 @@
++/Make.dep
++/.depend
++/.built
++/*.asm
++/*.rel
++/*.lst
++/*.sym
++/*.adb
++/*.lib
++/*.src
++/*.obj
++/*.o
+diff --git a/apps/system/iotjs/Kconfig b/apps/system/iotjs/Kconfig
+new file mode 100644
+index 0000000..92b117a
+--- /dev/null
++++ b/apps/system/iotjs/Kconfig
+@@ -0,0 +1,15 @@
++#
++# For a description of the syntax of this configuration file,
++# see misc/tools/kconfig-language.txt.
++#
++
++config SYSTEM_IOTJS
++	bool "IoT.js program"
++	default y
++	---help---
++		Enable IoT.js program
++
++if SYSTEM_IOTJS
++
++endif
++
+diff --git a/apps/system/iotjs/Makefile b/apps/system/iotjs/Makefile
+new file mode 100644
+index 0000000..c4febda
+--- /dev/null
++++ b/apps/system/iotjs/Makefile
+@@ -0,0 +1,148 @@
++############################################################################
++# apps/system/iotjs/Makefile
++#
++#   Copyright (C) 2015 Samsung Electronics. All rights reserved.
++#   Author: 
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions
++# are met:
++#
++# 1. Redistributions of source code must retain the above copyright
++#    notice, this list of conditions and the following disclaimer.
++# 2. Redistributions in binary form must reproduce the above copyright
++#    notice, this list of conditions and the following disclaimer in
++#    the documentation and/or other materials provided with the
++#    distribution.
++# 3. Neither the name NuttX nor the names of its contributors may be
++#    used to endorse or promote products derived from this software
++#    without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
++# FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
++# COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
++# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
++# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
++# OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
++# AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
++# ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
++# POSSIBILITY OF SUCH DAMAGE.
++#
++############################################################################
++
++# TODO, this makefile should run make under the app dirs, instead of
++# sourcing the Make.defs!
++
++-include $(TOPDIR)/.config
++-include $(TOPDIR)/Make.defs
++include $(APPDIR)/Make.defs
++
++ifeq ($(WINTOOL),y)
++INCDIROPT = -w
++endif
++
++# NSH sysinfo command
++
++CONFIG_SYSTEM_IOTJS_STACKSIZE ?= 16384
++
++APPNAME = iotjs
++PRIORITY = SCHED_PRIORITY_DEFAULT
++STACKSIZE = $(CONFIG_SYSTEM_IOTJS_STACKSIZE)
++
++ASRCS =
++CSRCS =
++MAINSRC = iotjs.c
++
++AOBJS = $(ASRCS:.S=$(OBJEXT))
++COBJS = $(CSRCS:.c=$(OBJEXT))
++MAINOBJ = $(MAINSRC:.c=$(OBJEXT))
++
++SRCS = $(ASRCS) $(CSRCS) $(MAINSRC)
++OBJS = $(AOBJS) $(COBJS)
++
++ifneq ($(CONFIG_BUILD_KERNEL),y)
++  OBJS += $(MAINOBJ)
++endif
++
++ifeq ($(CONFIG_WINDOWS_NATIVE),y)
++  BIN = ..\..\libapps$(LIBEXT)
++else
++ifeq ($(WINTOOL),y)
++  BIN = ..\\..\\libapps$(LIBEXT)
++else
++  BIN = ../../libapps$(LIBEXT)
++endif
++endif
++
++ifeq ($(WINTOOL),y)
++  INSTALL_DIR = "${shell cygpath -w $(BIN_DIR)}"
++else
++  INSTALL_DIR = $(BIN_DIR)
++endif
++
++CONFIG_XYZ_PROGNAME ?= iotjs$(EXEEXT)
++PROGNAME = $(CONFIG_XYZ_PROGNAME)
++
++ROOTDEPPATH = --dep-path .
++
++# Common build
++
++VPATH =
++
++all: .built
++.PHONY: context depend clean distclean
++
++$(AOBJS): %$(OBJEXT): %.S
++	$(call ASSEMBLE, $<, $@)
++
++$(COBJS) $(MAINOBJ): %$(OBJEXT): %.c
++	$(call COMPILE, $<, $@)
++
++.built: $(OBJS)
++	$(call ARCHIVE, $(BIN), $(OBJS))
++	$(Q) touch .built
++
++ifeq ($(CONFIG_BUILD_KERNEL),y)
++$(BIN_DIR)$(DELIM)$(PROGNAME): $(OBJS) $(MAINOBJ)
++	@echo "LD: $(PROGNAME)"
++	$(Q) $(LD) $(LDELFFLAGS) $(LDLIBPATH) -o $(INSTALL_DIR)$(DELIM)$(PROGNAME) $(ARCHCRT0OBJ) $(MAINOBJ) $(LDLIBS)
++	$(Q) $(NM) -u  $(INSTALL_DIR)$(DELIM)$(PROGNAME)
++
++install: $(BIN_DIR)$(DELIM)$(PROGNAME)
++
++else
++install:
++
++endif
++
++# Register application
++
++ifeq ($(CONFIG_NSH_BUILTIN_APPS),y)
++$(BUILTIN_REGISTRY)$(DELIM)$(APPNAME)_main.bdat: $(DEPCONFIG) Makefile
++	$(call REGISTER,$(APPNAME),$(PRIORITY),$(STACKSIZE),$(APPNAME)_main)
++
++context: $(BUILTIN_REGISTRY)$(DELIM)$(APPNAME)_main.bdat
++else
++context:
++endif
++
++# Create dependencies
++
++.depend: Makefile $(SRCS)
++	$(Q) $(MKDEP) $(ROOTDEPPATH) "$(CC)" -- $(CFLAGS) -- $(SRCS) >Make.dep
++	$(Q) touch $@
++
++depend: .depend
++
++clean:
++	$(call DELFILE, .built)
++	$(call CLEAN)
++
++distclean: clean
++	$(call DELFILE, Make.dep)
++	$(call DELFILE, .depend)
++
++-include Make.dep
+diff --git a/apps/system/iotjs/iotjs.c b/apps/system/iotjs/iotjs.c
+new file mode 100644
+index 0000000..1f6ef9e
+--- /dev/null
++++ b/apps/system/iotjs/iotjs.c
+@@ -0,0 +1,74 @@
++/****************************************************************************
++ * apps/system/iotjs/iotjs.c
++ *
++ *   Copyright (C) 2015 Samsung Electronics. All rights reserved.
++ *   Author: 
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ *
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in
++ *    the documentation and/or other materials provided with the
++ *    distribution.
++ * 3. Neither the name NuttX nor the names of its contributors may be
++ *    used to endorse or promote products derived from this software
++ *    without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
++ * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
++ * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
++ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
++ * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
++ * OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
++ * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
++ * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
++ * POSSIBILITY OF SUCH DAMAGE.
++ *
++ ****************************************************************************/
++
++/****************************************************************************
++ * Included Files
++ ****************************************************************************/
++
++#include <nuttx/config.h>
++#include <nuttx/arch.h>
++
++#include <stdio.h>
++
++#ifdef CONFIG_SYSTEM_IOTJS
++# ifndef CONFIG_LIBUV
++#   error LIBUV is needed for IOTJS
++# endif
++# ifndef CONFIG_LIBJERRY
++#   error LibJerry is needed for IOTJS
++# endif
++#endif
++
++/****************************************************************************
++ * Public Functions
++ ****************************************************************************/
++
++#ifdef CONFIG_SYSTEM_IOTJS
++int iotjs_entry(int argc, char *argv[]);
++#endif
++
++#ifdef CONFIG_BUILD_KERNEL
++int main(int argc, FAR char *argv[])
++#else
++int iotjs_main(int argc, char *argv[])
++#endif
++{
++#ifdef CONFIG_SYSTEM_IOTJS
++  return iotjs_entry(argc, argv);
++#else
++  printf("CONFIG_SYSTEM_IOTJS not defined. do nothing.\n");
++  return 0;
++#endif
++}
+diff --git a/nuttx/FlatLibs.mk b/nuttx/FlatLibs.mk
+index 5bac59a..458925b 100644
+--- a/nuttx/FlatLibs.mk
++++ b/nuttx/FlatLibs.mk
+@@ -105,6 +105,24 @@ ifeq ($(CONFIG_AUDIO),y)
+ NUTTXLIBS += lib$(DELIM)libaudio$(LIBEXT)
+ endif
+ 
++# Add libraries for the libuv sub-system
++
++ifeq ($(CONFIG_LIBUV),y)
++NUTTXLIBS += lib$(DELIM)libuv$(LIBEXT)
++endif
++
++# Add libraries for the libjerry sub-system
++
++ifeq ($(CONFIG_LIBJERRY),y)
++NUTTXLIBS += lib$(DELIM)libjerry$(LIBEXT)
++endif
++
++# Add libraries for the iotjs sub-system
++
++ifeq ($(CONFIG_SYSTEM_IOTJS),y)
++NUTTXLIBS += lib$(DELIM)libiotjs$(LIBEXT)
++endif
++
+ # Export all libraries
+ 
+ EXPORTLIBS = $(NUTTXLIBS)
+diff --git a/nuttx/Kconfig b/nuttx/Kconfig
+index f81346f..1ba1355 100644
+--- a/nuttx/Kconfig
++++ b/nuttx/Kconfig
+@@ -468,6 +468,13 @@ config DEBUG_NET
+ 	---help---
+ 		Enable network debug SYSLOG output (disabled by default)
+ 
++config DEBUG_NET_DISABLETOOMANY
++	bool "Network Debug Output disable too many verbose message"
++	default y
++	depends on DEBUG_NET
++	---help---
++		Disable too many network debug verbose messages (enabled by default)
++
+ config DEBUG_SCHED
+ 	bool "Scheduler Debug Output"
+ 	default n
+diff --git a/nuttx/arch/arm/src/armv7-m/up_svcall.c b/nuttx/arch/arm/src/armv7-m/up_svcall.c
+index e0f0e3a..ecd3736 100644
+--- a/nuttx/arch/arm/src/armv7-m/up_svcall.c
++++ b/nuttx/arch/arm/src/armv7-m/up_svcall.c
+@@ -288,7 +288,9 @@ int up_svcall(int irq, FAR void *context)
+            */
+ 
+           regs[REG_PC]         = rtcb->xcp.syscall[index].sysreturn;
++# ifdef REG_EXC_RETURN
+           regs[REG_EXC_RETURN] = rtcb->xcp.syscall[index].excreturn;
++# endif
+           rtcb->xcp.nsyscalls  = index;
+ 
+           /* The return value must be in R0-R1.  dispatch_syscall() temporarily
+@@ -461,11 +463,15 @@ int up_svcall(int irq, FAR void *context)
+           /* Setup to return to dispatch_syscall in privileged mode. */
+ 
+           rtcb->xcp.syscall[index].sysreturn  = regs[REG_PC];
++# ifdef REG_EXC_RETURN
+           rtcb->xcp.syscall[index].excreturn  = regs[REG_EXC_RETURN];
++# endif
+           rtcb->xcp.nsyscalls  = index + 1;
+ 
+           regs[REG_PC]         = (uint32_t)dispatch_syscall;
++# ifdef REG_EXC_RETURN
+           regs[REG_EXC_RETURN] = EXC_RETURN_PRIVTHR;
++# endif
+ 
+           /* Offset R0 to account for the reserved values */
+ 
+diff --git a/nuttx/arch/arm/src/stm32/stm32_eth.c b/nuttx/arch/arm/src/stm32/stm32_eth.c
+index b12105e..a2daeb1 100644
+--- a/nuttx/arch/arm/src/stm32/stm32_eth.c
++++ b/nuttx/arch/arm/src/stm32/stm32_eth.c
+@@ -1434,7 +1434,9 @@ static void stm32_freesegment(FAR struct stm32_ethmac_s *priv,
+   struct eth_rxdesc_s *rxdesc;
+   int i;
+ 
++#ifndef CONFIG_DEBUG_NET_DISABLETOOMANY
+   nllvdbg("rxfirst: %p segments: %d\n", rxfirst, segments);
++#endif
+ 
+   /* Set OWN bit in RX descriptors.  This gives the buffers back to DMA */
+ 
+@@ -1492,8 +1494,10 @@ static int stm32_recvframe(FAR struct stm32_ethmac_s *priv)
+   uint8_t *buffer;
+   int i;
+ 
++#ifndef CONFIG_DEBUG_NET_DISABLETOOMANY
+   nllvdbg("rxhead: %p rxcurr: %p segments: %d\n",
+           priv->rxhead, priv->rxcurr, priv->segments);
++#endif
+ 
+   /* Check if there are free buffers.  We cannot receive new frames in this
+    * design unless there is at least one free buffer.
+@@ -1558,8 +1562,10 @@ static int stm32_recvframe(FAR struct stm32_ethmac_s *priv)
+               rxcurr = priv->rxcurr;
+             }
+ 
++#ifndef CONFIG_DEBUG_NET_DISABLETOOMANY
+           nllvdbg("rxhead: %p rxcurr: %p segments: %d\n",
+               priv->rxhead, priv->rxcurr, priv->segments);
++#endif
+ 
+           /* Check if any errors are reported in the frame */
+ 
+@@ -1567,6 +1573,15 @@ static int stm32_recvframe(FAR struct stm32_ethmac_s *priv)
+             {
+               struct net_driver_s *dev = &priv->dev;
+ 
++              if (dev->d_buf)
++                {
++                  nlldbg("!!! dev->d_buf not NULL, %p / %d\n",
++                            dev->d_buf, dev->d_len );
++                  stm32_freebuffer(priv, dev->d_buf);
++                  dev->d_buf = NULL;
++                  dev->d_len = 0;
++                }
++
+               /* Get the Frame Length of the received packet: substruct 4
+                * bytes of the CRC
+                */
+@@ -1597,8 +1612,10 @@ static int stm32_recvframe(FAR struct stm32_ethmac_s *priv)
+               priv->rxhead   = (struct eth_rxdesc_s*)rxdesc->rdes3;
+               stm32_freesegment(priv, rxcurr, priv->segments);
+ 
++#ifndef CONFIG_DEBUG_NET_DISABLETOOMANY
+               nllvdbg("rxhead: %p d_buf: %p d_len: %d\n",
+                       priv->rxhead, dev->d_buf, dev->d_len);
++#endif
+ 
+               return OK;
+             }
+@@ -1624,8 +1641,10 @@ static int stm32_recvframe(FAR struct stm32_ethmac_s *priv)
+ 
+   priv->rxhead = rxdesc;
+ 
++#ifndef CONFIG_DEBUG_NET_DISABLETOOMANY
+   nllvdbg("rxhead: %p rxcurr: %p segments: %d\n",
+           priv->rxhead, priv->rxcurr, priv->segments);
++#endif
+ 
+   return -EAGAIN;
+ }
+@@ -1684,7 +1703,9 @@ static void stm32_receive(FAR struct stm32_ethmac_s *priv)
+ #ifdef CONFIG_NET_IPv4
+       if (BUF->type == HTONS(ETHTYPE_IP))
+         {
++#ifndef CONFIG_DEBUG_NET_DISABLETOOMANY
+           nllvdbg("IPv4 frame\n");
++#endif
+ 
+           /* Handle ARP on input then give the IPv4 packet to the network
+            * layer
+@@ -1724,7 +1745,9 @@ static void stm32_receive(FAR struct stm32_ethmac_s *priv)
+ #ifdef CONFIG_NET_IPv6
+       if (BUF->type == HTONS(ETHTYPE_IP6))
+         {
++#ifndef CONFIG_DEBUG_NET_DISABLETOOMANY
+           nllvdbg("Iv6 frame\n");
++#endif
+ 
+           /* Give the IPv6 packet to the network layer */
+ 
+@@ -1761,7 +1784,9 @@ static void stm32_receive(FAR struct stm32_ethmac_s *priv)
+ #ifdef CONFIG_NET_ARP
+       if (BUF->type == htons(ETHTYPE_ARP))
+         {
++#ifndef CONFIG_DEBUG_NET_DISABLETOOMANY
+           nllvdbg("ARP frame\n");
++#endif
+ 
+           /* Handle ARP packet */
+ 
+diff --git a/nuttx/binfmt/libnxflat/gnu-nxflat-pcrel.ld b/nuttx/binfmt/libnxflat/gnu-nxflat-pcrel.ld
+index 9c5c60b..c6de909 100644
+--- a/nuttx/binfmt/libnxflat/gnu-nxflat-pcrel.ld
++++ b/nuttx/binfmt/libnxflat/gnu-nxflat-pcrel.ld
+@@ -104,6 +104,7 @@ SECTIONS
+       *(.rodata)
+       *(.rodata1)
+       *(.rodata.*)
++      *(.rodata.*.*)
+       *(.gnu.linkonce.r*)
+ 
+       _etext = . ;
+diff --git a/nuttx/binfmt/libnxflat/libnxflat_addrenv.c b/nuttx/binfmt/libnxflat/libnxflat_addrenv.c
+index 371a934..2c83ce7 100644
+--- a/nuttx/binfmt/libnxflat/libnxflat_addrenv.c
++++ b/nuttx/binfmt/libnxflat/libnxflat_addrenv.c
+@@ -178,11 +178,16 @@ errout_with_dspace:
+ #else
+   /* Allocate (and zero) memory to hold the ELF image */
+ 
+-  dspace->region = (FAR uint8_t *)kumm_zalloc(envsize);
+-  if (!dspace->region)
++  /* there are cases envsize==0 so kumm_zalloc will fail */
++  dspace->region = NULL;
++  if (envsize > 0)
+     {
+-      kmm_free(dspace);
+-      return -ENOMEM;
++      dspace->region = (FAR uint8_t *)kumm_zalloc(envsize);
++      if (!dspace->region)
++        {
++          kmm_free(dspace);
++          return -ENOMEM;
++        }
+     }
+ 
+   loadinfo->dspace = dspace;
+diff --git a/nuttx/binfmt/libnxflat/libnxflat_bind.c b/nuttx/binfmt/libnxflat/libnxflat_bind.c
+index dfb1e91..4252bb3 100644
+--- a/nuttx/binfmt/libnxflat/libnxflat_bind.c
++++ b/nuttx/binfmt/libnxflat/libnxflat_bind.c
+@@ -107,18 +107,18 @@ static inline int nxflat_bindrel32i(FAR struct nxflat_loadinfo_s *loadinfo,
+   bvdbg("NXFLAT_RELOC_TYPE_REL32I Offset: %08x I-Space: %p\n",
+         offset, loadinfo->ispace + sizeof(struct nxflat_hdr_s));
+ 
+-  if (offset < loadinfo->dsize)
++  if (offset < loadinfo->isize)
+     {
+-      addr = (uint32_t*)(offset + loadinfo->dspace->region);
+-      bvdbg("  Before: %08x\n", *addr);
+-     *addr += (uint32_t)(loadinfo->ispace + sizeof(struct nxflat_hdr_s));
+-      bvdbg("  After: %08x\n", *addr);
++      addr  = (uint32_t*)(loadinfo->ispace + sizeof(struct nxflat_hdr_s) + offset);
++      bvdbg("  Before: %08x (%08x)\n", addr, *addr);
++      *addr += (uint32_t)(loadinfo->ispace + sizeof(struct nxflat_hdr_s));
++      bvdbg("  After: %08x (%08x)\n", addr, *addr);
+       return OK;
+     }
+   else
+     {
+-      bdbg("Offset: %08 does not lie in D-Space size: %08x\n",
+-           offset, loadinfo->dsize);
++      bdbg("Offset: %08x does not lie in I-Space size: %08x\n",
++           offset, loadinfo->isize);
+       return -EINVAL;
+     }
+ }
+@@ -146,18 +146,18 @@ static inline int nxflat_bindrel32d(FAR struct nxflat_loadinfo_s *loadinfo,
+   bvdbg("NXFLAT_RELOC_TYPE_REL32D Offset: %08x D-Space: %p\n",
+         offset, loadinfo->dspace->region);
+ 
+-  if (offset < loadinfo->dsize)
++  if (offset < loadinfo->isize)
+     {
+-      addr = (uint32_t*)(offset + loadinfo->dspace->region);
+-      bvdbg("  Before: %08x\n", *addr);
++      addr  = (uint32_t*)(loadinfo->ispace + sizeof(struct nxflat_hdr_s) + offset);
++      bvdbg("  Before: %08x (%08x)\n", addr, *addr);
+      *addr += (uint32_t)(loadinfo->dspace->region);
+-      bvdbg("  After: %08x\n", *addr);
++      bvdbg("  After: %08x (%08x)\n", addr, *addr);
+       return OK;
+     }
+   else
+     {
+-      bdbg("Offset: %08 does not lie in D-Space size: %08x\n",
+-           offset, loadinfo->dsize);
++      bdbg("Offset: 0x%08x does not lie in I-Space size: 0x%08x\n",
++           offset, loadinfo->isize);
+       return -EINVAL;
+     }
+ }
+@@ -198,7 +198,7 @@ static inline int nxflat_bindrel32id(FAR struct nxflat_loadinfo_s *loadinfo,
+     }
+   else
+     {
+-      bdbg("Offset: %08 does not lie in D-Space size: %08x\n",
++      bdbg("Offset: %08x does not lie in D-Space size: %08x\n",
+            offset, loadinfo->dsize);
+       return -EINVAL;
+     }
+@@ -429,7 +429,8 @@ static inline int nxflat_bindimports(FAR struct nxflat_loadinfo_s *loadinfo,
+     {
+       /* It does.. make sure that exported symbols are provided */
+ 
+-      DEBUGASSERT(exports && nexports > 0);
++      /* remove DEBUGASSERT for nexports may be zero */
++      /* DEBUGASSERT(exports && nexports > 0); */
+ 
+       /* If non-zero, the value of the imported symbol list that we get
+        * from the header is a file offset.  We will have to convert this
+diff --git a/nuttx/binfmt/libnxflat/libnxflat_load.c b/nuttx/binfmt/libnxflat/libnxflat_load.c
+index 4f07d8f..dfd4631 100644
+--- a/nuttx/binfmt/libnxflat/libnxflat_load.c
++++ b/nuttx/binfmt/libnxflat/libnxflat_load.c
+@@ -150,8 +150,9 @@ int nxflat_load(struct nxflat_loadinfo_s *loadinfo)
+                                     MAP_SHARED|MAP_FILE, loadinfo->filfd, 0);
+   if (loadinfo->ispace == (uint32_t)MAP_FAILED)
+     {
+-      bdbg("Failed to map NXFLAT ISpace: %d\n", errno);
+-      return -errno;
++      int err = errno; /* we cannot use errno in bdbg */
++      bdbg("Failed to map NXFLAT ISpace: %d\n", err);
++      return -err;
+     }
+ 
+   bvdbg("Mapped ISpace (%d bytes) at %08x\n", loadinfo->isize, loadinfo->ispace);
+@@ -160,6 +161,10 @@ int nxflat_load(struct nxflat_loadinfo_s *loadinfo)
+    * to the allocated (but still uninitialized) D-Space memory.
+    */
+ 
++  /* only check for there are data, dsize may have zero */
++  if (loadinfo->dsize > 0)
++    {
++
+   ret = nxflat_addrenv_alloc(loadinfo, loadinfo->dsize);
+   if (ret < 0)
+     {
+@@ -209,6 +214,7 @@ int nxflat_load(struct nxflat_loadinfo_s *loadinfo)
+       return ret;
+     }
+ #endif
++  } /* if (loadinfo->dsize > 0) */
+ 
+   return OK;
+ 
+diff --git a/nuttx/binfmt/nxflat.c b/nuttx/binfmt/nxflat.c
+index a839bbc..07d0902 100644
+--- a/nuttx/binfmt/nxflat.c
++++ b/nuttx/binfmt/nxflat.c
+@@ -166,12 +166,12 @@ static int nxflat_loadbinary(struct binary_s *binp)
+   /* Load the program binary */
+ 
+   ret = nxflat_load(&loadinfo);
+-  nxflat_dumploadinfo(&loadinfo);
+   if (ret != 0)
+     {
+       bdbg("Failed to load NXFLAT program binary: %d\n", ret);
+       goto errout_with_init;
+     }
++  nxflat_dumploadinfo(&loadinfo);
+ 
+   /* Bind the program to the exported symbol table */
+ 
+diff --git a/nuttx/configs/stm32f4discovery/iotjs/Make.defs b/nuttx/configs/stm32f4discovery/iotjs/Make.defs
+new file mode 100644
+index 0000000..8bc6960
+--- /dev/null
++++ b/nuttx/configs/stm32f4discovery/iotjs/Make.defs
+@@ -0,0 +1,113 @@
++############################################################################
++# configs/stm32f4discovery/iotjs/Make.defs
++#
++#   Copyright (C) 2013 Gregory Nutt. All rights reserved.
++#   Author: Gregory Nutt <gnutt@nuttx.org>
++#   Copyright (C) 2015 Samsung Electronics. All rights reserved.
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions
++# are met:
++#
++# 1. Redistributions of source code must retain the above copyright
++#    notice, this list of conditions and the following disclaimer.
++# 2. Redistributions in binary form must reproduce the above copyright
++#    notice, this list of conditions and the following disclaimer in
++#    the documentation and/or other materials provided with the
++#    distribution.
++# 3. Neither the name NuttX nor the names of its contributors may be
++#    used to endorse or promote products derived from this software
++#    without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
++# FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
++# COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
++# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
++# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
++# OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
++# AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
++# ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
++# POSSIBILITY OF SUCH DAMAGE.
++#
++############################################################################
++
++include ${TOPDIR}/.config
++include ${TOPDIR}/tools/Config.mk
++include ${TOPDIR}/arch/arm/src/armv7-m/Toolchain.defs
++
++LDSCRIPT = ld.script
++
++ifeq ($(WINTOOL),y)
++  # Windows-native toolchains
++  DIRLINK = $(TOPDIR)/tools/copydir.sh
++  DIRUNLINK = $(TOPDIR)/tools/unlink.sh
++  MKDEP = $(TOPDIR)/tools/mknulldeps.sh
++  ARCHINCLUDES = -I. -isystem "${shell cygpath -w $(TOPDIR)/include}"
++  ARCHXXINCLUDES = -I. -isystem "${shell cygpath -w $(TOPDIR)/include}" -isystem "${shell cygpath -w $(TOPDIR)/include/cxx}"
++  ARCHSCRIPT = -T "${shell cygpath -w $(TOPDIR)/configs/$(CONFIG_ARCH_BOARD)/scripts/$(LDSCRIPT)}"
++else
++  # Linux/Cygwin-native toolchain
++  MKDEP = $(TOPDIR)/tools/mkdeps.sh
++  ARCHINCLUDES = -I. -isystem $(TOPDIR)/include -isystem $(TOPDIR)/../module/include
++  ARCHXXINCLUDES = -I. -isystem $(TOPDIR)/include -isystem $(TOPDIR)/include/cxx -isystem $(TOPDIR)/../module/include
++  ARCHSCRIPT = -T$(TOPDIR)/configs/$(CONFIG_ARCH_BOARD)/scripts/$(LDSCRIPT)
++endif
++
++CC = $(CROSSDEV)gcc
++CXX = $(CROSSDEV)g++
++CPP = $(CROSSDEV)gcc -E
++LD = $(CROSSDEV)ld
++AR = $(ARCROSSDEV)ar rcs
++NM = $(ARCROSSDEV)nm
++OBJCOPY = $(CROSSDEV)objcopy
++OBJDUMP = $(CROSSDEV)objdump
++
++ARCHCCVERSION = ${shell $(CC) -v 2>&1 | sed -n '/^gcc version/p' | sed -e 's/^gcc version \([0-9\.]\)/\1/g' -e 's/[-\ ].*//g' -e '1q'}
++ARCHCCMAJOR = ${shell echo $(ARCHCCVERSION) | cut -d'.' -f1}
++
++ifeq ($(CONFIG_DEBUG_SYMBOLS),y)
++  ARCHOPTIMIZATION = -g
++endif
++
++ifneq ($(CONFIG_DEBUG_NOOPT),y)
++  ARCHOPTIMIZATION += $(MAXOPTIMIZATION) -fno-strict-aliasing -fno-strength-reduce -fomit-frame-pointer
++endif
++
++ARCHCFLAGS = -fno-builtin
++ARCHCXXFLAGS = -fno-builtin -fno-exceptions -fno-rtti
++ARCHWARNINGS = -Wall -Wstrict-prototypes -Wshadow
++ARCHWARNINGSXX = -Wall -Wshadow
++ARCHDEFINES =
++ARCHPICFLAGS = -fpic -msingle-pic-base -mpic-register=r10
++
++CFLAGS = $(ARCHCFLAGS) $(ARCHWARNINGS) $(ARCHOPTIMIZATION) $(ARCHCPUFLAGS) $(ARCHINCLUDES) $(ARCHDEFINES) $(EXTRADEFINES) -pipe
++CPICFLAGS = $(ARCHPICFLAGS) $(CFLAGS)
++CXXFLAGS = $(ARCHCXXFLAGS) $(ARCHWARNINGSXX) $(ARCHOPTIMIZATION) $(ARCHCPUFLAGS) $(ARCHXXINCLUDES) $(ARCHDEFINES) $(EXTRADEFINES) -pipe
++CXXPICFLAGS = $(ARCHPICFLAGS) $(CXXFLAGS)
++CPPFLAGS = $(ARCHINCLUDES) $(ARCHDEFINES) $(EXTRADEFINES)
++AFLAGS = $(CFLAGS) -D__ASSEMBLY__
++
++NXFLATLDFLAGS1 = -r -d -warn-common
++NXFLATLDFLAGS2 = $(NXFLATLDFLAGS1) -T$(TOPDIR)/binfmt/libnxflat/gnu-nxflat-pcrel.ld -no-check-sections
++LDNXFLATFLAGS = -e main -s 2048
++
++OBJEXT = .o
++LIBEXT = .a
++EXEEXT =
++
++ifneq ($(CROSSDEV),arm-nuttx-elf-)
++  LDFLAGS += -nostartfiles -nodefaultlibs
++endif
++ifeq ($(CONFIG_DEBUG_SYMBOLS),y)
++  LDFLAGS += -g
++endif
++
++
++HOSTCC = gcc
++HOSTINCLUDES = -I.
++HOSTCFLAGS = -Wall -Wstrict-prototypes -Wshadow -g -pipe
++HOSTLDFLAGS =
++
+diff --git a/nuttx/configs/stm32f4discovery/iotjs/defconfig b/nuttx/configs/stm32f4discovery/iotjs/defconfig
+new file mode 100644
+index 0000000..c83d639
+--- /dev/null
++++ b/nuttx/configs/stm32f4discovery/iotjs/defconfig
+@@ -0,0 +1,1499 @@
++#
++# Automatically generated file; DO NOT EDIT.
++# Nuttx/ Configuration
++#
++
++#
++# Build Setup
++#
++# CONFIG_EXPERIMENTAL is not set
++# CONFIG_DEFAULT_SMALL is not set
++CONFIG_HOST_LINUX=y
++# CONFIG_HOST_OSX is not set
++# CONFIG_HOST_WINDOWS is not set
++# CONFIG_HOST_OTHER is not set
++
++#
++# Build Configuration
++#
++CONFIG_APPS_DIR="../apps"
++CONFIG_BUILD_FLAT=y
++# CONFIG_BUILD_2PASS is not set
++
++#
++# Binary Output Formats
++#
++# CONFIG_RRLOAD_BINARY is not set
++CONFIG_INTELHEX_BINARY=y
++# CONFIG_MOTOROLA_SREC is not set
++CONFIG_RAW_BINARY=y
++# CONFIG_UBOOT_UIMAGE is not set
++
++#
++# Customize Header Files
++#
++# CONFIG_ARCH_STDINT_H is not set
++# CONFIG_ARCH_STDBOOL_H is not set
++# CONFIG_ARCH_MATH_H is not set
++# CONFIG_ARCH_FLOAT_H is not set
++# CONFIG_ARCH_STDARG_H is not set
++
++#
++# Debug Options
++#
++CONFIG_DEBUG=y
++CONFIG_ARCH_HAVE_HEAPCHECK=y
++# CONFIG_DEBUG_VERBOSE is not set
++
++#
++# Subsystem Debug Options
++#
++# CONFIG_DEBUG_AUDIO is not set
++# CONFIG_DEBUG_BINFMT is not set
++# CONFIG_DEBUG_FS is not set
++# CONFIG_DEBUG_GRAPHICS is not set
++# CONFIG_DEBUG_LIB is not set
++# CONFIG_DEBUG_MM is not set
++# CONFIG_DEBUG_NET is not set
++# CONFIG_DEBUG_SCHED is not set
++# CONFIG_DEBUG_SYSCALL is not set
++
++#
++# OS Function Debug Options
++#
++# CONFIG_DEBUG_DMA is not set
++# CONFIG_DEBUG_HEAP is not set
++# CONFIG_DEBUG_IRQ is not set
++
++#
++# Driver Debug Options
++#
++# CONFIG_DEBUG_LEDS is not set
++# CONFIG_DEBUG_ANALOG is not set
++# CONFIG_DEBUG_GPIO is not set
++# CONFIG_DEBUG_SDIO is not set
++# CONFIG_DEBUG_SPI is not set
++# CONFIG_DEBUG_USB is not set
++CONFIG_ARCH_HAVE_STACKCHECK=y
++CONFIG_STACK_COLORATION=y
++CONFIG_DEBUG_SYMBOLS=y
++CONFIG_ARCH_HAVE_CUSTOMOPT=y
++# CONFIG_DEBUG_NOOPT is not set
++# CONFIG_DEBUG_CUSTOMOPT is not set
++CONFIG_DEBUG_FULLOPT=y
++
++#
++# System Type
++#
++CONFIG_ARCH_ARM=y
++# CONFIG_ARCH_AVR is not set
++# CONFIG_ARCH_HC is not set
++# CONFIG_ARCH_MIPS is not set
++# CONFIG_ARCH_RGMP is not set
++# CONFIG_ARCH_SH is not set
++# CONFIG_ARCH_SIM is not set
++# CONFIG_ARCH_X86 is not set
++# CONFIG_ARCH_Z16 is not set
++# CONFIG_ARCH_Z80 is not set
++CONFIG_ARCH="arm"
++
++#
++# ARM Options
++#
++# CONFIG_ARCH_CHIP_A1X is not set
++# CONFIG_ARCH_CHIP_C5471 is not set
++# CONFIG_ARCH_CHIP_CALYPSO is not set
++# CONFIG_ARCH_CHIP_DM320 is not set
++# CONFIG_ARCH_CHIP_EFM32 is not set
++# CONFIG_ARCH_CHIP_IMX is not set
++# CONFIG_ARCH_CHIP_KINETIS is not set
++# CONFIG_ARCH_CHIP_KL is not set
++# CONFIG_ARCH_CHIP_LM is not set
++# CONFIG_ARCH_CHIP_TIVA is not set
++# CONFIG_ARCH_CHIP_LPC17XX is not set
++# CONFIG_ARCH_CHIP_LPC214X is not set
++# CONFIG_ARCH_CHIP_LPC2378 is not set
++# CONFIG_ARCH_CHIP_LPC31XX is not set
++# CONFIG_ARCH_CHIP_LPC43XX is not set
++# CONFIG_ARCH_CHIP_NUC1XX is not set
++# CONFIG_ARCH_CHIP_SAMA5 is not set
++# CONFIG_ARCH_CHIP_SAMD is not set
++# CONFIG_ARCH_CHIP_SAM34 is not set
++CONFIG_ARCH_CHIP_STM32=y
++# CONFIG_ARCH_CHIP_STR71X is not set
++# CONFIG_ARCH_ARM7TDMI is not set
++# CONFIG_ARCH_ARM926EJS is not set
++# CONFIG_ARCH_ARM920T is not set
++# CONFIG_ARCH_CORTEXM0 is not set
++# CONFIG_ARCH_CORTEXM3 is not set
++CONFIG_ARCH_CORTEXM4=y
++# CONFIG_ARCH_CORTEXA5 is not set
++# CONFIG_ARCH_CORTEXA8 is not set
++CONFIG_ARCH_FAMILY="armv7-m"
++CONFIG_ARCH_CHIP="stm32"
++# CONFIG_ARMV7M_USEBASEPRI is not set
++CONFIG_ARCH_HAVE_CMNVECTOR=y
++# CONFIG_ARMV7M_CMNVECTOR is not set
++CONFIG_ARCH_HAVE_FPU=y
++CONFIG_ARCH_FPU=y
++# CONFIG_ARMV7M_MPU is not set
++# CONFIG_DEBUG_HARDFAULT is not set
++
++#
++# ARMV7M Configuration Options
++#
++# CONFIG_ARMV7M_TOOLCHAIN_BUILDROOT is not set
++# CONFIG_ARMV7M_TOOLCHAIN_CODEREDL is not set
++# CONFIG_ARMV7M_TOOLCHAIN_CODESOURCERYL is not set
++CONFIG_ARMV7M_TOOLCHAIN_GNU_EABIL=y
++# CONFIG_ARMV7M_STACKCHECK is not set
++# CONFIG_ARMV7M_ITMSYSLOG is not set
++# CONFIG_SDIO_DMA is not set
++CONFIG_SDIO_DMAPRIO=0x00010000
++# CONFIG_SDIO_WIDTH_D1_ONLY is not set
++# CONFIG_NET_MULTICAST is not set
++
++#
++# STM32 Configuration Options
++#
++# CONFIG_ARCH_CHIP_STM32L151C6 is not set
++# CONFIG_ARCH_CHIP_STM32L151C8 is not set
++# CONFIG_ARCH_CHIP_STM32L151CB is not set
++# CONFIG_ARCH_CHIP_STM32L151R6 is not set
++# CONFIG_ARCH_CHIP_STM32L151R8 is not set
++# CONFIG_ARCH_CHIP_STM32L151RB is not set
++# CONFIG_ARCH_CHIP_STM32L151V6 is not set
++# CONFIG_ARCH_CHIP_STM32L151V8 is not set
++# CONFIG_ARCH_CHIP_STM32L151VB is not set
++# CONFIG_ARCH_CHIP_STM32L152C6 is not set
++# CONFIG_ARCH_CHIP_STM32L152C8 is not set
++# CONFIG_ARCH_CHIP_STM32L152CB is not set
++# CONFIG_ARCH_CHIP_STM32L152R6 is not set
++# CONFIG_ARCH_CHIP_STM32L152R8 is not set
++# CONFIG_ARCH_CHIP_STM32L152RB is not set
++# CONFIG_ARCH_CHIP_STM32L152V6 is not set
++# CONFIG_ARCH_CHIP_STM32L152V8 is not set
++# CONFIG_ARCH_CHIP_STM32L152VB is not set
++# CONFIG_ARCH_CHIP_STM32L162ZD is not set
++# CONFIG_ARCH_CHIP_STM32F100C8 is not set
++# CONFIG_ARCH_CHIP_STM32F100CB is not set
++# CONFIG_ARCH_CHIP_STM32F100R8 is not set
++# CONFIG_ARCH_CHIP_STM32F100RB is not set
++# CONFIG_ARCH_CHIP_STM32F100RC is not set
++# CONFIG_ARCH_CHIP_STM32F100RD is not set
++# CONFIG_ARCH_CHIP_STM32F100RE is not set
++# CONFIG_ARCH_CHIP_STM32F100V8 is not set
++# CONFIG_ARCH_CHIP_STM32F100VB is not set
++# CONFIG_ARCH_CHIP_STM32F100VC is not set
++# CONFIG_ARCH_CHIP_STM32F100VD is not set
++# CONFIG_ARCH_CHIP_STM32F100VE is not set
++# CONFIG_ARCH_CHIP_STM32F102CB is not set
++# CONFIG_ARCH_CHIP_STM32F103T8 is not set
++# CONFIG_ARCH_CHIP_STM32F103TB is not set
++# CONFIG_ARCH_CHIP_STM32F103C4 is not set
++# CONFIG_ARCH_CHIP_STM32F103C8 is not set
++# CONFIG_ARCH_CHIP_STM32F103CB is not set
++# CONFIG_ARCH_CHIP_STM32F103R8 is not set
++# CONFIG_ARCH_CHIP_STM32F103RB is not set
++# CONFIG_ARCH_CHIP_STM32F103RC is not set
++# CONFIG_ARCH_CHIP_STM32F103RD is not set
++# CONFIG_ARCH_CHIP_STM32F103RE is not set
++# CONFIG_ARCH_CHIP_STM32F103RG is not set
++# CONFIG_ARCH_CHIP_STM32F103V8 is not set
++# CONFIG_ARCH_CHIP_STM32F103VB is not set
++# CONFIG_ARCH_CHIP_STM32F103VC is not set
++# CONFIG_ARCH_CHIP_STM32F103VE is not set
++# CONFIG_ARCH_CHIP_STM32F103ZE is not set
++# CONFIG_ARCH_CHIP_STM32F105VB is not set
++# CONFIG_ARCH_CHIP_STM32F107VC is not set
++# CONFIG_ARCH_CHIP_STM32F207IG is not set
++# CONFIG_ARCH_CHIP_STM32F207ZE is not set
++# CONFIG_ARCH_CHIP_STM32F302CB is not set
++# CONFIG_ARCH_CHIP_STM32F302CC is not set
++# CONFIG_ARCH_CHIP_STM32F302RB is not set
++# CONFIG_ARCH_CHIP_STM32F302RC is not set
++# CONFIG_ARCH_CHIP_STM32F302VB is not set
++# CONFIG_ARCH_CHIP_STM32F302VC is not set
++# CONFIG_ARCH_CHIP_STM32F303CB is not set
++# CONFIG_ARCH_CHIP_STM32F303CC is not set
++# CONFIG_ARCH_CHIP_STM32F303RB is not set
++# CONFIG_ARCH_CHIP_STM32F303RC is not set
++# CONFIG_ARCH_CHIP_STM32F303VB is not set
++# CONFIG_ARCH_CHIP_STM32F303VC is not set
++# CONFIG_ARCH_CHIP_STM32F401RE is not set
++# CONFIG_ARCH_CHIP_STM32F411RE is not set
++# CONFIG_ARCH_CHIP_STM32F405RG is not set
++# CONFIG_ARCH_CHIP_STM32F405VG is not set
++# CONFIG_ARCH_CHIP_STM32F405ZG is not set
++# CONFIG_ARCH_CHIP_STM32F407VE is not set
++CONFIG_ARCH_CHIP_STM32F407VG=y
++# CONFIG_ARCH_CHIP_STM32F407ZE is not set
++# CONFIG_ARCH_CHIP_STM32F407ZG is not set
++# CONFIG_ARCH_CHIP_STM32F407IE is not set
++# CONFIG_ARCH_CHIP_STM32F407IG is not set
++# CONFIG_ARCH_CHIP_STM32F427V is not set
++# CONFIG_ARCH_CHIP_STM32F427Z is not set
++# CONFIG_ARCH_CHIP_STM32F427I is not set
++# CONFIG_ARCH_CHIP_STM32F429V is not set
++# CONFIG_ARCH_CHIP_STM32F429Z is not set
++# CONFIG_ARCH_CHIP_STM32F429I is not set
++# CONFIG_ARCH_CHIP_STM32F429B is not set
++# CONFIG_ARCH_CHIP_STM32F429N is not set
++# CONFIG_STM32_STM32L15XX is not set
++# CONFIG_STM32_ENERGYLITE is not set
++# CONFIG_STM32_STM32F10XX is not set
++# CONFIG_STM32_VALUELINE is not set
++# CONFIG_STM32_CONNECTIVITYLINE is not set
++# CONFIG_STM32_PERFORMANCELINE is not set
++# CONFIG_STM32_USBACCESSLINE is not set
++# CONFIG_STM32_HIGHDENSITY is not set
++# CONFIG_STM32_MEDIUMDENSITY is not set
++# CONFIG_STM32_LOWDENSITY is not set
++# CONFIG_STM32_STM32F20XX is not set
++# CONFIG_STM32_STM32F207 is not set
++# CONFIG_STM32_STM32F30XX is not set
++CONFIG_STM32_STM32F40XX=y
++# CONFIG_STM32_STM32F401 is not set
++# CONFIG_STM32_STM32F411 is not set
++# CONFIG_STM32_STM32F405 is not set
++CONFIG_STM32_STM32F407=y
++# CONFIG_STM32_STM32F427 is not set
++# CONFIG_STM32_STM32F429 is not set
++# CONFIG_STM32_DFU is not set
++
++#
++# STM32 Peripheral Support
++#
++CONFIG_STM32_HAVE_CCM=y
++# CONFIG_STM32_HAVE_USBDEV is not set
++CONFIG_STM32_HAVE_OTGFS=y
++CONFIG_STM32_HAVE_FSMC=y
++CONFIG_STM32_HAVE_USART3=y
++CONFIG_STM32_HAVE_UART4=y
++CONFIG_STM32_HAVE_UART5=y
++CONFIG_STM32_HAVE_USART6=y
++# CONFIG_STM32_HAVE_UART7 is not set
++# CONFIG_STM32_HAVE_UART8 is not set
++CONFIG_STM32_HAVE_TIM1=y
++CONFIG_STM32_HAVE_TIM5=y
++CONFIG_STM32_HAVE_TIM6=y
++CONFIG_STM32_HAVE_TIM7=y
++CONFIG_STM32_HAVE_TIM8=y
++CONFIG_STM32_HAVE_TIM9=y
++CONFIG_STM32_HAVE_TIM10=y
++CONFIG_STM32_HAVE_TIM11=y
++CONFIG_STM32_HAVE_TIM12=y
++CONFIG_STM32_HAVE_TIM13=y
++CONFIG_STM32_HAVE_TIM14=y
++# CONFIG_STM32_HAVE_TIM15 is not set
++# CONFIG_STM32_HAVE_TIM16 is not set
++# CONFIG_STM32_HAVE_TIM17 is not set
++CONFIG_STM32_HAVE_ADC2=y
++CONFIG_STM32_HAVE_ADC3=y
++# CONFIG_STM32_HAVE_ADC4 is not set
++CONFIG_STM32_HAVE_CAN1=y
++CONFIG_STM32_HAVE_CAN2=y
++CONFIG_STM32_HAVE_RNG=y
++CONFIG_STM32_HAVE_ETHMAC=y
++CONFIG_STM32_HAVE_SPI2=y
++CONFIG_STM32_HAVE_SPI3=y
++# CONFIG_STM32_HAVE_SPI4 is not set
++# CONFIG_STM32_HAVE_SPI5 is not set
++# CONFIG_STM32_HAVE_SPI6 is not set
++# CONFIG_STM32_ADC1 is not set
++# CONFIG_STM32_ADC2 is not set
++# CONFIG_STM32_ADC3 is not set
++# CONFIG_STM32_BKPSRAM is not set
++# CONFIG_STM32_CAN1 is not set
++# CONFIG_STM32_CAN2 is not set
++# CONFIG_STM32_CCMDATARAM is not set
++# CONFIG_STM32_CRC is not set
++# CONFIG_STM32_CRYP is not set
++CONFIG_STM32_DMA1=y
++CONFIG_STM32_DMA2=y
++# CONFIG_STM32_DAC1 is not set
++# CONFIG_STM32_DAC2 is not set
++# CONFIG_STM32_DCMI is not set
++CONFIG_STM32_ETHMAC=y
++# CONFIG_STM32_FSMC is not set
++# CONFIG_STM32_HASH is not set
++# CONFIG_STM32_I2C1 is not set
++# CONFIG_STM32_I2C2 is not set
++# CONFIG_STM32_I2C3 is not set
++CONFIG_STM32_OTGFS=y
++# CONFIG_STM32_OTGHS is not set
++CONFIG_STM32_PWR=y
++# CONFIG_STM32_RNG is not set
++CONFIG_STM32_SDIO=y
++CONFIG_STM32_SPI1=y
++# CONFIG_STM32_SPI2 is not set
++# CONFIG_STM32_SPI3 is not set
++CONFIG_STM32_SYSCFG=y
++# CONFIG_STM32_TIM1 is not set
++# CONFIG_STM32_TIM2 is not set
++# CONFIG_STM32_TIM3 is not set
++# CONFIG_STM32_TIM4 is not set
++# CONFIG_STM32_TIM5 is not set
++# CONFIG_STM32_TIM6 is not set
++# CONFIG_STM32_TIM7 is not set
++# CONFIG_STM32_TIM8 is not set
++# CONFIG_STM32_TIM9 is not set
++# CONFIG_STM32_TIM10 is not set
++# CONFIG_STM32_TIM11 is not set
++# CONFIG_STM32_TIM12 is not set
++# CONFIG_STM32_TIM13 is not set
++# CONFIG_STM32_TIM14 is not set
++# CONFIG_STM32_USART1 is not set
++# CONFIG_STM32_USART2 is not set
++# CONFIG_STM32_USART3 is not set
++# CONFIG_STM32_UART4 is not set
++# CONFIG_STM32_UART5 is not set
++CONFIG_STM32_USART6=y
++# CONFIG_STM32_IWDG is not set
++# CONFIG_STM32_WWDG is not set
++CONFIG_STM32_SPI=y
++
++#
++# Alternate Pin Mapping
++#
++# CONFIG_STM32_FLASH_PREFETCH is not set
++# CONFIG_STM32_JTAG_DISABLE is not set
++# CONFIG_STM32_JTAG_FULL_ENABLE is not set
++# CONFIG_STM32_JTAG_NOJNTRST_ENABLE is not set
++CONFIG_STM32_JTAG_SW_ENABLE=y
++# CONFIG_STM32_DISABLE_IDLE_SLEEP_DURING_DEBUG is not set
++# CONFIG_STM32_FORCEPOWER is not set
++# CONFIG_ARCH_BOARD_STM32_CUSTOM_CLOCKCONFIG is not set
++# CONFIG_STM32_CCMEXCLUDE is not set
++# CONFIG_STM32_DMACAPABLE is not set
++CONFIG_STM32_USART=y
++
++#
++# U[S]ART Configuration
++#
++# CONFIG_USART6_RS485 is not set
++# CONFIG_USART6_RXDMA is not set
++# CONFIG_SERIAL_DISABLE_REORDERING is not set
++# CONFIG_STM32_FLOWCONTROL_BROKEN is not set
++# CONFIG_STM32_USART_SINGLEWIRE is not set
++
++#
++# SPI Configuration
++#
++# CONFIG_STM32_SPI_INTERRUPTS is not set
++# CONFIG_STM32_SPI_DMA is not set
++
++#
++# SDIO Configuration
++#
++
++#
++# Ethernet MAC configuration
++#
++CONFIG_STM32_PHYADDR=0
++# CONFIG_STM32_PHYINIT is not set
++# CONFIG_STM32_MII is not set
++CONFIG_STM32_AUTONEG=y
++CONFIG_STM32_PHYSR=31
++CONFIG_STM32_PHYSR_ALTCONFIG=y
++CONFIG_STM32_PHYSR_ALTMODE=0x001c
++CONFIG_STM32_PHYSR_10HD=0x0004
++CONFIG_STM32_PHYSR_100HD=0x0008
++CONFIG_STM32_PHYSR_10FD=0x0014
++CONFIG_STM32_PHYSR_100FD=0x0018
++# CONFIG_STM32_ETH_PTP is not set
++CONFIG_STM32_RMII=y
++# CONFIG_STM32_RMII_MCO1 is not set
++# CONFIG_STM32_RMII_MCO2 is not set
++CONFIG_STM32_RMII_EXTCLK=y
++# CONFIG_STM32_ETHMAC_REGDEBUG is not set
++
++#
++# USB FS Host Configuration
++#
++
++#
++# USB HS Host Configuration
++#
++
++#
++# USB Host Debug Configuration
++#
++
++#
++# USB Device Configuration
++#
++
++#
++# Architecture Options
++#
++# CONFIG_ARCH_NOINTC is not set
++# CONFIG_ARCH_VECNOTIRQ is not set
++CONFIG_ARCH_DMA=y
++CONFIG_ARCH_HAVE_IRQPRIO=y
++# CONFIG_ARCH_L2CACHE is not set
++# CONFIG_ARCH_HAVE_COHERENT_DCACHE is not set
++# CONFIG_ARCH_HAVE_ADDRENV is not set
++# CONFIG_ARCH_NEED_ADDRENV_MAPPING is not set
++CONFIG_ARCH_HAVE_VFORK=y
++# CONFIG_ARCH_HAVE_MMU is not set
++CONFIG_ARCH_HAVE_MPU=y
++# CONFIG_ARCH_NAND_HWECC is not set
++# CONFIG_ARCH_HAVE_EXTCLK is not set
++# CONFIG_ARCH_USE_MPU is not set
++# CONFIG_ARCH_IRQPRIO is not set
++CONFIG_ARCH_STACKDUMP=y
++# CONFIG_ENDIAN_BIG is not set
++# CONFIG_ARCH_IDLE_CUSTOM is not set
++# CONFIG_ARCH_HAVE_RAMFUNCS is not set
++CONFIG_ARCH_HAVE_RAMVECTORS=y
++# CONFIG_ARCH_RAMVECTORS is not set
++
++#
++# Board Settings
++#
++CONFIG_BOARD_LOOPSPERMSEC=16717
++# CONFIG_ARCH_CALIBRATION is not set
++
++#
++# Interrupt options
++#
++CONFIG_ARCH_HAVE_INTERRUPTSTACK=y
++CONFIG_ARCH_INTERRUPTSTACK=0
++CONFIG_ARCH_HAVE_HIPRI_INTERRUPT=y
++# CONFIG_ARCH_HIPRI_INTERRUPT is not set
++
++#
++# Boot options
++#
++# CONFIG_BOOT_RUNFROMEXTSRAM is not set
++CONFIG_BOOT_RUNFROMFLASH=y
++# CONFIG_BOOT_RUNFROMISRAM is not set
++# CONFIG_BOOT_RUNFROMSDRAM is not set
++# CONFIG_BOOT_COPYTORAM is not set
++
++#
++# Boot Memory Configuration
++#
++CONFIG_RAM_START=0x20000000
++CONFIG_RAM_SIZE=114688
++# CONFIG_ARCH_HAVE_SDRAM is not set
++
++#
++# Board Selection
++#
++CONFIG_ARCH_BOARD_STM32F4_DISCOVERY=y
++# CONFIG_ARCH_BOARD_MIKROE_STM32F4 is not set
++# CONFIG_ARCH_BOARD_CUSTOM is not set
++CONFIG_ARCH_BOARD="stm32f4discovery"
++
++#
++# Common Board Options
++#
++CONFIG_ARCH_HAVE_LEDS=y
++CONFIG_ARCH_LEDS=y
++CONFIG_ARCH_HAVE_BUTTONS=y
++CONFIG_ARCH_BUTTONS=y
++CONFIG_ARCH_HAVE_IRQBUTTONS=y
++# CONFIG_ARCH_IRQBUTTONS is not set
++CONFIG_NSH_MMCSDMINOR=0
++CONFIG_NSH_MMCSDSLOTNO=0
++CONFIG_NSH_MMCSDSPIPORTNO=0
++
++#
++# Board-Specific Options
++#
++CONFIG_STM32F4DISBB=y
++
++#
++# RTOS Features
++#
++# CONFIG_DISABLE_OS_API is not set
++
++#
++# Clocks and Timers
++#
++CONFIG_USEC_PER_TICK=10000
++# CONFIG_SYSTEM_TIME64 is not set
++# CONFIG_CLOCK_MONOTONIC is not set
++# CONFIG_JULIAN_TIME is not set
++CONFIG_START_YEAR=2013
++CONFIG_START_MONTH=1
++CONFIG_START_DAY=27
++CONFIG_MAX_WDOGPARMS=2
++CONFIG_PREALLOC_WDOGS=8
++CONFIG_WDOG_INTRESERVE=1
++CONFIG_PREALLOC_TIMERS=4
++
++#
++# Tasks and Scheduling
++#
++# CONFIG_INIT_NONE is not set
++CONFIG_INIT_ENTRYPOINT=y
++# CONFIG_INIT_FILEPATH is not set
++CONFIG_USER_ENTRYPOINT="nsh_main"
++CONFIG_RR_INTERVAL=200
++CONFIG_TASK_NAME_SIZE=0
++CONFIG_MAX_TASKS=16
++CONFIG_SCHED_HAVE_PARENT=y
++# CONFIG_SCHED_CHILD_STATUS is not set
++CONFIG_SCHED_WAITPID=y
++
++#
++# Pthread Options
++#
++# CONFIG_MUTEX_TYPES is not set
++CONFIG_NPTHREAD_KEYS=4
++
++#
++# Performance Monitoring
++#
++# CONFIG_SCHED_CPULOAD is not set
++# CONFIG_SCHED_INSTRUMENTATION is not set
++
++#
++# Files and I/O
++#
++# CONFIG_DEV_CONSOLE is not set
++# CONFIG_FDCLONE_DISABLE is not set
++# CONFIG_FDCLONE_STDIO is not set
++# CONFIG_SDCLONE_DISABLE is not set
++CONFIG_NFILE_DESCRIPTORS=64
++CONFIG_NFILE_STREAMS=64
++CONFIG_NAME_MAX=32
++# CONFIG_PRIORITY_INHERITANCE is not set
++
++#
++# RTOS hooks
++#
++# CONFIG_BOARD_INITIALIZE is not set
++# CONFIG_SCHED_STARTHOOK is not set
++# CONFIG_SCHED_ATEXIT is not set
++CONFIG_SCHED_ONEXIT=y
++CONFIG_SCHED_ONEXIT_MAX=1
++
++#
++# Signal Numbers
++#
++CONFIG_SIG_SIGUSR1=1
++CONFIG_SIG_SIGUSR2=2
++CONFIG_SIG_SIGALARM=3
++CONFIG_SIG_SIGCHLD=4
++CONFIG_SIG_SIGCONDTIMEDOUT=16
++CONFIG_SIG_SIGWORK=17
++
++#
++# POSIX Message Queue Options
++#
++CONFIG_PREALLOC_MQ_MSGS=4
++CONFIG_MQ_MAXMSGSIZE=32
++
++#
++# Work Queue Support
++#
++CONFIG_SCHED_WORKQUEUE=y
++CONFIG_SCHED_HPWORK=y
++CONFIG_SCHED_HPWORKPRIORITY=224
++CONFIG_SCHED_HPWORKPERIOD=100000
++CONFIG_SCHED_HPWORKSTACKSIZE=2048
++CONFIG_SCHED_LPWORK=y
++CONFIG_SCHED_LPNTHREADS=1
++CONFIG_SCHED_LPWORKPRIORITY=50
++CONFIG_SCHED_LPWORKPERIOD=50000
++CONFIG_SCHED_LPWORKSTACKSIZE=2048
++
++#
++# Stack and heap information
++#
++CONFIG_IDLETHREAD_STACKSIZE=2048
++CONFIG_USERMAIN_STACKSIZE=2048
++CONFIG_PTHREAD_STACK_MIN=256
++CONFIG_PTHREAD_STACK_DEFAULT=2048
++CONFIG_LIB_SYSCALL=y
++CONFIG_SYS_RESERVED=4
++CONFIG_SYS_NNEST=2
++
++#
++# Device Drivers
++#
++# CONFIG_DISABLE_POLL is not set
++CONFIG_DEV_NULL=y
++# CONFIG_DEV_ZERO is not set
++# CONFIG_LOOP is not set
++
++#
++# Buffering
++#
++# CONFIG_DRVR_WRITEBUFFER is not set
++# CONFIG_DRVR_READAHEAD is not set
++CONFIG_RAMDISK=y
++# CONFIG_CAN is not set
++# CONFIG_ARCH_HAVE_PWM_PULSECOUNT is not set
++# CONFIG_PWM is not set
++CONFIG_ARCH_HAVE_I2CRESET=y
++# CONFIG_I2C is not set
++CONFIG_SPI=y
++# CONFIG_SPI_OWNBUS is not set
++CONFIG_SPI_EXCHANGE=y
++# CONFIG_SPI_CMDDATA is not set
++# CONFIG_SPI_BITBANG is not set
++# CONFIG_I2S is not set
++# CONFIG_TIMER is not set
++# CONFIG_RTC is not set
++# CONFIG_WATCHDOG is not set
++# CONFIG_ANALOG is not set
++# CONFIG_AUDIO_DEVICES is not set
++# CONFIG_VIDEO_DEVICES is not set
++# CONFIG_BCH is not set
++# CONFIG_INPUT is not set
++# CONFIG_LCD is not set
++CONFIG_MMCSD=y
++CONFIG_MMCSD_NSLOTS=1
++# CONFIG_MMCSD_READONLY is not set
++CONFIG_MMCSD_MULTIBLOCK_DISABLE=y
++CONFIG_MMCSD_MMCSUPPORT=y
++CONFIG_MMCSD_HAVECARDDETECT=y
++CONFIG_MMCSD_SPI=y
++CONFIG_MMCSD_SPICLOCK=20000000
++CONFIG_MMCSD_SPIMODE=0
++CONFIG_ARCH_HAVE_SDIO=y
++CONFIG_ARCH_HAVE_SDIOWAIT_WRCOMPLETE=y
++CONFIG_MMCSD_SDIO=y
++CONFIG_SDIO_PREFLIGHT=y
++# CONFIG_SDIO_MUXBUS is not set
++# CONFIG_MMCSD_SDIOWAIT_WRCOMPLETE is not set
++# CONFIG_SDIO_BLOCKSETUP is not set
++# CONFIG_MTD is not set
++# CONFIG_EEPROM is not set
++CONFIG_NETDEVICES=y
++
++#
++# General Ethernet MAC Driver Options
++#
++# CONFIG_NETDEV_MULTINIC is not set
++# CONFIG_NET_DUMPPACKET is not set
++
++#
++# External Ethernet MAC Device Support
++#
++# CONFIG_NET_DM90x0 is not set
++# CONFIG_ENC28J60 is not set
++# CONFIG_ENCX24J600 is not set
++# CONFIG_NET_E1000 is not set
++# CONFIG_NET_SLIP is not set
++# CONFIG_NET_VNET is not set
++
++#
++# External Ethernet PHY Device Support
++#
++# CONFIG_ARCH_PHY_INTERRUPT is not set
++# CONFIG_ETH0_PHY_NONE is not set
++# CONFIG_ETH0_PHY_AM79C874 is not set
++# CONFIG_ETH0_PHY_KS8721 is not set
++# CONFIG_ETH0_PHY_KSZ8051 is not set
++# CONFIG_ETH0_PHY_KSZ8081 is not set
++# CONFIG_ETH0_PHY_KSZ90x1 is not set
++# CONFIG_ETH0_PHY_DP83848C is not set
++CONFIG_ETH0_PHY_LAN8720=y
++# CONFIG_ETH0_PHY_DM9161 is not set
++# CONFIG_NETDEV_PHY_DEBUG is not set
++# CONFIG_PIPES is not set
++# CONFIG_PM is not set
++# CONFIG_POWER is not set
++# CONFIG_SENSORS is not set
++# CONFIG_SERCOMM_CONSOLE is not set
++CONFIG_SERIAL=y
++CONFIG_SERIAL_REMOVABLE=y
++# CONFIG_16550_UART is not set
++# CONFIG_ARCH_HAVE_UART is not set
++# CONFIG_ARCH_HAVE_UART0 is not set
++# CONFIG_ARCH_HAVE_UART1 is not set
++# CONFIG_ARCH_HAVE_UART2 is not set
++# CONFIG_ARCH_HAVE_UART3 is not set
++# CONFIG_ARCH_HAVE_UART4 is not set
++# CONFIG_ARCH_HAVE_UART5 is not set
++# CONFIG_ARCH_HAVE_UART6 is not set
++# CONFIG_ARCH_HAVE_UART7 is not set
++# CONFIG_ARCH_HAVE_UART8 is not set
++# CONFIG_ARCH_HAVE_SCI0 is not set
++# CONFIG_ARCH_HAVE_SCI1 is not set
++# CONFIG_ARCH_HAVE_USART0 is not set
++# CONFIG_ARCH_HAVE_USART1 is not set
++# CONFIG_ARCH_HAVE_USART2 is not set
++# CONFIG_ARCH_HAVE_USART3 is not set
++# CONFIG_ARCH_HAVE_USART4 is not set
++# CONFIG_ARCH_HAVE_USART5 is not set
++CONFIG_ARCH_HAVE_USART6=y
++# CONFIG_ARCH_HAVE_USART7 is not set
++# CONFIG_ARCH_HAVE_USART8 is not set
++# CONFIG_ARCH_HAVE_OTHER_UART is not set
++
++#
++# USART Configuration
++#
++CONFIG_USART6_ISUART=y
++CONFIG_MCU_SERIAL=y
++CONFIG_STANDARD_SERIAL=y
++CONFIG_SERIAL_NPOLLWAITERS=2
++# CONFIG_SERIAL_IFLOWCONTROL is not set
++# CONFIG_SERIAL_OFLOWCONTROL is not set
++# CONFIG_SERIAL_TIOCSERGSTRUCT is not set
++CONFIG_ARCH_HAVE_SERIAL_TERMIOS=y
++# CONFIG_SERIAL_TERMIOS is not set
++CONFIG_USART6_SERIAL_CONSOLE=y
++# CONFIG_OTHER_SERIAL_CONSOLE is not set
++# CONFIG_NO_SERIAL_CONSOLE is not set
++
++#
++# USART6 Configuration
++#
++CONFIG_USART6_RXBUFSIZE=256
++CONFIG_USART6_TXBUFSIZE=256
++CONFIG_USART6_BAUD=38400
++CONFIG_USART6_BITS=8
++CONFIG_USART6_PARITY=0
++CONFIG_USART6_2STOP=0
++# CONFIG_USART6_IFLOWCONTROL is not set
++# CONFIG_USART6_OFLOWCONTROL is not set
++CONFIG_USBDEV=y
++
++#
++# USB Device Controller Driver Options
++#
++# CONFIG_USBDEV_ISOCHRONOUS is not set
++# CONFIG_USBDEV_DUALSPEED is not set
++CONFIG_USBDEV_SELFPOWERED=y
++# CONFIG_USBDEV_BUSPOWERED is not set
++CONFIG_USBDEV_MAXPOWER=100
++# CONFIG_USBDEV_DMA is not set
++# CONFIG_ARCH_USBDEV_STALLQUEUE is not set
++# CONFIG_USBDEV_TRACE is not set
++
++#
++# USB Device Class Driver Options
++#
++# CONFIG_USBDEV_COMPOSITE is not set
++# CONFIG_PL2303 is not set
++CONFIG_CDCACM=y
++# CONFIG_CDCACM_CONSOLE is not set
++CONFIG_CDCACM_EP0MAXPACKET=64
++CONFIG_CDCACM_EPINTIN=1
++CONFIG_CDCACM_EPINTIN_FSSIZE=64
++CONFIG_CDCACM_EPINTIN_HSSIZE=64
++CONFIG_CDCACM_EPBULKOUT=3
++CONFIG_CDCACM_EPBULKOUT_FSSIZE=64
++CONFIG_CDCACM_EPBULKOUT_HSSIZE=512
++CONFIG_CDCACM_EPBULKIN=2
++CONFIG_CDCACM_EPBULKIN_FSSIZE=64
++CONFIG_CDCACM_EPBULKIN_HSSIZE=512
++CONFIG_CDCACM_NWRREQS=4
++CONFIG_CDCACM_NRDREQS=4
++CONFIG_CDCACM_BULKIN_REQLEN=96
++CONFIG_CDCACM_RXBUFSIZE=256
++CONFIG_CDCACM_TXBUFSIZE=256
++CONFIG_CDCACM_VENDORID=0x0525
++CONFIG_CDCACM_PRODUCTID=0xa4a7
++CONFIG_CDCACM_VENDORSTR="NuttX"
++CONFIG_CDCACM_PRODUCTSTR="CDC/ACM Serial"
++# CONFIG_USBMSC is not set
++# CONFIG_USBHOST is not set
++# CONFIG_WIRELESS is not set
++
++#
++# System Logging Device Options
++#
++
++#
++# System Logging
++#
++# CONFIG_RAMLOG is not set
++
++#
++# Networking Support
++#
++CONFIG_ARCH_HAVE_NET=y
++CONFIG_ARCH_HAVE_PHY=y
++CONFIG_NET=y
++CONFIG_NET_NOINTS=y
++# CONFIG_NET_PROMISCUOUS is not set
++
++#
++# Driver buffer configuration
++#
++CONFIG_NET_MULTIBUFFER=y
++CONFIG_NET_ETH_MTU=694
++CONFIG_NET_ETH_TCP_RECVWNDO=640
++CONFIG_NET_GUARDSIZE=2
++
++#
++# Data link support
++#
++# CONFIG_NET_MULTILINK is not set
++CONFIG_NET_ETHERNET=y
++
++#
++# Network Device Operations
++#
++# CONFIG_NETDEV_PHY_IOCTL is not set
++
++#
++# Internet Protocol Selection
++#
++CONFIG_NET_IPv4=y
++# CONFIG_NET_IPv6 is not set
++
++#
++# Socket Support
++#
++CONFIG_NSOCKET_DESCRIPTORS=16
++CONFIG_NET_NACTIVESOCKETS=16
++CONFIG_NET_SOCKOPTS=y
++CONFIG_NET_SOLINGER=y
++
++#
++# Raw Socket Support
++#
++# CONFIG_NET_PKT is not set
++
++#
++# Unix Domain Socket Support
++#
++# CONFIG_NET_LOCAL is not set
++
++#
++# TCP/IP Networking
++#
++CONFIG_NET_TCP=y
++# CONFIG_NET_TCPURGDATA is not set
++CONFIG_NET_TCP_CONNS=32
++CONFIG_NET_MAX_LISTENPORTS=20
++CONFIG_NET_TCP_READAHEAD=y
++CONFIG_NET_TCP_WRITE_BUFFERS=y
++CONFIG_NET_TCP_NWRBCHAINS=8
++# CONFIG_NET_TCP_WRBUFFER_DEBUG is not set
++# CONFIG_NET_TCP_WRBUFFER_DUMP is not set
++CONFIG_NET_TCP_RECVDELAY=0
++CONFIG_NET_TCPBACKLOG=y
++# CONFIG_NET_SENDFILE is not set
++
++#
++# UDP Networking
++#
++CONFIG_NET_UDP=y
++# CONFIG_NET_UDP_CHECKSUMS is not set
++CONFIG_NET_UDP_CONNS=8
++# CONFIG_NET_BROADCAST is not set
++# CONFIG_NET_RXAVAIL is not set
++CONFIG_NET_UDP_READAHEAD=y
++
++#
++# ICMP Networking Support
++#
++CONFIG_NET_ICMP=y
++CONFIG_NET_ICMP_PING=y
++# CONFIG_NET_PINGADDRCONF is not set
++
++#
++# IGMPv2 Client Support
++#
++# CONFIG_NET_IGMP is not set
++
++#
++# ARP Configuration
++#
++CONFIG_NET_ARP=y
++CONFIG_NET_ARPTAB_SIZE=16
++CONFIG_NET_ARP_MAXAGE=120
++# CONFIG_NET_ARP_IPIN is not set
++CONFIG_NET_ARP_SEND=y
++CONFIG_ARP_SEND_MAXTRIES=5
++CONFIG_ARP_SEND_DELAYMSEC=20
++# CONFIG_NET_ARP_DUMP is not set
++
++#
++# Network I/O Buffer Support
++#
++CONFIG_NET_IOB=y
++CONFIG_IOB_NBUFFERS=36
++CONFIG_IOB_BUFSIZE=196
++CONFIG_IOB_NCHAINS=8
++CONFIG_IOB_THROTTLE=8
++# CONFIG_IOB_DEBUG is not set
++# CONFIG_NET_ARCH_INCR32 is not set
++# CONFIG_NET_ARCH_CHKSUM is not set
++# CONFIG_NET_STATISTICS is not set
++
++#
++# Routing Table Configuration
++#
++# CONFIG_NET_ROUTE is not set
++
++#
++# Crypto API
++#
++# CONFIG_CRYPTO is not set
++
++#
++# File Systems
++#
++
++#
++# File system configuration
++#
++# CONFIG_DISABLE_MOUNTPOINT is not set
++# CONFIG_FS_AUTOMOUNTER is not set
++# CONFIG_DISABLE_PSEUDOFS_OPERATIONS is not set
++CONFIG_FS_READABLE=y
++CONFIG_FS_WRITABLE=y
++# CONFIG_FS_AIO is not set
++CONFIG_FS_NAMED_SEMAPHORES=y
++CONFIG_FS_NAMED_SEMPATH="/var/lock"
++CONFIG_FS_MQUEUE_MPATH="/var/mqueue"
++CONFIG_FS_RAMMAP=y
++CONFIG_FS_FAT=y
++CONFIG_FAT_LCNAMES=y
++CONFIG_FAT_LFN=y
++CONFIG_FAT_MAXFNAME=32
++# CONFIG_FS_FATTIME is not set
++# CONFIG_FAT_DMAMEMORY is not set
++# CONFIG_NFS is not set
++CONFIG_FS_NXFFS=y
++# CONFIG_NXFFS_SCAN_VOLUME is not set
++CONFIG_NXFFS_PREALLOCATED=y
++CONFIG_NXFFS_ERASEDSTATE=0xff
++CONFIG_NXFFS_PACKTHRESHOLD=32
++CONFIG_NXFFS_MAXNAMLEN=255
++CONFIG_NXFFS_TAILTHRESHOLD=8192
++CONFIG_FS_ROMFS=y
++# CONFIG_FS_SMARTFS is not set
++CONFIG_FS_BINFS=y
++CONFIG_FS_PROCFS=y
++
++#
++# Exclude individual procfs entries
++#
++# CONFIG_FS_PROCFS_EXCLUDE_PROCESS is not set
++# CONFIG_FS_PROCFS_EXCLUDE_UPTIME is not set
++# CONFIG_FS_PROCFS_EXCLUDE_MOUNTS is not set
++
++#
++# System Logging
++#
++CONFIG_SYSLOG=y
++# CONFIG_SYSLOG_TIMESTAMP is not set
++CONFIG_SYSLOG_CHAR=y
++CONFIG_SYSLOG_DEVPATH="/dev/ttyS0"
++
++#
++# Graphics Support
++#
++# CONFIG_NX is not set
++
++#
++# Memory Management
++#
++# CONFIG_MM_SMALL is not set
++CONFIG_MM_REGIONS=2
++# CONFIG_ARCH_HAVE_HEAP2 is not set
++# CONFIG_GRAN is not set
++
++#
++# Audio Support
++#
++# CONFIG_AUDIO is not set
++
++#
++# Binary Loader
++#
++# CONFIG_BINFMT_DISABLE is not set
++CONFIG_BINFMT_EXEPATH=y
++CONFIG_PATH_INITIAL="/bin:/usr/local/bin:/usr/bin"
++CONFIG_NXFLAT=y
++# CONFIG_NXFLAT_DUMPBUFFER is not set
++CONFIG_ELF=y
++CONFIG_ELF_ALIGN_LOG2=2
++CONFIG_ELF_STACKSIZE=2048
++CONFIG_ELF_BUFFERSIZE=128
++CONFIG_ELF_BUFFERINCR=32
++# CONFIG_ELF_DUMPBUFFER is not set
++CONFIG_BUILTIN=y
++CONFIG_PIC=y
++# CONFIG_SYMTAB_ORDEREDBYNAME is not set
++
++#
++# Library Routines
++#
++
++#
++# Standard C Library Options
++#
++CONFIG_STDIO_BUFFER_SIZE=64
++CONFIG_STDIO_LINEBUFFER=y
++CONFIG_NUNGET_CHARS=2
++CONFIG_LIB_HOMEDIR="/"
++# CONFIG_LIBM is not set
++# CONFIG_NOPRINTF_FIELDWIDTH is not set
++# CONFIG_LIBC_FLOATINGPOINT is not set
++# CONFIG_LIBC_IOCTL_VARIADIC is not set
++CONFIG_LIB_RAND_ORDER=1
++# CONFIG_EOL_IS_CR is not set
++# CONFIG_EOL_IS_LF is not set
++# CONFIG_EOL_IS_BOTH_CRLF is not set
++CONFIG_EOL_IS_EITHER_CRLF=y
++CONFIG_LIBC_EXECFUNCS=y
++CONFIG_EXECFUNCS_HAVE_SYMTAB=y
++CONFIG_EXECFUNCS_SYMTAB="g_symtab"
++CONFIG_EXECFUNCS_NSYMBOLS=0
++CONFIG_POSIX_SPAWN_PROXY_STACKSIZE=1024
++CONFIG_TASK_SPAWN_DEFAULT_STACKSIZE=2048
++# CONFIG_LIBC_STRERROR is not set
++# CONFIG_LIBC_PERROR_STDOUT is not set
++CONFIG_LIBC_TMPDIR="/tmp"
++CONFIG_LIBC_MAX_TMPFILE=32
++CONFIG_ARCH_LOWPUTC=y
++# CONFIG_LIBC_LOCALTIME is not set
++CONFIG_LIB_SENDFILE_BUFSIZE=512
++# CONFIG_ARCH_ROMGETC is not set
++# CONFIG_ARCH_OPTIMIZED_FUNCTIONS is not set
++
++#
++# Non-standard Library Support
++#
++# CONFIG_LIB_KBDCODEC is not set
++# CONFIG_LIB_SLCDCODEC is not set
++CONFIG_LIBUV=y
++CONFIG_LIBJERRY=y
++
++#
++# Basic CXX Support
++#
++# CONFIG_C99_BOOL8 is not set
++CONFIG_HAVE_CXX=y
++CONFIG_HAVE_CXXINITIALIZE=y
++# CONFIG_CXX_NEWLONG is not set
++
++#
++# uClibc++ Standard C++ Library
++#
++# CONFIG_UCLIBCXX is not set
++
++#
++# Application Configuration
++#
++
++#
++# Built-In Applications
++#
++CONFIG_BUILTIN_PROXY_STACKSIZE=1024
++
++#
++# Examples
++#
++# CONFIG_EXAMPLES_BUTTONS is not set
++# CONFIG_EXAMPLES_CAN is not set
++# CONFIG_EXAMPLES_CONFIGDATA is not set
++# CONFIG_EXAMPLES_CPUHOG is not set
++# CONFIG_EXAMPLES_CXXTEST is not set
++# CONFIG_EXAMPLES_DHCPD is not set
++# CONFIG_EXAMPLES_ELF is not set
++# CONFIG_EXAMPLES_FTPC is not set
++# CONFIG_EXAMPLES_FTPD is not set
++# CONFIG_EXAMPLES_HELLO is not set
++# CONFIG_EXAMPLES_HELLOXX is not set
++# CONFIG_EXAMPLES_JSON is not set
++# CONFIG_EXAMPLES_HIDKBD is not set
++# CONFIG_EXAMPLES_KEYPADTEST is not set
++# CONFIG_EXAMPLES_IGMP is not set
++# CONFIG_EXAMPLES_MM is not set
++# CONFIG_EXAMPLES_MODBUS is not set
++# CONFIG_EXAMPLES_MOUNT is not set
++# CONFIG_EXAMPLES_NETTEST is not set
++# CONFIG_EXAMPLES_NRF24L01TERM is not set
++CONFIG_EXAMPLES_NSH=y
++CONFIG_EXAMPLES_NSH_CXXINITIALIZE=y
++# CONFIG_EXAMPLES_NULL is not set
++# CONFIG_EXAMPLES_NX is not set
++# CONFIG_EXAMPLES_NXTERM is not set
++# CONFIG_EXAMPLES_NXFFS is not set
++# CONFIG_EXAMPLES_NXFLAT is not set
++# CONFIG_EXAMPLES_NXHELLO is not set
++# CONFIG_EXAMPLES_NXIMAGE is not set
++# CONFIG_EXAMPLES_NXLINES is not set
++# CONFIG_EXAMPLES_NXTEXT is not set
++# CONFIG_EXAMPLES_OSTEST is not set
++# CONFIG_EXAMPLES_PIPE is not set
++# CONFIG_EXAMPLES_POSIXSPAWN is not set
++# CONFIG_EXAMPLES_QENCODER is not set
++# CONFIG_EXAMPLES_RGMP is not set
++# CONFIG_EXAMPLES_ROMFS is not set
++# CONFIG_EXAMPLES_SENDMAIL is not set
++# CONFIG_EXAMPLES_SERIALBLASTER is not set
++# CONFIG_EXAMPLES_SERIALRX is not set
++# CONFIG_EXAMPLES_SERLOOP is not set
++# CONFIG_EXAMPLES_SLCD is not set
++# CONFIG_EXAMPLES_SMART_TEST is not set
++# CONFIG_EXAMPLES_SMART is not set
++# CONFIG_EXAMPLES_TCPECHO is not set
++# CONFIG_EXAMPLES_TELNETD is not set
++# CONFIG_EXAMPLES_THTTPD is not set
++# CONFIG_EXAMPLES_TIFF is not set
++# CONFIG_EXAMPLES_TOUCHSCREEN is not set
++# CONFIG_EXAMPLES_UDP is not set
++# CONFIG_EXAMPLES_DISCOVER is not set
++# CONFIG_EXAMPLES_WEBSERVER is not set
++# CONFIG_EXAMPLES_USBSERIAL is not set
++# CONFIG_EXAMPLES_USBTERM is not set
++# CONFIG_EXAMPLES_WATCHDOG is not set
++# CONFIG_EXAMPLES_XMLRPC is not set
++CONFIG_EXAMPLES_LIBUVAPP=y
++
++#
++# Graphics Support
++#
++# CONFIG_TIFF is not set
++# CONFIG_GRAPHICS_TRAVELER is not set
++
++#
++# Interpreters
++#
++# CONFIG_INTERPRETERS_BAS is not set
++# CONFIG_INTERPRETERS_FICL is not set
++# CONFIG_INTERPRETERS_PCODE is not set
++# CONFIG_INTERPRETERS_MICROPYTHON is not set
++
++#
++# Network Utilities
++#
++
++#
++# Networking Utilities
++#
++# CONFIG_NETUTILS_CODECS is not set
++# CONFIG_NETUTILS_DHCPD is not set
++# CONFIG_NETUTILS_FTPC is not set
++# CONFIG_NETUTILS_FTPD is not set
++# CONFIG_NETUTILS_JSON is not set
++CONFIG_NETUTILS_DNSCLIENT=y
++CONFIG_NETUTILS_DNSCLIENT_IPv4=y
++CONFIG_NETUTILS_DNSCLIENT_ENTRIES=8
++CONFIG_NETUTILS_DNSCLIENT_MAXRESPONSE=96
++# CONFIG_NETUTILS_SMTP is not set
++CONFIG_NETUTILS_TELNETD=y
++# CONFIG_NETUTILS_TFTPC is not set
++# CONFIG_NETUTILS_THTTPD is not set
++CONFIG_NETUTILS_NETLIB=y
++# CONFIG_NETUTILS_WEBCLIENT is not set
++# CONFIG_NETUTILS_WEBSERVER is not set
++# CONFIG_NETUTILS_NTPCLIENT is not set
++# CONFIG_NETUTILS_DISCOVER is not set
++# CONFIG_NETUTILS_XMLRPC is not set
++
++#
++# FreeModBus
++#
++# CONFIG_MODBUS is not set
++
++#
++# NSH Library
++#
++CONFIG_NSH_LIBRARY=y
++
++#
++# Command Line Configuration
++#
++CONFIG_NSH_READLINE=y
++# CONFIG_NSH_CLE is not set
++CONFIG_NSH_LINELEN=64
++# CONFIG_NSH_DISABLE_SEMICOLON is not set
++# CONFIG_NSH_CMDPARMS is not set
++CONFIG_NSH_MAXARGUMENTS=6
++CONFIG_NSH_ARGCAT=y
++CONFIG_NSH_NESTDEPTH=3
++# CONFIG_NSH_DISABLEBG is not set
++CONFIG_NSH_BUILTIN_APPS=y
++CONFIG_NSH_FILE_APPS=y
++
++#
++# Disable Individual commands
++#
++# CONFIG_NSH_DISABLE_ADDROUTE is not set
++# CONFIG_NSH_DISABLE_CAT is not set
++# CONFIG_NSH_DISABLE_CD is not set
++# CONFIG_NSH_DISABLE_CP is not set
++# CONFIG_NSH_DISABLE_CMP is not set
++# CONFIG_NSH_DISABLE_DD is not set
++# CONFIG_NSH_DISABLE_DF is not set
++# CONFIG_NSH_DISABLE_DELROUTE is not set
++# CONFIG_NSH_DISABLE_ECHO is not set
++# CONFIG_NSH_DISABLE_EXEC is not set
++# CONFIG_NSH_DISABLE_EXIT is not set
++# CONFIG_NSH_DISABLE_FREE is not set
++# CONFIG_NSH_DISABLE_GET is not set
++# CONFIG_NSH_DISABLE_HELP is not set
++# CONFIG_NSH_DISABLE_HEXDUMP is not set
++# CONFIG_NSH_DISABLE_IFCONFIG is not set
++# CONFIG_NSH_DISABLE_KILL is not set
++# CONFIG_NSH_DISABLE_LOSETUP is not set
++# CONFIG_NSH_DISABLE_LS is not set
++# CONFIG_NSH_DISABLE_MB is not set
++# CONFIG_NSH_DISABLE_MKDIR is not set
++# CONFIG_NSH_DISABLE_MKFATFS is not set
++# CONFIG_NSH_DISABLE_MKFIFO is not set
++# CONFIG_NSH_DISABLE_MKRD is not set
++# CONFIG_NSH_DISABLE_MH is not set
++# CONFIG_NSH_DISABLE_MOUNT is not set
++# CONFIG_NSH_DISABLE_MW is not set
++# CONFIG_NSH_DISABLE_PS is not set
++# CONFIG_NSH_DISABLE_PING is not set
++# CONFIG_NSH_DISABLE_PUT is not set
++# CONFIG_NSH_DISABLE_PWD is not set
++# CONFIG_NSH_DISABLE_RM is not set
++# CONFIG_NSH_DISABLE_RMDIR is not set
++# CONFIG_NSH_DISABLE_SET is not set
++# CONFIG_NSH_DISABLE_SH is not set
++# CONFIG_NSH_DISABLE_SLEEP is not set
++# CONFIG_NSH_DISABLE_TEST is not set
++# CONFIG_NSH_DISABLE_UMOUNT is not set
++# CONFIG_NSH_DISABLE_UNSET is not set
++# CONFIG_NSH_DISABLE_USLEEP is not set
++# CONFIG_NSH_DISABLE_WGET is not set
++# CONFIG_NSH_DISABLE_XD is not set
++
++#
++# Configure Command Options
++#
++CONFIG_NSH_CMDOPT_DF_H=y
++CONFIG_NSH_CODECS_BUFSIZE=128
++CONFIG_NSH_CMDOPT_HEXDUMP=y
++CONFIG_NSH_PROC_MOUNTPOINT="/proc"
++CONFIG_NSH_FILEIOSIZE=512
++
++#
++# Scripting Support
++#
++# CONFIG_NSH_DISABLESCRIPT is not set
++# CONFIG_NSH_DISABLE_ITEF is not set
++# CONFIG_NSH_DISABLE_LOOPS is not set
++CONFIG_NSH_ROMFSETC=y
++# CONFIG_NSH_ROMFSRC is not set
++CONFIG_NSH_ROMFSMOUNTPT="/etc"
++CONFIG_NSH_INITSCRIPT="init.d/rcS"
++CONFIG_NSH_ROMFSDEVNO=0
++CONFIG_NSH_ROMFSSECTSIZE=64
++CONFIG_NSH_DEFAULTROMFS=y
++# CONFIG_NSH_ARCHROMFS is not set
++# CONFIG_NSH_CUSTOMROMFS is not set
++CONFIG_NSH_FATDEVNO=1
++CONFIG_NSH_FATSECTSIZE=512
++CONFIG_NSH_FATNSECTORS=16
++CONFIG_NSH_FATMOUNTPT="/tmp"
++
++#
++# Console Configuration
++#
++CONFIG_NSH_CONSOLE=y
++CONFIG_NSH_USBCONSOLE=y
++CONFIG_NSH_USBCONDEV="/dev/ttyACM0"
++CONFIG_USBDEV_MINOR=0
++
++#
++# USB Device Trace Support
++#
++# CONFIG_NSH_USBDEV_TRACE is not set
++CONFIG_NSH_ARCHINIT=y
++
++#
++# Networking Configuration
++#
++# CONFIG_NSH_NETINIT_THREAD is not set
++# CONFIG_NSH_NETINIT_DEBUG is not set
++
++#
++# IP Address Configuration
++#
++
++#
++# IPv4 Addresses
++#
++CONFIG_NSH_IPADDR=0x0a000002
++CONFIG_NSH_DRIPADDR=0x0a000001
++CONFIG_NSH_NETMASK=0xffffff00
++# CONFIG_NSH_DNS is not set
++CONFIG_NSH_NOMAC=y
++CONFIG_NSH_SWMAC=y
++# CONFIG_NSH_ARCHMAC is not set
++CONFIG_NSH_MACADDR=0x1e000a000002
++CONFIG_NSH_MAX_ROUNDTRIP=20
++
++#
++# Telnet Configuration
++#
++CONFIG_NSH_TELNET=y
++CONFIG_NSH_TELNETD_PORT=23
++CONFIG_NSH_TELNETD_DAEMONPRIO=100
++CONFIG_NSH_TELNETD_DAEMONSTACKSIZE=2048
++CONFIG_NSH_TELNETD_CLIENTPRIO=100
++CONFIG_NSH_TELNETD_CLIENTSTACKSIZE=2048
++CONFIG_NSH_IOBUFFER_SIZE=512
++# CONFIG_NSH_TELNET_LOGIN is not set
++
++#
++# NxWidgets/NxWM
++#
++
++#
++# Platform-specific Support
++#
++CONFIG_PLATFORM_CONFIGDATA=y
++
++#
++# System Libraries and NSH Add-Ons
++#
++
++#
++# Custom Free Memory Command
++#
++# CONFIG_SYSTEM_FREE is not set
++
++#
++# EMACS-like Command Line Editor
++#
++# CONFIG_SYSTEM_CLE is not set
++
++#
++# CU Minimal Terminal
++#
++# CONFIG_SYSTEM_CUTERM is not set
++
++#
++# FLASH Program Installation
++#
++# CONFIG_SYSTEM_INSTALL is not set
++
++#
++# FLASH Erase-all Command
++#
++
++#
++# Intel HEX to binary conversion
++#
++# CONFIG_SYSTEM_HEX2BIN is not set
++
++#
++# I2C tool
++#
++
++#
++# INI File Parser
++#
++# CONFIG_SYSTEM_INIFILE is not set
++
++#
++# NxPlayer media player library / command Line
++#
++
++#
++# RAM test
++#
++# CONFIG_SYSTEM_RAMTEST is not set
++
++#
++# readline()
++#
++CONFIG_SYSTEM_READLINE=y
++CONFIG_READLINE_ECHO=y
++
++#
++# P-Code Support
++#
++
++#
++# PHY Tool
++#
++
++#
++# Power Off
++#
++# CONFIG_SYSTEM_POWEROFF is not set
++
++#
++# RAMTRON
++#
++# CONFIG_SYSTEM_RAMTRON is not set
++
++#
++# SD Card
++#
++# CONFIG_SYSTEM_SDCARD is not set
++
++#
++# Sudoku
++#
++# CONFIG_SYSTEM_SUDOKU is not set
++
++#
++# Sysinfo
++#
++CONFIG_SYSTEM_SYSINFO=y
++CONFIG_SYSTEM_SYSINFO_STACKSIZE=1024
++
++#
++# Temperature
++#
++
++#
++# VI Work-Alike Editor
++#
++# CONFIG_SYSTEM_VI is not set
++
++#
++# Stack Monitor
++#
++
++#
++# USB CDC/ACM Device Commands
++#
++CONFIG_SYSTEM_CDCACM=y
++CONFIG_SYSTEM_CDCACM_DEVMINOR=0
++
++#
++# USB Composite Device Commands
++#
++
++#
++# USB Mass Storage Device Commands
++#
++
++#
++# USB Monitor
++#
++
++#
++# Zmodem Commands
++#
++CONFIG_SYSTEM_ZMODEM=y
++CONFIG_SYSTEM_ZMODEM_DEVNAME="/dev/console"
++CONFIG_SYSTEM_ZMODEM_RCVBUFSIZE=1024
++CONFIG_SYSTEM_ZMODEM_PKTBUFSIZE=1024
++CONFIG_SYSTEM_ZMODEM_SNDBUFSIZE=512
++CONFIG_SYSTEM_ZMODEM_MOUNTPOINT="/tmp"
++# CONFIG_SYSTEM_ZMODEM_RCVSAMPLE is not set
++# CONFIG_SYSTEM_ZMODEM_SENDATTN is not set
++CONFIG_SYSTEM_ZMODEM_ALWAYSSINT=y
++# CONFIG_SYSTEM_ZMODEM_SENDBRAK is not set
++CONFIG_SYSTEM_ZMODEM_RESPTIME=10
++CONFIG_SYSTEM_ZMODEM_CONNTIME=30
++CONFIG_SYSTEM_ZMODEM_SERIALNO=0
++CONFIG_SYSTEM_ZMODEM_MAXERRORS=20
++CONFIG_SYSTEM_ZMODEM_WRITESIZE=0
++# CONFIG_DEBUG_ZMODEM is not set
++
++#
++# IoT.js
++#
++CONFIG_SYSTEM_IOTJS=y
++
++#
++# Lib Module Loading test
++#
++# CONFIG_SYSTEM_LIBMODULE is not set
+diff --git a/nuttx/configs/stm32f4discovery/iotjs/setenv.sh b/nuttx/configs/stm32f4discovery/iotjs/setenv.sh
+new file mode 100755
+index 0000000..127801e
+--- /dev/null
++++ b/nuttx/configs/stm32f4discovery/iotjs/setenv.sh
+@@ -0,0 +1,77 @@
++#!/bin/bash
++# configs/stm32f4discovery/iotjs/setenv.sh
++#
++#   Copyright (C) 2013 Gregory Nutt. All rights reserved.
++#   Author: Gregory Nutt <gnutt@nuttx.org>
++#   Copyright (C) 2015 Sasmung Electronics. All rights reserved.
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions
++# are met:
++#
++# 1. Redistributions of source code must retain the above copyright
++#    notice, this list of conditions and the following disclaimer.
++# 2. Redistributions in binary form must reproduce the above copyright
++#    notice, this list of conditions and the following disclaimer in
++#    the documentation and/or other materials provided with the
++#    distribution.
++# 3. Neither the name NuttX nor the names of its contributors may be
++#    used to endorse or promote products derived from this software
++#    without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
++# FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
++# COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
++# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
++# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
++# OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
++# AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
++# ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
++# POSSIBILITY OF SUCH DAMAGE.
++#
++
++if [ "$_" = "$0" ] ; then
++  echo "You must source this script, not run it!" 1>&2
++  exit 1
++fi
++
++WD=`pwd`
++if [ ! -x "setenv.sh" ]; then
++  echo "This script must be executed from the top-level NuttX build directory"
++  exit 1
++fi
++
++if [ -z "${PATH_ORIG}" ]; then
++  export PATH_ORIG="${PATH}"
++fi
++
++# This is the Cygwin path to the location where I installed the RIDE
++# toolchain under windows.  You will also have to edit this if you install
++# the RIDE toolchain in any other location
++#export TOOLCHAIN_BIN="/cygdrive/c/Program Files (x86)/Raisonance/Ride/arm-gcc/bin"
++
++# This is the Cygwin path to the location where I installed the CodeSourcery
++# toolchain under windows.  You will also have to edit this if you install
++# the CodeSourcery toolchain in any other location
++##export TOOLCHAIN_BIN="/cygdrive/c/Program Files (x86)/CodeSourcery/Sourcery G++ Lite/bin"
++#export TOOLCHAIN_BIN="/cygdrive/c/Users/MyName/MentorGraphics/Sourcery_CodeBench_Lite_for_ARM_EABI/bin"
++
++# These are the Cygwin paths to the locations where I installed the Atollic
++# toolchain under windows.  You will also have to edit this if you install
++# the Atollic toolchain in any other location.  /usr/bin is added before
++# the Atollic bin path because there is are binaries named gcc.exe and g++.exe
++# at those locations as well.
++#export TOOLCHAIN_BIN="/usr/bin:/cygdrive/c/Program Files (x86)/Atollic/TrueSTUDIO for ARM Pro 2.3.0/ARMTools/bin"
++#export TOOLCHAIN_BIN="/usr/bin:/cygdrive/c/Program Files (x86)/Atollic/TrueSTUDIO for STMicroelectronics STM32 Lite 2.3.0/ARMTools/bin"
++
++# This is the Cygwin path to the location where I build the buildroot
++# toolchain.
++#export TOOLCHAIN_BIN="${WD}/../misc/buildroot/build_arm_nofpu/staging_dir/bin"
++
++# Add the path to the toolchain to the PATH varialble
++### export PATH="${TOOLCHAIN_BIN}:/sbin:/usr/sbin:${PATH_ORIG}"
++
++echo "PATH : ${PATH}"
+diff --git a/nuttx/libc/Kconfig b/nuttx/libc/Kconfig
+index 5ea546a..2e4c7b9 100644
+--- a/nuttx/libc/Kconfig
++++ b/nuttx/libc/Kconfig
+@@ -533,3 +533,16 @@ config LIB_SLCDCODEC
+ 		include/nuttx/lcd/slcd_codec.h.  While not correctly a part of the C
+ 		library, it is included here because the encoding side of this
+ 		interface must be accessible by end user programs.
++
++
++config LIBUV
++  bool "Library UV for Async"
++  default y
++  ---help---
++    The famous libuv
++
++config LIBJERRY
++  bool "Library Jerry for JavaScript"
++  default y
++  ---help---
++    JerryScript engine for IoT.js
+diff --git a/nuttx/net/arp/arp_arpin.c b/nuttx/net/arp/arp_arpin.c
+index a94bbb9..4a1b318 100644
+--- a/nuttx/net/arp/arp_arpin.c
++++ b/nuttx/net/arp/arp_arpin.c
+@@ -119,7 +119,9 @@ void arp_arpin(FAR struct net_driver_s *dev)
+   switch(arp->ah_opcode)
+     {
+       case HTONS(ARP_REQUEST):
++#ifndef CONFIG_DEBUG_NET_DISABLETOOMANY
+         nllvdbg("ARP request for IP %04lx\n", (long)ipaddr);
++#endif
+ 
+         /* ARP request. If it asked for our address, we send out a reply. */
+ 
+diff --git a/nuttx/net/socket/bind.c b/nuttx/net/socket/bind.c
+index c577dd8..22e4e34 100644
+--- a/nuttx/net/socket/bind.c
++++ b/nuttx/net/socket/bind.c
+@@ -307,6 +307,7 @@ int psock_bind(FAR struct socket *psock, const struct sockaddr *addr,
+       goto errout;
+     }
+ 
++  *get_errno_ptr() = 0; /* for working with libuv */
+   return OK;
+ 
+ errout:
+diff --git a/nuttx/net/tcp/tcp_accept.c b/nuttx/net/tcp/tcp_accept.c
+index 96c6d8b..03577b7 100644
+--- a/nuttx/net/tcp/tcp_accept.c
++++ b/nuttx/net/tcp/tcp_accept.c
+@@ -352,8 +352,7 @@ int psock_tcp_accept(FAR struct socket *psock, FAR struct sockaddr *addr,
+   return OK;
+ 
+ errout:
+-  set_errno(err);
+-  return ERROR;
++  return -err;
+ }
+ 
+ #endif /* CONFIG_NET && CONFIG_NSOCKET_DESCRIPTORS && CONFIG_NET_TCP */
+diff --git a/nuttx/syscall/syscall.csv b/nuttx/syscall/syscall.csv
+index 1ad010d..ba3bbca 100644
+--- a/nuttx/syscall/syscall.csv
++++ b/nuttx/syscall/syscall.csv
+@@ -37,9 +37,9 @@
+ "mq_close","mqueue.h","!defined(CONFIG_DISABLE_MQUEUE)","int","mqd_t"
+ "mq_notify","mqueue.h","!defined(CONFIG_DISABLE_SIGNALS) && !defined(CONFIG_DISABLE_MQUEUE)","int","mqd_t","const struct sigevent*"
+ "mq_open","mqueue.h","!defined(CONFIG_DISABLE_MQUEUE)","mqd_t","const char*","int","..."
+-"mq_receive","mqueue.h","!defined(CONFIG_DISABLE_MQUEUE)","ssize_t","mqd_t","void*","size_t","int*"
+-"mq_send","mqueue.h","!defined(CONFIG_DISABLE_MQUEUE)","int","mqd_t","const void*","size_t","int"
+-"mq_timedreceive","mqueue.h","!defined(CONFIG_DISABLE_MQUEUE)","ssize_t","mqd_t","void*","size_t","int*","const struct timespec*"
++"mq_receive","mqueue.h","!defined(CONFIG_DISABLE_MQUEUE)","ssize_t","mqd_t","char*","size_t","int*"
++"mq_send","mqueue.h","!defined(CONFIG_DISABLE_MQUEUE)","int","mqd_t","const char*","size_t","int"
++"mq_timedreceive","mqueue.h","!defined(CONFIG_DISABLE_MQUEUE)","ssize_t","mqd_t","char*","size_t","int*","const struct timespec*"
+ "mq_timedsend","mqueue.h","!defined(CONFIG_DISABLE_MQUEUE)","int","mqd_t","const char*","size_t","int","const struct timespec*"
+ "mq_unlink","mqueue.h","!defined(CONFIG_DISABLE_MQUEUE)","int","const char*"
+ "on_exit","stdlib.h","defined(CONFIG_SCHED_ONEXIT)","int","CODE void (*)(int, FAR void *)","FAR void *"
+@@ -52,7 +52,7 @@
+ "prctl","sys/prctl.h", "CONFIG_TASK_NAME_SIZE > 0","int","int","..."
+ "pread","unistd.h","CONFIG_NSOCKET_DESCRIPTORS > 0 || CONFIG_NFILE_DESCRIPTORS > 0","ssize_t","int","FAR void*","size_t","off_t"
+ "pwrite","unistd.h","CONFIG_NSOCKET_DESCRIPTORS > 0 || CONFIG_NFILE_DESCRIPTORS > 0","ssize_t","int","FAR const void*","size_t","off_t"
+-"posix_spawnp","spawn.h","!defined(CONFIG_BINFMT_DISABLE) && defined(CONFIG_LIBC_EXECFUNCS) && defined(CONFIG_BINFMT_EXEPATH)","int","FAR pid_t *","FAR const char *","FAR const posix_spawn_file_actions_t *","FAR const posix_spawnattr_t *","FAR char *const []|FAR char *const *","FAR char *const []"
++"posix_spawnp","spawn.h","!defined(CONFIG_BINFMT_DISABLE) && defined(CONFIG_LIBC_EXECFUNCS) && defined(CONFIG_BINFMT_EXEPATH)","int","FAR pid_t *","FAR const char *","FAR const posix_spawn_file_actions_t *","FAR const posix_spawnattr_t *","FAR char *const []|FAR char *const *","FAR char *const *"
+ "posix_spawn","spawn.h","!defined(CONFIG_BINFMT_DISABLE) && defined(CONFIG_LIBC_EXECFUNCS) && !defined(CONFIG_BINFMT_EXEPATH)","int","FAR pid_t *","FAR const char *","FAR const posix_spawn_file_actions_t *","FAR const posix_spawnattr_t *","FAR char *const []|FAR char *const *","FAR char *const []|FAR char *const *"
+ "pthread_barrier_destroy","pthread.h","!defined(CONFIG_DISABLE_PTHREAD)","int","FAR pthread_barrier_t*"
+ "pthread_barrier_init","pthread.h","!defined(CONFIG_DISABLE_PTHREAD)","int","FAR pthread_barrier_t*","FAR const pthread_barrierattr_t*","unsigned int"
+diff --git a/nuttx/tools/mkconfig.c b/nuttx/tools/mkconfig.c
+index 93dc7e3..075415b 100644
+--- a/nuttx/tools/mkconfig.c
++++ b/nuttx/tools/mkconfig.c
+@@ -277,6 +277,11 @@ int main(int argc, char **argv, char **envp)
+   printf("#ifndef CONFIG_USER_ENTRYPOINT\n");
+   printf("# define CONFIG_USER_ENTRYPOINT main\n");
+   printf("#endif\n\n");
++  printf("/* libuv needs __NUTTX__ for platform\n");
++  printf(" */\n\n");
++  printf("#ifdef CONFIG_LIBUV\n");
++  printf("# define __NUTTX__ 1\n");
++  printf("#endif\n\n");
+   printf("#endif /* __INCLUDE_NUTTX_CONFIG_H */\n");
+   fclose(stream);
+ 
+diff --git a/nuttx/tools/mkexport.sh b/nuttx/tools/mkexport.sh
+index 37a7839..f7db39f 100755
+--- a/nuttx/tools/mkexport.sh
++++ b/nuttx/tools/mkexport.sh
+@@ -227,6 +227,10 @@ if [ "X${USRONLY}" == "Xy" ]; then
+ else
+ 	echo "ARCHCFLAGS   = ${ARCHCFLAGS}" >"${EXPORTDIR}/build/Make.defs"
+ 	echo "ARCHCXXFLAGS = ${ARCHCXXFLAGS}" >>"${EXPORTDIR}/build/Make.defs"
++	echo "ARCHOPTIMIZATION = ${ARCHOPTIMIZATION}" >>"${EXPORTDIR}/build/Make.defs"
++	echo "CC               = ${CC}" >>"${EXPORTDIR}/build/Make.defs"
++	echo "CXX              = ${CXX}" >>"${EXPORTDIR}/build/Make.defs"
++	echo "OBJCOPY          = ${OBJCOPY}" >>"${EXPORTDIR}/build/Make.defs"
+ fi
+ 
+ # Copy the NuttX include directory (retaining attributes and following symbolic links)
+diff --git a/nuttx/tools/mkharmony.py b/nuttx/tools/mkharmony.py
+new file mode 100755
+index 0000000..5e38c9d
+--- /dev/null
++++ b/nuttx/tools/mkharmony.py
+@@ -0,0 +1,252 @@
++#!/usr/bin/env python
++
++import os
++import shutil
++import sys
++from os import path
++
++ECHO = True
++
++SCRIPT_PATH = path.dirname(path.abspath(__file__))
++NUTTX_TOOLS = SCRIPT_PATH
++NUTTX_HOME = path.abspath(path.join(SCRIPT_PATH, "../"))
++LIBUV_HOME = path.abspath(path.join(NUTTX_HOME, "../../libuv"))
++JERRY_HOME = path.abspath(path.join(NUTTX_HOME, "../../jerry"))
++
++LIBUV_LIB = "libuv.a"
++LIBUV_CONFIGURE = path.abspath(path.join(LIBUV_HOME, "nuttx-configure"));
++LIBUV_OUT_PATH = path.abspath(path.join(LIBUV_HOME, "out"));
++LIBUV_BUILDTYPE = "Release"
++LIBUV_LIB_PATH = path.abspath(path.join(path.join(LIBUV_OUT_PATH, LIBUV_BUILDTYPE), LIBUV_LIB))
++LIBUV_INCLUDE = path.abspath(path.join(LIBUV_HOME, "include"))
++
++JERRY_LIB = "libjerry.a"
++JERRY_OUT = "build/obj-VALGRIND-OFF/stm32f4/jerry-core/librelease-cp.jerry-core.a"
++JERYY_OUT_PATH = path.abspath(path.join(JERRY_HOME, JERRY_OUT));
++
++NUTTX_LIBDIR = path.abspath(path.join(NUTTX_HOME, "lib"))
++NUTTX_LIBUV_LIB = path.abspath(path.join(NUTTX_LIBDIR, LIBUV_LIB))
++NUTTX_JERRY_LIB = path.abspath(path.join(NUTTX_LIBDIR, JERRY_LIB))
++NUTTX_APPS = path.abspath(path.join(NUTTX_HOME, "../apps"))
++NUTTX_APPS_INCLUDE = path.abspath(path.join(NUTTX_APPS, "include"))
++NUTTX_APPS_JERRY = path.abspath(path.join(NUTTX_APPS, "interpreters/jerry"))
++NUTTX_APPS_JERRY_LIB = path.abspath(path.join(NUTTX_APPS_JERRY, JERRY_LIB))
++NUTTX_CONF = path.abspath(path.join(NUTTX_TOOLS, "configure.sh"))
++NUTTX_CONF_IOTJS = "stm32f4discovery/iotjs"
++
++
++STFLASH = path.abspath(path.join(NUTTX_HOME, "../../stlink/st-flash"))
++
++
++MAKE = "make"
++
++Option = {
++	'make-libuv': False,
++	'make-jerry': False,
++	'conf-nuttx': False,
++	'make-nuttx': True,
++	'install': False,
++	'conn': False,
++}
++
++
++def check_path(path):
++	if not os.path.exists(path):
++		print "'" + path + "' does not exist"
++		return False
++	return True
++
++
++def run_cmd(cmd, args):
++	cmd_line = cmd;
++	for arg in args:
++		cmd_line += " "
++		cmd_line += arg
++	if ECHO:
++		print cmd_line
++	os.system(cmd_line + " > /dev/null")
++
++
++# Make libuv library
++def mk_libuv():
++	if not check_path(LIBUV_HOME):
++		return False
++	if not check_path(LIBUV_CONFIGURE):
++		return False
++
++	# Change directory to libuv home.
++	os.chdir(LIBUV_HOME)
++
++	# Configuration.
++	run_cmd(LIBUV_CONFIGURE, [NUTTX_HOME])
++
++	if not check_path(LIBUV_OUT_PATH):
++		return False
++
++	# Make libuv.
++	run_cmd(MAKE, ["-C", LIBUV_OUT_PATH, "BUILDTYPE=" + LIBUV_BUILDTYPE])
++	if not check_path(LIBUV_LIB_PATH):
++		return False
++
++	return True
++
++
++# Copy libuv
++def cp_libuv():
++	# Copy to lib directory.
++	print "Copy libuv library"
++	if not check_path(NUTTX_LIBDIR):
++		return False
++	shutil.copy(LIBUV_LIB_PATH, NUTTX_LIBDIR)
++	if not check_path(NUTTX_LIBUV_LIB):
++		return False
++
++	# Copy include.
++	print "Copy libuv include files"
++	files = ["uv.h",
++			 "uv-unix.h",
++			 "uv-nuttx.h",
++			 "uv-errno.h",
++			 "uv-threadpool.h",
++			 "uv-version.h",
++			 ]
++	for f in files:
++		src = path.abspath(path.join(LIBUV_INCLUDE, f))
++		dst = path.abspath(path.join(NUTTX_APPS_INCLUDE, f))
++		if not check_path(src):
++			return False
++		shutil.copy(src, dst)
++		if not check_path(dst):
++			return False
++
++	return True
++
++
++# Make jerry
++def mk_jerry():
++	if not check_path(JERRY_HOME):
++		return False
++
++	# Change directory to jerry home.
++	os.chdir(JERRY_HOME)
++	
++	# Make jerry
++	run_cmd(MAKE, ["release.mcu_stm32f4-cp", "-j"])
++
++	if not check_path(JERRY_OUT):
++		return False
++
++	return True
++
++
++# Copy jerry
++def cp_jerry():
++	if not check_path(JERRY_OUT):
++		return False
++
++	if not check_path(NUTTX_APPS_JERRY):
++		return False
++
++	shutil.copy(JERRY_OUT, NUTTX_JERRY_LIB)
++	if not check_path(NUTTX_JERRY_LIB):
++		return False
++
++	shutil.copy(JERRY_OUT, NUTTX_APPS_JERRY_LIB)
++	if not check_path(NUTTX_APPS_JERRY_LIB):
++		return False
++
++	return True
++
++
++# Config nuttx
++def conf_nuttx():
++	# Change directory to nuttx tool.
++	os.chdir(NUTTX_TOOLS)
++
++	# run configure
++	if not check_path(NUTTX_CONF):
++		return False
++
++	run_cmd(NUTTX_CONF, [NUTTX_CONF_IOTJS])
++
++	return True
++
++
++# Make nuttx
++def mk_nuttx():
++	# Change directory to nuttx home.
++	os.chdir(NUTTX_HOME)
++
++	# Make nuttx.
++	run_cmd(MAKE, [])
++
++	return True
++
++
++# Install
++def install():
++	# Change directory to nuttx home.
++	os.chdir(NUTTX_HOME)
++
++	# Run install
++	if not check_path(STFLASH):
++		return False
++
++	nuttx_bin = path.abspath(path.join(NUTTX_HOME, 'nuttx.bin'))
++	if not check_path(nuttx_bin):
++		return False
++
++	run_cmd(STFLASH, ['write', nuttx_bin, '0x8000000'])
++
++	return True
++
++
++# Connect
++def conn():
++	run_cmd('minicom', ['--device=/dev/ttyACM0'])
++	return True
++
++def parse_args():
++	for arg in sys.argv:
++		if arg[:1] == '-':
++			opt = arg[3:] if arg[1:3] == 'no' else arg[1:]
++			val = False if arg[1:3] == 'no' else True
++			if opt[:1] == '-':
++				opt = opt[1:]
++			Option[opt] = val
++
++
++def main():
++	parse_args()
++
++	actions = []
++
++	if Option['make-libuv']:
++		actions.append(mk_libuv)
++		actions.append(cp_libuv)
++
++	if Option['make-jerry']:
++		actions.append(mk_jerry)
++		actions.append(cp_jerry)
++
++	if Option['conf-nuttx']:
++		actions.append(conf_nuttx)
++
++	if Option['make-nuttx']:
++		actions.append(mk_nuttx)
++
++	if Option['install']:
++		actions.append(install)
++
++	if Option['conn']:
++		actions.append(conn)
++
++	act_no = 0
++	for act in actions:
++		act_no = act_no + 1
++		print "[" + str(act_no) + "] " + act.__name__
++		if not act():
++			return
++
++
++main()
+diff --git a/nuttx/tools/rcS.template b/nuttx/tools/rcS.template
+new file mode 100644
+index 0000000..49df5b4
+--- /dev/null
++++ b/nuttx/tools/rcS.template
+@@ -0,0 +1,11 @@
++# binfs and procfs
++mount -t binfs /bin
++mount -t procfs /proc
++
++# sdcard, leave it fail if not support or no sdcard
++mount -t vfat /dev/mmcsd0 /mnt/sdcard
++
++# Create a RAMDISK and mount it at XXXRDMOUNTPOINTXXX
++# mkrd -m XXXMKRDMINORXXX -s XXMKRDSECTORSIZEXXX XXMKRDBLOCKSXXX
++# mkfatfs /dev/ramXXXMKRDMINORXXX
++# mount -t vfat /dev/ramXXXMKRDMINORXXX XXXRDMOUNTPOINTXXX
