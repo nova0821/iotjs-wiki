@@ -5,7 +5,7 @@ Welcome to the IoT.js!
 
 ### IoT.js
 - Project Overview
-> IoT.js is a platform similar to node.js for "internet of things" built on
+> IoT.js is a platform similar to node.js for "Internet of Things" built on
 > lightweight JavaScript interpreter [JerryScript](https://github.com/Samsung/jerryscript)
 > and libuv for event driven(non-blocking I/O model) to provide consistent programming experience
 > with node.js.
