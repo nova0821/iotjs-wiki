@@ -20,3 +20,23 @@ We have the same requirements for using the signed-off-by process as the Linux k
 You should use your real name and email address in the format below:
 
 > IoT.js-DCO-1.0-Signed-off-by: Random J Developer random@developer.example.org
+
+
+#### How to add DCO every single commit automatically.
+
+It is easy to forget adding DCO end of every commit message. Fortunately there is a nice way to do it automatically. Once you've clone the repository into your local machine, you can add `prepare commit message hook` in `.git/hooks` directory like this:
+
+```
+#!/usr/bin/env python
+
+import sys
+
+commit_msg_filepath = sys.argv[1]
+
+with open(commit_msg_filepath, "r+") as f:
+	content = f.read()
+	f.seek(0, 0)
+	f.write("%s\n\nIoT.js-DCO-1.0-Signed-off-by: <Your Name> <Your Email>" % content)
+```
+
+Please refer [Git Hooks](http://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) for more information.
