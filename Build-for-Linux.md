@@ -3,9 +3,7 @@
 2. Set build options
 3. Build all at once
 
-
 ***
-
 
 #### Build Host
 Ubuntu 14.04 is recommended. Other Unix like platforms can be used. If it doesn't seem to work properly on other platforms, please look into [Issues](https://github.com/Samsung/iotjs/issues). Someone may have already tried. If you can't find any related one, please leave an issue for help.
@@ -31,7 +29,6 @@ sudo apt-get install gyp cmake build-essential
 ```
 
 gcc/g++ compiler 4.8 and upper versions are required to compile. If you have any problems upgrading to 4.8, please google. One of those helped me is [how-to-install-gcc-4-8](http://askubuntu.com/questions/271388/how-to-install-gcc-4-8).
-
 
 ### 1. Get the sources
 
