@@ -85,7 +85,7 @@ To build debug version and results to 'output' folder
 ./tools/build.py --buildtype=debug --builddir=output
 ```
 
-If you want to build 32bit version in x86_64 and debug only a library,
+If you want to build 32bit version in x86_64 and debug version only produce a library,
 ```
 ./tools/build.py --target-arch=i686 --buildtype=debug --buildlib
 ```
@@ -94,24 +94,24 @@ If you want to build 32bit version in x86_64 and debug only a library,
 
 This section for explaining how to build only IoT.js when you did some modification. IoT.js uses [CMake](http://www.cmake.org/) for makefile generation. You can go inside the build folder and build with 'make' command. Go inside where your target platform name is, for example x86_64 linux,
 ```
-cd build/x86_64-linux/iotjs
+cd build/x86_64-linux/release/iotjs
 make
 ```
 
 #### How to execute?
 
-Executable name is **'iotjs'** and resides in (target-arch)-(target-os)/iotjs. 
+Executable name is **'iotjs'** and resides in (target-arch)-(target-os)/(buildtype)/iotjs. 
 To run greetings JavaScript in test folder, for example;
 
 ```
-./build/x86_64-linux/iotjs/iotjs ./test/hello_iot.js
+./build/x86_64-linux/release/iotjs/iotjs ./test/hello_iot.js
 ```
 
 #### What build script does
 
 1. It will clone sub-modules(JerryScript and libuv), this will be done only once when version hash has not changed.
 2. Checkout matching version for each sub-modules.
-3. Build sub-modules, you can see the outputs at build/(target-arch)-(target-os)/libs folder.
+3. Build sub-modules, you can see the outputs at build/(target-arch)-(target-os)/(buildtype)/libs folder.
 4. Build IoT.js
 
 
@@ -123,6 +123,6 @@ rm -rf build
 ```
 or it you want to clean for rebuild one sub-module, for example libuv;
 ```
-rm -rf build/x86_64-linux/deps/libuv
+rm -rf build/x86_64-linux/release/deps/libuv
 ```
 
