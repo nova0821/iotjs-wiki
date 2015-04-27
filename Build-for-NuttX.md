@@ -79,16 +79,16 @@ patch -p1 < ../iotjs-nuttx-20150421.patch
 ```
 
 
-##### What is it about the patch?
+##### What is it about the _patch_ in above?
 
-This patch includes settings for IoT.js on NuttX with STM32F4-discovery with BB.
-It's one of our reference target board that we are working on to make development easier. Some to list are;
+This _patch_ includes settings for IoT.js on NuttX with STM32F4-discovery and BB. It's one of our reference target board that we are working on to make development easier. 
+Some of the settings are;
 * added libuv, libjerry, iotjs in configuration
 * enabled rcS file in /etc/init.d so that we can use micro SD
 * enabled Network, UART6 for serial debug message
 * filter too many debug message for network
 
-The patch include some fixes that occurred when working with current version of IoT.js, some to list are;
+The patch include some fixes that occurred when working with current version of IoT.js, some of the fixes are;
 * fix nxflat that had some problem when reading micro SD card
 * fix net accept() error return
 * fix syscall CSV file for generating proxy source codes
@@ -106,7 +106,7 @@ cd ..
 You may need to change your IP and MAC address.
 
 ```
-# assume you are in nuttx folder where .config resides
+# assume you are in nuttx folder where _.config_ resides
 make menuconfig
 ```
 
@@ -116,12 +116,12 @@ Select items as follows and change to your address
 
 > How to set MAC address for development?
 > There are _locally administered addresses_ in MAC address.
-> just google "free mac address for development" and you may know what to do.
+> By googling "free mac address for development", you may find what to do.
 
 
-### 3. Build iotjs and libuv, jerryscript
+### 3. Build IoT.js and libuv, JerryScript
 
-As noted in build linux page, you need to give additional options for NuttX.
+As noted in [Build for Linux](https://github.com/Samsung/iotjs/wiki/Build-for-Linux) page, you need to give additional options for NuttX.
 
 ```
 --target-arch=arm 
@@ -130,14 +130,14 @@ As noted in build linux page, you need to give additional options for NuttX.
 --buildlib
 ```
 
-To build IoT.js for nuttx, first, you need to build NuttX to create configuration file, nuttx/config.h.
+To build IoT.js for nuttx, first, you need to build NuttX to create configuration file 'nuttx/config.h'.
 
 ```
 cd harmony/nuttx/nuttx
 make
 ```
 
-It will show errors that libuv.a cannot be found. It is ok for now. If you just want to try nuttx only before proceeding, please turn off three options in ".config" file.
+It will show errors that _libuv.a cannot be found_. It is ok for now. If you just want to try nuttx only before proceeding, please turn off three options in ".config" file.
 
 ```
 CONFIG_SYSTEM_IOTJS=n
@@ -145,7 +145,7 @@ CONFIG_LIBUV=n
 CONFIG_LIBJERRY=n
 ```
 
-Now, back to building IoT.js.
+And then, back to building IoT.js.
 
 ```
 cd harmony/iotjs
@@ -174,11 +174,11 @@ If all things are ready to go, build.
 make
 ```
 
-With successful compilation, you'll get nuttx and nuttx.bin files.
+With successful compilation, you'll get _nuttx_ and _nuttx.bin_ files.
 
 #### Prepare flashing to target board
 
-Flashing to STM32F4-discovery board needs another tool called _stlink_. You can download it from [here](https://github.com/texane/stlink) or follow below steps;
+Flashing to STM32F4-discovery board needs another tool called _stlink_. You can download it at [here](https://github.com/texane/stlink) or follow below steps;
 
 ```
 cd harmony
@@ -190,16 +190,16 @@ cd stlink
 make
 ```
 
-Relative path is used when executing stlink tools. You may have to change them when not cloned in harmony folder.
+Relative path is used when executing _stlink_ tools. You may have to change them when they are not cloned in harmony folder.
 
 
 #### Flash
 
-Assume you are in nuttx/nuttx folder where nuttx.bin file exist.
+Assume you are in nuttx/nuttx folder where _nuttx.bin_ file exists.
 ```
 ../../stlink/st-flash write nuttx.bin 0x8000000
 ```
-With successful flashing you'll get something like
+With successful flashing you'll get something like;
 ```
 INFO src/stlink-common.c: Starting verification of write complete
 INFO src/stlink-common.c: Flash written and verified! jolly good!
@@ -208,7 +208,7 @@ INFO src/stlink-common.c: Flash written and verified! jolly good!
 
 ### Running IoT.js
 
-You can connect STM32F4-discovery board by 1) USB as ttyACM0, or 2) telnet as telnet daemon is running. We use [minicom](https://help.ubuntu.com/community/Minicom) for USB ttyACM0.
+You can connect STM32F4-discovery board by 1) USB as ttyACM0, or 2) telnet if telnet daemon is running. We use [minicom](https://help.ubuntu.com/community/Minicom) for USB ttyACM0.
 
 ```
 minicom --device=/dev/ttyACM0
@@ -217,7 +217,7 @@ You may need to enable _Add Carriage Return_ option. Press Ctrl-A + Z + U for sh
 
 Press _Enter_ key several times to trigger NuttShell to start.
 
-As micro SD is enable, you can copy any script file to it and run with nsh for example;
+If micro SD is enable, you can copy any script file to it and run with _nsh_, for example;
 ```
 NuttShell (NSH)
 nsh> iotjs /mnt/sdcard/test.js
