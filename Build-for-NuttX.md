@@ -1,7 +1,7 @@
 ### Overall steps to build for NuttX
 1. Get the sources
 2. Configure NuttX
-3. Build libuv, jerryscript and iotjs
+3. Build libuv, JerryScript and IoT.js
 4. Copy libraries to nuttx/nuttx/lib folder
 5. Build NuttX
 
@@ -12,13 +12,12 @@ Please acknowledge that we are not experts on NuttX and may have trouble to reso
 We recommend Ubuntu 14.04. Other platforms can be used but not verified by us.
 
 #### Target board
-
-Our work and this document uses [STM32F4-discovery with BB](http://www.st.com/web/en/catalog/tools/FM116/SC959/SS1532/LN1199/PF255417) as reference target. 
+Our work and this document describes [STM32F4-discovery with BB](http://www.st.com/web/en/catalog/tools/FM116/SC959/SS1532/LN1199/PF255417) as reference target. 
 
 ##### Relation with STM board?
-We do not have any business relation with STM board. It is selected cause it has enough RAM and Flash ROM so that development can be more comfortable and have lots of pins to play with. 
+We do not have any business relation with STM board. It is selected because it has enough RAM and Flash ROM so that development can be more comfortable. And it have lots of pins to play with. 
 
-When IoT.js gets build up and optimised in the future it may work in devices having smaller resource.
+When IoT.js is built up and optimized, it may work in devices having smaller resource.
 
 
 #### Toolchain 
@@ -27,7 +26,7 @@ As for STM32F4-discovery uses ARM, we recommend gcc-arm-none-eabi version 4.8. R
 
 #### Packages 
 
-You may need these packages installed as like;
+You may need to install below packages as follows;
 ```
 sudo apt-get install autoconf libtool gperf flex bison
 sudo apt-get install libusb-1.0-0-dev
@@ -51,12 +50,12 @@ sudo ldconfig
 
 ### 1. Get the sources
 
-If you haven't read [Build for Linux](https://github.com/Samsung/iotjs/wiki/Build-for-Linux) page, it would be better to read it. Some explanations may bee skipped in this document.
+If you haven't read [Build for Linux](https://github.com/Samsung/iotjs/wiki/Build-for-Linux) page, it would be better to read it. Some explanations may be skipped in this document.
 
 
 #### Directory structure
 
-Assume harmony as the root folder so it may look like this;
+Assume _harmony_ as a root folder so it may look like this;
 * harmony
  * iotjs
  * nuttx
@@ -69,7 +68,7 @@ git clone http://git.code.sf.net/p/nuttx/git nuttx
 
 #### Apply patch to NuttX for IoT.js
 
-Download [this](???) file to harmony folder and extract it
+Download [this](???) file to harmony folder and extract it.
 
 ```
 cd harmony
