@@ -58,7 +58,7 @@ target-os=linux|nuttx (linux is default)
 make-flags=-j9 (options to send to make)
 nuttx-home= (no default value)
 init-submodule (default is true)
-tidy= (true)
+tidy (default is true)
 ```
 
 Options that may need explanations.
