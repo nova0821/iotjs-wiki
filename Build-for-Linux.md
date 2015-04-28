@@ -57,12 +57,16 @@ target-arch=x86_64|i686|arm (depends on your host platform)
 target-os=linux|nuttx (linux is default)
 make-flags=-j9 (options to send to make)
 nuttx-home= (no default value)
+init-submodule (default is true)
+tidy= (true)
 ```
 
 Options that may need explanations.
 * builddir: compile intermediate and output files are generated here. 
 * buildlib: generating _iotjs_ to a library if true(e.g. for NuttX) it doesn't need value. _--buildlib_ is same as '--buildlib=true'.
 * nuttx-home: it's NuttX platform specific, to tell where the NuttX configuration and header files are.
+* init-submodule: for normal cases you can ignore this, it will checkout matching revision of each library. but if you want to change something in deps library or checkout other revision and try it out, use this option. compared to others you should give __--noinit-submodule__ to disable.
+* tidy: checks codes are tidy. if you want this disabled, add __no__ in from of the name, like __--notidy__
 
 To give options, please use two dashes '--' before the option name as described in following sections.
  
@@ -88,6 +92,11 @@ To build debug version and results to 'output' folder
 If you want to build 32bit version in x86_64 and debug version only produce a library,
 ```
 ./tools/build.py --target-arch=i686 --buildtype=debug --buildlib
+```
+
+To build debug version and with different jerry revision. assume you have already checked it out.
+```
+./tools/build.py --buildtype=debug --noinit-submodule
 ```
 
 #### Build only IoT.js with given build option
