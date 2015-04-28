@@ -68,11 +68,11 @@ git clone http://git.code.sf.net/p/nuttx/git nuttx
 
 #### Apply patch to NuttX for IoT.js
 
-Download [this](https://github.com/Samsung/iotjs/blob/wikiattach/iotjs-nuttx-20150421.tar.gz?raw=true) file to harmony folder and extract it.
+Download [this iotjs-nuttx-20150421.tar.gz](https://github.com/Samsung/iotjs/blob/wikiattach/iotjs-nuttx-20150421.tar.gz?raw=true) file to harmony folder.
 
 ```
 cd harmony
-# assume you already download and copied to this folder
+# assume you already copied to this folder
 tar xvf iotjs-nuttx-20150421.tar.gz
 cd nuttx
 git checkout -b iotjs 2eba8afab5e8bdc32a0f6365de070eaa7f383149
