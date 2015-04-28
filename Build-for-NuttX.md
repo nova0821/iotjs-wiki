@@ -120,7 +120,7 @@ Select items as follows and change to your address
 > By googling "free mac address for development", you may find what to do.
 
 
-### 3. Build IoT.js and libuv, JerryScript
+### 3. Build IoT.js with libuv and JerryScript
 
 As noted in [Build for Linux](https://github.com/Samsung/iotjs/wiki/Build-for-Linux) page, you need to give additional options for NuttX.
 
