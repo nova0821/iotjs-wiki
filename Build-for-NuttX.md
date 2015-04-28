@@ -150,7 +150,8 @@ And then, back to building IoT.js.
 
 ```
 cd harmony/iotjs
-./tools/build.py --target-arch=arm --target-os=nuttx --nuttx-home=/home/(your_id)/harmony/nuttx/nuttx --buildlib
+./tools/build.py --target-arch=arm --target-os=nuttx \
+--nuttx-home=/home/(your_id)/harmony/nuttx/nuttx --buildlib
 ```
 
 ### 4. Copy libraries to nuttx/nuttx/lib folder
