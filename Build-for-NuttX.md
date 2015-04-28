@@ -68,7 +68,7 @@ git clone http://git.code.sf.net/p/nuttx/git nuttx
 
 #### Apply patch to NuttX for IoT.js
 
-Download [this iotjs-nuttx-20150421.tar.gz](https://github.com/Samsung/iotjs/blob/wikiattach/iotjs-nuttx-20150421.tar.gz?raw=true) file to harmony folder.
+Download [iotjs-nuttx-20150421.tar.gz](https://github.com/Samsung/iotjs/blob/wikiattach/iotjs-nuttx-20150421.tar.gz?raw=true) file to harmony folder.
 
 ```
 cd harmony
@@ -158,9 +158,9 @@ cd harmony/iotjs
 For the moment, lib files need to be copied manually.
 
 ```
-cp build/arm-nuttx/libs/libjerrycore.a ../nuttx/nuttx/lib/libjerry.a
-cp build/arm-nuttx/libs/libuv.a ../nuttx/nuttx/lib
-cp build/arm-nuttx/iotjs/liblibiotjs.a ../nuttx/nuttx/lib/libiotjs.a
+cp build/arm-nuttx/release/libs/libjerrycore.a ../nuttx/nuttx/lib/libjerry.a
+cp build/arm-nuttx/release/libs/libuv.a ../nuttx/nuttx/lib
+cp build/arm-nuttx/release/iotjs/liblibiotjs.a ../nuttx/nuttx/lib/libiotjs.a
 ```
 
 
