@@ -52,23 +52,23 @@ Existing build options are listed as follows;
 ```
 buildtype=release|debug (release is default)
 builddir=build (build is default)
-buildlib (default is no)
+buildlib (default is False)
 target-arch=x86_64|i686|arm (depends on your host platform)
 target-os=linux|nuttx (linux is default)
 make-flags=-j9 (options to send to make)
 nuttx-home= (no default value)
-init-submodule (default is yes)
-tidy (default is yes)
+init-submodule (default is True)
+tidy (default is True)
 ```
+
+To give options, please use two dashes '--' before the option name as described in following sections.
 
 Options that may need explanations.
 * builddir: compile intermediate and output files are generated here. 
-* buildlib: generating _iotjs_ to a library if given(e.g. for NuttX).
+* buildlib: generating _iotjs_ to a library if True(e.g. for NuttX). give __--buildlib___ to make it True.
 * nuttx-home: it's NuttX platform specific, to tell where the NuttX configuration and header files are.
-* init-submodule: for normal cases you can ignore this, it will checkout matching revision of each library. but if you want to change something in deps library or checkout other revision and try it out, use this option. give __--noinit-submodule__ if you don't want to init submodule.
-* tidy: checks codes are tidy. we recommend to use this option. add __no__ in from of the name, like __--notidy__ if you want to turn it off.
-
-To give options, please use two dashes '--' before the option name as described in following sections.
+* init-submodule: for normal cases you can ignore this, it will checkout matching revision of each sub-module library every time. but if you want to change something or checkout other revision, use __--noinit-submodule__.
+* tidy: checks codes are tidy. we recommend to use this option. use __--notidy__ if you want to turn it off.
 
 
 ### 3. Build all at once
