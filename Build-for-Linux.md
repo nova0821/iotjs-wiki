@@ -65,7 +65,7 @@ To give options, please use two dashes '--' before the option name as described 
 
 Options that may need explanations.
 * builddir: compile intermediate and output files are generated here. 
-* buildlib: generating _iotjs_ to a library if True(e.g. for NuttX). give __--buildlib___ to make it True.
+* buildlib: generating _iotjs_ to a library if True(e.g. for NuttX). give __--buildlib__ to make it True.
 * nuttx-home: it's NuttX platform specific, to tell where the NuttX configuration and header files are.
 * init-submodule: for normal cases you can ignore this, it will checkout matching revision of each sub-module library every time. but if you want to change something or checkout other revision, use __--noinit-submodule__.
 * tidy: checks codes are tidy. we recommend to use this option. use __--notidy__ if you want to turn it off.
