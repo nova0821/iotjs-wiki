@@ -127,7 +127,7 @@ As noted in [Build for Linux](https://github.com/Samsung/iotjs/wiki/Build-for-Li
 ```
 --target-arch=arm 
 --target-os=nuttx 
---nuttx-home=(nuttx home where .config file exist)
+--nuttx-home=(full path of nuttx home where .config file exist)
 --buildlib
 ```
 
@@ -146,12 +146,13 @@ CONFIG_LIBUV=n
 CONFIG_LIBJERRY=n
 ```
 
-And then, back to building IoT.js.
+And back to building IoT.js.
+If you have harmony in /home/maxwell/harmony, for example;
 
 ```
 cd harmony/iotjs
 ./tools/build.py --target-arch=arm --target-os=nuttx \
---nuttx-home=/home/(your_id)/harmony/nuttx/nuttx --buildlib
+--nuttx-home=/home/maxwell/harmony/nuttx/nuttx --buildlib
 ```
 
 ### 4. Copy libraries to nuttx/nuttx/lib folder
