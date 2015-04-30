@@ -23,7 +23,7 @@ Allocate a new buffer containing given `str`.
 
 ### Class Methods
 
-### Buffer.byteLength(string[,encoding])
+#### Buffer.byteLength(string[,encoding])
 * `string: String`
 * `encoding: String`, Default: `utf8`
 * Return: `Number`
