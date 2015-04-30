@@ -21,6 +21,12 @@ Allocate a new buffer copied from given `buffer`.
 
 Allocate a new buffer containing given `str`.
 
+#### new Buffer(list)
+* `list: Array of Buffer`
+
+Allocate a new buffer concatenating all the Buffers in the given `list`.
+It is exactly the same with `Buffer.concat(list)`
+
 ### Class Methods
 
 #### Buffer.byteLength(string[,encoding])
@@ -31,9 +37,8 @@ Allocate a new buffer containing given `str`.
 Returns actual byte length of `string` when it is encoded in `encoding`.
 Note that it may different from `String.prototype.length` since that returns number of characters in a string.
 
-#### Buffer.concat(list[, length])
+#### Buffer.concat(list)
 * `list: Array of Buffer`
-* `length: Number`
 * Return: `Buffer`
 
 Returns a `Buffer` concatenating all the Buffers in the `list`.
