@@ -3,4 +3,4 @@
 * Console
 * [Events](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Events)
 * Global
-* Stream
+* [Stream](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Stream)
