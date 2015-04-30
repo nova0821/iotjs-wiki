@@ -107,7 +107,7 @@ cd ..
 You may need to change your IP and MAC address.
 
 ```
-# assume you are in nuttx folder where _.config_ resides
+# assume you are in nuttx folder where .config resides
 make menuconfig
 ```
 
@@ -131,7 +131,7 @@ As noted in [Build for Linux](https://github.com/Samsung/iotjs/wiki/Build-for-Li
 --buildlib
 ```
 
-To build IoT.js for nuttx, first, you need to build NuttX to create configuration file 'nuttx/config.h'.
+To build IoT.js for nuttx, first, you need to build NuttX to create configuration file 'config.h'.
 
 ```
 cd harmony/nuttx/nuttx
@@ -181,7 +181,7 @@ With successful compilation, you'll get _nuttx_ and _nuttx.bin_ files.
 
 #### Prepare flashing to target board
 
-Flashing to STM32F4-discovery board needs another tool called _stlink_. You can download it at [here](https://github.com/texane/stlink) or follow below steps;
+Flashing to STM32F4-discovery board needs another tool called _stlink_. You can download it at [here](https://github.com/texane/stlink), follow below steps;
 
 ```
 cd harmony
@@ -198,11 +198,11 @@ Relative path is used when executing _stlink_ tools. You may have to change them
 
 #### Flash
 
-Assume you are in nuttx/nuttx folder where _nuttx.bin_ file exists.
 ```
+# Assume you are in nuttx/nuttx folder where nuttx.bin file exists.
 ../../stlink/st-flash write nuttx.bin 0x8000000
 ```
-With successful flashing you'll get something like;
+With successful flashing you'll get something at the bottom like;
 ```
 INFO src/stlink-common.c: Starting verification of write complete
 INFO src/stlink-common.c: Flash written and verified! jolly good!
