@@ -205,6 +205,13 @@ Use lowerCamelCase for varible names and function names.
 		...
 	}
 
+Use UpperCamelCase for constructor names
+
+        function myConstructorFunction(input) {
+		this.variable = input;
+                ...
+	}
+
 ## Formatting
 Follow C/C++ formatting above.
 
