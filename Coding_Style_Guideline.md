@@ -207,7 +207,7 @@ Use lowerCamelCase for varible names and function names.
 
 Use UpperCamelCase for constructor names
 
-        function myConstructorFunction(input) {
+        function MyConstructorFunction(input) {
 		this.variable = input;
                 ...
 	}
