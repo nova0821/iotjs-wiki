@@ -50,7 +50,7 @@ Some basic options are provided.
 
 Existing build options are listed as follows;
 ```
-buildtype=release|debug (release is default)
+buildtype=debug|release (debug is default)
 builddir=build (build is default)
 buildlib (default is False)
 target-arch=x86_64|i686|arm (depends on your host platform)
@@ -86,17 +86,17 @@ It's a good practice to build in separate folder, like 'build'. IoT.js generates
 
 To build debug version and results to 'output' folder
 ```
-./tools/build.py --buildtype=debug --builddir=output
+./tools/build.py --builddir=output
 ```
 
 If you want to build 32bit version in x86_64 and debug version only produce a library,
 ```
-./tools/build.py --target-arch=i686 --buildtype=debug --buildlib
+./tools/build.py --target-arch=i686 --buildlib
 ```
 
-To build debug version and with different jerry revision. assume you have already checked it out.
+To build release version and with different jerry revision. assume you have already checked it out.
 ```
-./tools/build.py --buildtype=debug --noinit-submodule
+./tools/build.py --buildtype=release --noinit-submodule
 ```
 
 #### Build only IoT.js with given build option
@@ -113,7 +113,7 @@ Executable name is **'iotjs'** and resides in (target-arch)-(target-os)/(buildty
 To run greetings JavaScript in test folder, for example;
 
 ```
-./build/x86_64-linux/release/iotjs/iotjs ./test/hello_iot.js
+./build/x86_64-linux/debug/iotjs/iotjs ./test/hello_iot.js
 ```
 
 #### What build script does
