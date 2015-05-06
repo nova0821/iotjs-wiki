@@ -151,7 +151,7 @@ If you have harmony in /home/maxwell/harmony, for example;
 
 ```
 cd harmony/iotjs
-./tools/build.py --target-arch=arm --target-os=nuttx \
+./tools/build.py --buildtype=release --target-arch=arm --target-os=nuttx \
 --nuttx-home=/home/maxwell/harmony/nuttx/nuttx --buildlib
 ```
 
