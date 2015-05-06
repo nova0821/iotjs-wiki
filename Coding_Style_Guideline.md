@@ -198,11 +198,10 @@ Do not modify prototypes of builtin objects
 # Javarscript Style Rules
 
 ## Naming
-Use lowerCamelCase for varible names.
-Use UpperCamelCase for function names.
+Use lowerCamelCase for varible names and function names.
 
 	var myFirstVariable;
-	function MyFirstFunction {
+	function myFirstFunction {
 		...
 	}
 
