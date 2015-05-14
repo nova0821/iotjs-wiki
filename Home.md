@@ -7,7 +7,7 @@ Welcome to the IoT.js!
 - Project Overview
 > IoT.js is a framework for "Internet of Things" built on
 > lightweight JavaScript interpreter ['JerryScript'](https://github.com/Samsung/jerryscript)
-> and libuv for event driven(non-blocking I/O model) similar to node.js .
+> and libuv for event driven(non-blocking I/O model) similar to node.js.
 
 - [License](https://github.com/Samsung/iotjs/wiki/License)
 <br>
