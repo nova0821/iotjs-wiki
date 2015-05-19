@@ -8,7 +8,7 @@
 * `path: String` - file path to be opened.
 * `flags: String` - open flags.
 * `mode: Number`, Default: `0666` - permission mode.
-* `callback: function(err, fd)`
+* `callback: Function(err, fd)`
  * `err: Error` - `Error` object if there was something wrong, otherwise `null`.
  * `fd: Number` - file descriptor.
 
@@ -19,6 +19,12 @@
 * `offset: Number` - offset of the buffer where to start writing.
 * `length: Number` - number of bytes to read.
 * `position: Number` - specifying where to start read data from the file, if `null`, read from current position.
-* `callback: function(err, bytesRead, buffer) `
+* `callback: Function(err, bytesRead, buffer) `
 
+#### fs.readFile(path[, options], callback)
 
+* `path: String` - file path to be opened.
+* `options: Object` - options for the operation.
+ * `encoding: String`, Default: `null` - encoding of the file.
+ * `flag: String`, Default: `r` - file open flag.
+* `callback: Function(err, data)` - callback function.
