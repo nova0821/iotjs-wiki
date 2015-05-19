@@ -15,6 +15,8 @@ If you have a question about IoT.js code, have trouble any documentation, would 
 * **project announcement** : general announcement on the project such as new release, new Maintainer/Committer and so on
 * **question** : any questions on the project
 
+and so on.
+
 ### Feature development process
 
 The IoT.js Project development process is marked by the following highlights:
