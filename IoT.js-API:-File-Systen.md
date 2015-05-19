@@ -20,6 +20,9 @@
 * `length: Number` - number of bytes to read.
 * `position: Number` - specifying where to start read data from the file, if `null`, read from current position.
 * `callback: Function(err, bytesRead, buffer) `
+ * `err: Error`
+ * `bytesRead: Number`
+ * `buffer: Buffer`
 
 #### fs.readFile(path[, options], callback)
 
@@ -28,3 +31,7 @@
  * `encoding: String`, Default: `null` - encoding of the file.
  * `flag: String`, Default: `r` - file open flag.
 * `callback: Function(err, data)` - callback function.
+ * `err: Error`
+ * `data: Buffer`
+
+Asynchronously read entire file.
