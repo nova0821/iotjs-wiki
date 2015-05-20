@@ -6,3 +6,4 @@
 * Global
 * Process
 * [Stream](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Stream)
+* [Timers](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Timers)
