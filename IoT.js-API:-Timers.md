@@ -3,21 +3,25 @@
 ### Methods
 
 #### setTimeout(callback, delay)
-* Schedules to call one-time to `callback` function after `delay` milliseconds.
-* `callback`: Function
-* `delay`: delay in milliseconds to call `callback`. range is from 1 to 2^31-1.
-* return: timeoutObject
+* `callback: Function()`
+* `delay: Int`
+* Return: `timeoutObject`
+
+Schedules to call one-time to `callback` function after `delay` milliseconds.
 
 #### clearTimeout(timeoutObject)
-* disables timeout call from `setTimeout` method 
-* `timeoutObject': Object returned from `setTimeout`
+* `timeoutObject: timeoutObject` - A `timeoutObject` returned from `setTimeout()`
+
+Disables timeout call from `setTimeout` method.
 
 #### setInterval(callback, delay)
-* Schedules to call periodic to `callback` function after every `delay` milliseconds.
-* `callback`: function
-* `delay`: delay in milliseconds to call `callback`. range is from 1 to 2^31-1.
-* return: intervalObject
+* `callback: function`
+* `delay: Int`
+* Return: `intervalObject`
 
-#### clearInterval(intervalObject)
-* disables timeout call from `setInterval` method
-* `intervalObject`: Object returned from `setInterval`
+Schedules to call periodic to `callback` function after every `delay` milliseconds.
+
+#### clearInterval(intervalObject) 
+* `intervalObject: intervalObject` - A `intervalObject` returned from `setInterval`
+
+Disables timeout call from `setInterval` method.
