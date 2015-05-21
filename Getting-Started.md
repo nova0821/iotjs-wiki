@@ -18,11 +18,8 @@ It depends on the platform you're working on whether it's easy or quite complica
 
 * Porting guide to Raspberian for [Raspberry Pi](https://www.raspberrypi.org/downloads/)
 
-### Participating IoT.js
-There is a [Coding Style Guidline](https://github.com/Samsung/iotjs/wiki/Coding_Style_Guideline) so that your efforts can be merged faster. Please take a moment and read. 
-
 #### When something goes wrong
-Please read [...]() how to log whats going inside IoT.js  
+Please read [Logging IoT.js execution](https://github.com/Samsung/iotjs/wiki/Logging-IoT.js-execution) how to display and add log messages while developing.
 
 
 ### [IoT.js API Reference](https://github.com/Samsung/iotjs/wiki/IoT.js-API-Reference)
