@@ -1,2 +1,4 @@
 # Module 
-``` module ``` implements ``` require ``` function
+``` module ``` implements ``` require ``` function. 
+
+## Method 
