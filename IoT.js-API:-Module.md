@@ -11,6 +11,6 @@ load the module named 'id'
 ### Module Loading by ``` require ``` function
 ``` require('foo') ``` works as follows:
 
-0. If native module named 'foo' exists, load it.
-1. If foo.js file exists, load it.
-2. If a directory foo exists, load it as an package.
+0. If native module named 'foo' exists, load it and return.
+1. If foo.js file exists, load it and return.
+2. If a directory foo exists, load it as an package and return.
