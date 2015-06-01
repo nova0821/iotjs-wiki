@@ -4,5 +4,5 @@ Since ``` require ``` function is implicitly passed to user code, user do not ne
 
 ### Methods
 #### require(modulename)
-* modulename : string
+* ``` modulename : string ``` - module name to be loaded
 load the module named 'modulename'
