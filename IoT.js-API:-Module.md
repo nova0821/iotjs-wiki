@@ -9,8 +9,17 @@ Since ``` require ``` function is implicitly passed to user code, user do not ne
 load the module named 'id'
 
 ### Module Loading by ``` require ``` function
-``` require('foo') ``` works as follows:
+#### ``` require ``` search paths
+``` require ``` function finds id module in the order of 
+1. working directory
+2. node_modules under the working directory
+3. $HOME/node_modules
 
-0. If native module named 'foo' exists, load it and return.
-1. If foo.js file exists, load it and return.
-2. If a directory foo exists, load it as an package and return.
+
+
+#### ``` require('id') ``` works as follows:
+For each directory in search paths above,
+
+0. If native module named 'id' exists, load it and return.
+1. If id.js file exists, load it and return.
+2. If a directory id exists, load it as an package and return.
