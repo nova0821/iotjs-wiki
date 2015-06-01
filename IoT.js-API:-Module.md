@@ -26,7 +26,7 @@ For each directory in search paths above,
 2. If a directory id exists, load it as an package and return.
 
 ### ``` require('id') ``` as a package
-For a given id, if a directory id exists, module system consider the directory as a package and works as the follows.
+For a given id, if a directory id exists, module system consider the directory as a package.
 
 0. if 'id/node_modules/package.json' contains 'main' property, load the file named main property.
 1. if either id/node_modules/package.json or main property exists, load index.js 
