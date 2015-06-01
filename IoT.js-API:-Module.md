@@ -12,8 +12,8 @@ load the module named 'id'
 #### ``` require ``` search paths
 ``` require ``` function finds id module in the order of 
 
-1. working directory
-2. node_modules under the working directory
+1. caller's direcroty of ``` require ``` function
+2. node_modules under the caller's direcroty
 3. $HOME/node_modules
 
 
