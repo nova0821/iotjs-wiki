@@ -4,3 +4,4 @@ Since ``` require ``` function is implicitly passed to user code, user do not ne
 
 ### Methods
 #### require('modulename') 
+load the module named 'modulename'
