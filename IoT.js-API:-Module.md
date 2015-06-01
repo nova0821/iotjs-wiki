@@ -16,8 +16,6 @@ load the module named 'id'
 2. node_modules under the caller's directory
 3. $HOME/node_modules
 
-cf) rastas
-
 
 #### ``` require('id') ``` works as follows:
 For each directory in search paths above,
