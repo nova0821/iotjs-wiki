@@ -10,12 +10,13 @@ load the module named 'id'
 
 ### Module Loading by ``` require ``` function
 #### ``` require ``` search paths
-``` require ``` function finds id module in the order of 
+``` require ``` function finds modules in the order of 
 
 1. caller's directory of ``` require ``` function
 2. node_modules under the caller's directory
 3. $HOME/node_modules
 
+cf) rastas
 
 
 #### ``` require('id') ``` works as follows:
