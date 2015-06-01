@@ -8,6 +8,6 @@ Since ``` require ``` function is implicitly passed to user code, user do not ne
 
 load the module named 'modulename'
 
-### Module Loading
+### Module Loading by ``` require ``` function
 ``` require('foo') ``` works as follows:
 
