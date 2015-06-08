@@ -5,6 +5,7 @@
 - [License](License)
 
 **Documentation**
-- [How to Build](How-to-Build)
+- [Getting-Started](How-to-Build)
+- [IoT.js-API-Reference](API-Reference)
 
 **Governance**
