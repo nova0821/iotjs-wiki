@@ -1,6 +1,6 @@
 Welcome to the IoT.js!
 
-* If you would like to try IoT.js, please check [Getting Started](https://github.com/Samsung/IoT.js/wiki/Getting-Started). 
+* If you would like to try IoT.js, please check [Getting Started](Getting-Started). 
 * If you would like to jump into IoT.js, please follow [Development Process](https://github.com/Samsung/IoT.js/wiki/Development-Process) of IoT.js.
 
 ### IoT.js
