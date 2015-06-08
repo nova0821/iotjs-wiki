@@ -8,7 +8,7 @@ Please submit all patches in public by opening a pull request. Patches sent priv
 
 Smaller patches are generally easier to understand and test, so please submit changes in the smallest increments possible, within reason. Smaller patches are less likely to have unintended consequences, and if they do, getting to root cause is much easier for you and the Maintainers and Committers. Additionally, smaller patches are much more likely to be accepted.
 
-#### 2. Sign your work with the [IoT.js DCO](https://github.com/Samsung/IoT.js/wiki/IoT.js-Developer's-Certificate-of-Origin-1.0)
+#### 2. Sign your work with the [IoT.js DCO](IoT.js-Developer's-Certificate-of-Origin-1.0)
 
 The sign-off is a simple line at the end of the explanation for the patch, which certifies that you wrote it or otherwise have the right to pass it on as an Open Source patch. The  sign-off is required for a patch to be accepted.
 
