@@ -10,7 +10,7 @@
 - [Coding Style Guideline](Coding_Style_Guideline)
 
 **Governance**
-- [DCO](IoT.js-Developer's-Certificate-of-Origin-1.0)
+- [Certificate of Origin](IoT.js-Developer's-Certificate-of-Origin-1.0)
 - [Community Guidelines](Community-Guidelines)
 - [Development process](Development-Process)
 - [Governance](Governance)
