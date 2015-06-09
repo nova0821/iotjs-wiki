@@ -3,14 +3,15 @@
 **About**
 - Roadmap
 - [License](License)
+- [Governance](Governance)
 
 **Documentation**
 - [Getting Started](Getting Started)
 - [IoT.js API Reference](IoT.js API Reference)
 - [Coding Style Guideline](Coding_Style_Guideline)
 
-**Governance**
+**Development**
 - [Certificate of Origin](IoT.js-Developer's-Certificate-of-Origin-1.0)
-- [Community Guidelines](Community-Guidelines)
 - [Development process](Development-Process)
-- [Governance](Governance)
+- [Community Guidelines](Community-Guidelines)
+
