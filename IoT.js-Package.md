@@ -72,7 +72,7 @@ Please visit [npmjs.org](https://docs.npmjs.com/getting-started/publishing-npm-p
 
 ### About the license of each packages
 
-IoT.js is release under Apache 2.0 license, [this page](https://github.com/Samsung/iotjs/wiki/License). We assume there you also agree on this license when publishing to ipm registry.
+IoT.js is released under Apache 2.0 license, [this page](https://github.com/Samsung/iotjs/wiki/License). We assume you also agree on this license when publishing to ipm registry.
 
 ### Downloading packages
 
