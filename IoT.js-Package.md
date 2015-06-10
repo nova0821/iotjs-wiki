@@ -19,14 +19,14 @@ npm config set registry="http://ipm.iotjs.net:5984/registry/_design/app/_rewrite
 
 ### Adding your account
 
-You may have to register your account if you plan to publish some packages
+You may have to register your account if you plan to publish some packages, for example,
 ```
 npm set init.author.name "Your Name"
 npm set init.author.email "you@example.com"
 npm set init.author.url "http://yourblog.com"
 npm adduser
 ```
-
+Please set to your real name and email address. url is optional.
 
 ### Publish a package
 
