@@ -2,7 +2,7 @@ IoT.js follows the practice of node.js npm to provide module development communi
 
 * To see what it actually is, please visit [www.npmjs.com](https://www.npmjs.com/), and also [docs.npmjs.com](https://docs.npmjs.com/).
 * To avoid confusion with the original server, we'll call it "ipm", for IoT.js Package Management
-* Current status of "ipm" is for developers. it has no separate web page.
+* Current status of "ipm" is for developers. it has no separate web page. we will provide some neat user interface web pages when we are ready.
 * "npm" program is used for publish and download modules
 
 ### Installing "npm"
@@ -62,7 +62,7 @@ About to write to /(your working folder)/package.json:
 Is this ok? (yes) yes
 ```
 
-and all things are good to go, publish
+and all things are good to go, publish.
 ```
 npm publish ./
 ```
