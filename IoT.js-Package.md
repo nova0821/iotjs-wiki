@@ -1,9 +1,9 @@
-IoT.js follows the practice of node.js npm to provide module development community but with separate registry.
+IoT.js follows the practice of node.js npm to provide module development community with separate IoT.js own registry.
 
 * To see what it actually is, please visit [www.npmjs.com](https://www.npmjs.com/), and also [docs.npmjs.com](https://docs.npmjs.com/).
 * To avoid confusion with the original server, we'll call it "ipm", for IoT.js Package Management
-* Current status of "ipm" is for developers. it has no separate web page. we will provide some neat user interface web pages when we are ready.
-* "npm" program is used for publish and download modules
+* Current status of "ipm" is started and it's for developers so has no separate web page. We need to develop them.
+* "npm" program is used for publish and download modules. We may fork when customisation is needed.
 
 ### Installing "npm"
 ```
@@ -30,7 +30,7 @@ npm adduser
 
 ### Publish a package
 
-cd to your package folder and init
+cd to your package folder you wish to publish and init
 ```
 npm init
 ```
