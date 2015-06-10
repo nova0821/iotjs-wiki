@@ -70,6 +70,10 @@ npm publish ./
 Please visit [npmjs.org](https://docs.npmjs.com/getting-started/publishing-npm-packages) for detailed explanation.
 
 
+### About the license of each packages
+
+(license statement for developers)
+
 ### Downloading packages
 
 "npm" provides local and global packages and you may be working on some powerful machines. In IoT devices this may be somewhat different. It may not have enough memory, power, network or even no console to give commands. So it can have several scenarios depending on the device you may be working on. This may be some of them;
@@ -97,6 +101,10 @@ npm install <package name>
 ```
 
 As mentioned above, npm has local and global packages. But for IoT.js lets stick on the local only. For some cases running on ROTS there may not be any globals place.
+
+### Package license
+
+(license statement for package users) 
 
 ### Searching for packages
 
