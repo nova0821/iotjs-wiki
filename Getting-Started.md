@@ -18,8 +18,8 @@ It depends on the platform you're working on whether it's easy or quite complica
 
 * Porting guide to Raspberian for [Raspberry Pi](https://www.raspberrypi.org/downloads/)
 
-### IoT.js Package Manager
-IoT.js also uses NPM tool, node package manager, as for package developing and sharing. 
+### IoT.js Package
+IoT.js also uses NPM tool, node package manager, as for package development and sharing. Visit [IoT.js Package](https://github.com/Samsung/iotjs/wiki/IoT.js-Package) page for more information.
 
 #### When something goes wrong
 Please read [Logging IoT.js execution](Logging-IoT.js-execution) how to display and add log messages while developing.
