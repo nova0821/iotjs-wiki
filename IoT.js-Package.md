@@ -67,5 +67,44 @@ and all things are good to go, publish.
 npm publish ./
 ```
 
-
 Please visit [npmjs.org](https://docs.npmjs.com/getting-started/publishing-npm-packages) for detailed explanation.
+
+
+### Downloading packages
+
+"npm" provides local and global packages and you may be working on some powerful machines. In IoT devices this may be somewhat different. It may not have enough memory, power, network or even no console to give commands. So it can have several scenarios depending on the device you may be working on. This may be some of them;
+
+1) Download to your machine with Linux, Mac or Windows.
+  * Send it to the IoT device through copy to memory card if any
+  * Send through serial line, BT, USB with old time kermit or z-modem
+
+2) If it has a WiFi the it might download from the registry
+  * But to make this work, we need to develop a small shell program.
+  * This can be done with built-in module downloader, we need to develop this.
+
+3) If your IoT is very small and even no writable file system
+  * Package modules should be built-in to IoT.js at compile time.
+  * We should also develop this.
+
+4) any more ideas?
+
+
+As for case 1),
+```
+(cd to some working directory)
+npm install <package name>
+(copy node_modules folder to your device)
+```
+
+As mentioned above, npm has local and global packages. But for IoT.js lets stick on the local only. For some cases running on ROTS there may not be any globals place.
+
+### Searching for packages
+
+Searching is possible with search command. See [docs.npmjs.com/cli/search](https://docs.npmjs.com/cli/search).
+
+```
+npm search <keyword>
+```
+
+If you omit the keyword it'll list all packages registered.
+
