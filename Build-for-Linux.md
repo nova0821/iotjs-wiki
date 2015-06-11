@@ -131,8 +131,5 @@ To run greetings JavaScript in test folder, for example;
 Just remove the folder as follows;
 ```
 rm -rf build
-```
-or it you want to clean for rebuild one sub-module, for example libuv;
-```
-rm -rf build/x86_64-linux/release/deps/libuv
+rm -rf deps/libuv/out
 ```
