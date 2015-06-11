@@ -16,7 +16,7 @@ Current supported platforms are **Linux and NuttX**
 ### Porting to other platforms
 It depends on the platform you're working on whether it's easy or quite complicated to port to another platform. Below guide will show you an example of the steps.
 
-* Porting guide to Raspberian for [Raspberry Pi](https://www.raspberrypi.org/downloads/)
+* Porting guide to Raspberian for [Raspberry Pi](https://www.raspberrypi.org/downloads/), [Porting-to-Raspberry-Pi-2](https://github.com/Samsung/iotjs/wiki/Porting-to-Raspberry-Pi-2)
 
 ### IoT.js Package
 IoT.js also uses NPM tool, node package manager, as for package development and sharing. Visit [IoT.js Package](https://github.com/Samsung/iotjs/wiki/IoT.js-Package) page for more information.
