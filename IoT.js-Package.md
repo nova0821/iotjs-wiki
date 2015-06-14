@@ -7,7 +7,7 @@ IoT.js follows the practice of node.js npm to provide module development communi
 
 ### Installing "npm"
 ```
-sudo apt-get install npm"
+sudo apt-get install npm
 ```
 
 ### Setting registry
