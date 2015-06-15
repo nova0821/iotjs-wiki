@@ -79,14 +79,16 @@ IoT.js is released under Apache 2.0 license, [this page](https://github.com/Sams
 "npm" provides local and global packages and you may be working on some powerful machines. In IoT devices this may be somewhat different. It may not have enough memory, power, network or even no console to give commands. So it can have several scenarios depending on the device you may be working on. This may be some of them;
 
 1) Download to your machine with Linux, Mac or Windows.
-  * Send it to the IoT device through copy to memory card if any
-  * Send through serial line, BT, USB with old time kermit or z-modem
+  * Install packages to your powerful machine
+  * Send it to the IoT device through copy to memory card
+  * or send through serial line, BT, USB with old time kermit or z-modem
 
-2) If it has a WiFi the it might download from the registry
-  * But to make this work, we need to develop a small shell program.
+2) If it has a WiFi the download directly from the registry
+  * But to make this work, we need to develop a small shell program with iotjs.
   * This can be done with built-in module downloader, we need to develop this.
+  * Issue [#75](https://github.com/Samsung/iotjs/issues/75) to track
 
-3) If your IoT is very small and even no writable file system
+3) If your IoT is very small and even has no writable file system
   * Package modules should be built-in to IoT.js at compile time.
   * We should also develop this.
 
@@ -115,4 +117,3 @@ npm search <keyword>
 ```
 
 If you omit the keyword it'll list all packages registered.
-
