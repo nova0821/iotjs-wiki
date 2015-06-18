@@ -1,6 +1,6 @@
 ## Project Roles
 
-The IoT.js project recognizes the following formal roles: Contributor, Committer, and Maintainer.
+The IoT.js project recognizes the following formal roles: Contributor, Reviewer, and Maintainer.
 
 
 #### Contributor
@@ -17,10 +17,10 @@ Contributors are granted the following rights and responsibilities:
 * Responsibility to respect the rules of the community.
 * Responsibility to provide constructive advice whenever participating in discussions and in the review of contributions.
 
-#### Committer
-A _Committer_ is a Contributor who is also responsible for the maintenance of IoT.js source code. 
+#### Reviewer
+A _Reviewer_ is a Contributor who is also responsible for the maintenance of IoT.js source code. 
 
-Committers have the following rights and responsibilities, in addition to those listed for Contributors:
+Reviewers have the following rights and responsibilities, in addition to those listed for Contributors:
 * Right to set goals for the short and medium terms for the project being maintained, alongside the Maintainer.
 * Right to exceptionally make more invasive changes to the source code, when required.
 * Right to approve own contribution, after discussing with other Contributors.
@@ -33,24 +33,24 @@ Committers have the following rights and responsibilities, in addition to those 
 #### Maintainer
 A _Maintainer_ is a Contributor who is also responsible for knowing, directing and anticipating the needs of a given IoT.js source code. 
 
-Maintainers have the following rights and responsibilities, in addition to those listed for Contributors and Committers:
+Maintainers have the following rights and responsibilities, in addition to those listed for Contributors and Reviewers:
 * right to set the overall organization of the source code of the project
-* right to participate in the decision-making of the project, in conjunction with the Committers.
+* right to participate in the decision-making of the project, in conjunction with the Reviewers.
 * responsibility to oversee and facilitate the development of the IoT.js source code under the governance rules of the IoT.js Open Source project.
 * responsibility to guide and direct the development towards goals.
 * responsibility to sets the goals and roadmap for the project
 
-#### Selection of Committers and Maintainers
+#### Selection of Reviewers and Maintainers
 
-A candidate for the Committer role should be one of the Contributors who has submitted at least 10 non-trivial patches in project and has shown characteristics consistent with the requirements of the Committer role. 
-A candidate for the Maintainer role should be one of the Committers. 
-To be a candidate for the Committer or Maintainer, a Contributor can self-nominate with proper evidences.
+A candidate for the Reviewer role should be one of the Contributors who has submitted at least 10 non-trivial patches in project and has shown characteristics consistent with the requirements of the Reviewer role. 
+A candidate for the Maintainer role should be one of the Reviewers. 
+To be a candidate for the Reviewer or Maintainer, a Contributor can self-nominate with proper evidences.
 
 The selection process should be achieved by consensus of the Contributors active in. If consensus cannot be achieved, Maintainers will make the decision by voting.
 
-#### Selection of Committers/Maintainers Status
+#### Selection of Reviewers/Maintainers Status
 
-A Maintainer or a Committer who intentionally abused his review privilege may have it temporarily suspended on the request of other Committers or Maintainers. Committers and Maintainers not including the person under consideration should discuss on the revocation of the person. If consensus cannot be reached, Maintainers will make the decision by voting.
+A Maintainer or a Reviewer who intentionally abused his review privilege may have it temporarily suspended on the request of other Reviewers or Maintainers. Reviewers and Maintainers not including the person under consideration should discuss on the revocation of the person. If consensus cannot be reached, Maintainers will make the decision by voting.
 
 ## Decision Making Process
 
