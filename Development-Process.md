@@ -1,4 +1,4 @@
-It is the responsibility of IoT.js Maintainers and Committers to decide whether submitted code should be integrated into the master branch, returned for revision, or rejected.
+It is the responsibility of IoT.js Maintainers and Reviewers to decide whether submitted code should be integrated into the master branch, returned for revision, or rejected.
 
 Individual developers maintain a local copy of the IoT.js codebase using the git revision control system. Git ensures that all participants are working with a common and up-to-date code base at all times. Each developer works to develop, debug, build, and validate their own code against the current codebase, so that when the time comes to integrate into the master branch of the project, their changes apply cleanly and with a minimum amount of merging effort.
 
@@ -12,7 +12,7 @@ If you have a question about IoT.js code, have trouble any documentation, would 
 * **enhancement** : feature enhancement proposal
 * **help wanted**
 * **new feature request(proposal)** : new feature proposal
-* **project announcement** : general announcement on the project such as new release, new Maintainer/Committer and so on
+* **project announcement** : general announcement on the project such as new release, new Maintainer/Reviewer and so on
 * **question** : any questions on the project
 
 and so on.
@@ -20,9 +20,9 @@ and so on.
 ### Feature development process
 
 The IoT.js Project development process is marked by the following highlights:
-* The feature development process starts with an author discussing a proposed feature with the Maintainers and Committers
+* The feature development process starts with an author discussing a proposed feature with the Maintainers and Reviewers
   - Open the issue with label 'new feature request(proposal)'
-* The Maintainers and Committers evaluate the idea, give feedback, and finally approve or reject the proposal.
+* The Maintainers and Reviewers evaluate the idea, give feedback, and finally approve or reject the proposal.
 * The author shares the proposal with the community via **_Github issues with 'new feature request' label_**
 * The community provides feedback which can be used by the author to modify their proposal and share it with the community again.
 * The above steps are repeated until the community reaches a consensus according to the [Community Guidelines](Community-Guidelines).
@@ -30,8 +30,8 @@ The IoT.js Project development process is marked by the following highlights:
 * After the author is confident their code is ready for integration:
   - The author generates a patch and signs off on their code.
   - The author submits a patch according to the [Patch Submission Process](Patch-Submission-Process).
-* The Maintainers and Committers watch the pull request for the patch, test the code, and accept or reject the patch accordingly.
-* After the code passes code review, the Maintainers and Committers accept the code(integrated into the master branch), which completes the development process.
+* The Maintainers and Reviewers watch the pull request for the patch, test the code, and accept or reject the patch accordingly.
+* After the code passes code review, the Maintainers and Reviewers accept the code(integrated into the master branch), which completes the development process.
 * After a patch has been accepted, it remains the authoring developer's responsibility to maintain the code throughout its lifecycle, and to provide security and feature updates as needed.
 
 
