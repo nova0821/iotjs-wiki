@@ -235,3 +235,8 @@ If you see
 +-----------------------------+ 
 ```
 and it stays on the screen, something is wrong. Blue LED may blink if NuttX is in abnormal state. Press black(reset) button on the board and try again. If you still see this warning message, begin with original NuttX code and check your board, USB line and other softwares.
+
+
+### 6. Latest status
+
+Current IoT.jsm, as of June 2015, requires more memory than STM32F4-disco provides. We need memory optimisation. Until some result with this, I'll start with 256K [FRDM-K64F](https://developer.mbed.org/platforms/FRDM-K64F/) board.
