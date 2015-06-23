@@ -131,7 +131,9 @@ As noted in [Build for Linux](https://github.com/Samsung/iotjs/wiki/Build-for-Li
 --target-os=nuttx 
 --nuttx-home=(full path of nuttx home where .config file exist)
 --buildlib
+--no-checktest
 ```
+Have to disable 'checktest' as test with Nuttx binaries are not possible.
 
 To build IoT.js for nuttx, first, you need to build NuttX to create configuration file 'config.h'.
 
@@ -146,6 +148,7 @@ It will show errors that _libuv.a cannot be found_. It is ok for now. If you jus
 CONFIG_SYSTEM_IOTJS=n
 CONFIG_LIBUV=n
 CONFIG_LIBJERRY=n
+CONFIG_DEV_GPIO=n
 ```
 
 And back to building IoT.js.
@@ -154,7 +157,7 @@ If you have harmony in /home/maxwell/harmony, for example;
 ```
 cd harmony/iotjs
 ./tools/build.py --buildtype=release --target-arch=arm --target-os=nuttx \
---nuttx-home=/home/maxwell/harmony/nuttx/nuttx --buildlib
+--nuttx-home=/home/maxwell/harmony/nuttx/nuttx --buildlib --no-checktest
 ```
 
 ### 4. Copy libraries to nuttx/nuttx/lib folder
@@ -165,6 +168,7 @@ For the moment, lib files need to be copied manually.
 cp build/arm-nuttx/release/libs/libjerrycore.a ../nuttx/nuttx/lib/libjerry.a
 cp build/arm-nuttx/release/libs/libuv.a ../nuttx/nuttx/lib
 cp build/arm-nuttx/release/iotjs/liblibiotjs.a ../nuttx/nuttx/lib/libiotjs.a
+cp build/arm-nuttx/release/libs/libfdlibm.a ../nuttx/nuttx/lib/libfdlibm.a
 ```
 
 
