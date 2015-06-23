@@ -58,8 +58,9 @@ target-os=linux|nuttx (linux is default)
 make-flags=-j (options to send to make)
 nuttx-home= (no default value)
 init-submodule (default is True)
-jerry-memstats (default is False)
 tidy (default is True)
+jerry-memstats (default is False)
+checktest (default is True)
 ```
 
 To give options, please use two dashes '--' before the option name as described in following sections.
@@ -69,9 +70,9 @@ Options that may need explanations.
 * buildlib: generating _iotjs_ to a library if True(e.g. for NuttX). give __--buildlib__ to make it True.
 * nuttx-home: it's NuttX platform specific, to tell where the NuttX configuration and header files are.
 * init-submodule: for normal cases you can ignore this, it will checkout matching revision of each sub-module library every time. but if you want to change something or checkout other revision, use __--noinit-submodule__.
-* jerry-memstats: turn on the flag so that jerry dumps byte codes and literals and memory usage while parsing and execution.
 * tidy: checks codes are tidy. we recommend to use this option. use __--notidy__ if you want to turn it off.
-
+* jerry-memstats: turn on the flag so that jerry dumps byte codes and literals and memory usage while parsing and execution.
+* checktest: after build makes it run all tests in test folder
 
 ### 3. Build all at once
 
