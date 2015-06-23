@@ -239,4 +239,4 @@ and it stays on the screen, something is wrong. Blue LED may blink if NuttX is i
 
 ### 6. Latest status
 
-Current IoT.jsm, as of June 2015, requires more memory than STM32F4-disco provides. We need memory optimisation. Until some result with this, I'll start with 256K [FRDM-K64F](https://developer.mbed.org/platforms/FRDM-K64F/) board.
+Current IoT.jsm, as of June 2015, requires more memory than STM32F4-disco provides. We need memory optimisation. 
