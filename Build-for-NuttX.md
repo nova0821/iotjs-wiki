@@ -241,4 +241,4 @@ and it stays on the screen, something is wrong. Blue LED may blink if NuttX is i
 
 ### 6. Latest status
 
-Current IoT.jsm, as of June 2015, requires more memory than STM32F4-disco provides. We need memory optimisation. 
+Current IoT.js, as of June 2015, requires more memory than STM32F4-disco provides. We need memory optimisation and this work is in progress.
