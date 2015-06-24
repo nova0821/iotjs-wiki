@@ -19,7 +19,7 @@ It depends on the platform you're working on whether it's easy or quite complica
 * Porting guide to Raspberian for [Raspberry Pi](https://www.raspberrypi.org/downloads/), [Porting-to-Raspberry-Pi-2](https://github.com/Samsung/iotjs/wiki/Porting-to-Raspberry-Pi-2)
 
 ### Supporting direct H/W control
-We may need to control `things` directly from ECMAScript code. How can we make it possible? Let's first describe it at https://github.com/Samsung/iotjs/wiki/GPIO-control-ideas page.
+We may need to control `things` directly from ECMAScript code. How can we make it possible? Let's first describe it at [GPIO-control-ideas](https://github.com/Samsung/iotjs/wiki/GPIO-control-ideas) page.
 
 ### IoT.js Package
 IoT.js also uses NPM tool, node package manager, as for package development and sharing. Visit [IoT.js Package](https://github.com/Samsung/iotjs/wiki/IoT.js-Package) page for more information.
