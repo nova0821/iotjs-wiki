@@ -2,13 +2,34 @@
 RAW idea as is with GPIO control
 
 #### 1, primitive GPIO control
+
 Setting the pins
-* able to control in unit of PINs
-* set mode of pins: digital output, digital input, analog input
-* pull up/down: float, pull down, pull up
+* depends on the board which is used by some application 
+   * able to control in unit of PINs
+   * set mode of pins: digital output, digital input, analog input
+   * pull up/down: float, pull down, pull up
+* pinmode(pin,callback);
+   * pin: number value of pin with port with the mode
+   * callback(err): callback function to receive result
+
+Reading
+* read the pin and return value
+* read(pin,callback);
+   * pin: number value of pin with port
+   * callback(err,value): callback function to receive value result
+      * value may be 0 or 1
+
+Writing
+* write the pin with a value
+* write(pin, value, callback);
+   * pin: number value of pin with port with the mode
+   * value: write value, may be 0 or 1
+   * callback(err): callback function to receive result
+
+Reference
 * [STM32F4 Discovery Tutorials – GPIO](http://armprogramming.com/stm32f4-discovery-tutorials-gpio/)
 * [Understanding Microcontroller Pin Input/Output Modes ->](http://coactionos.com/embedded%20design%20tips/2013/10/21/Tips-Understanding-Microcontroller-Pin-Input-Output-Modes/)
-* Multiple OS and H/W Board
+
 
 
 #### 2, implementation
@@ -29,6 +50,7 @@ Setting the pins
       * Read, Write, ...
 
      
-
+#### 3, testing with push button and LED
+* ...
 
 
