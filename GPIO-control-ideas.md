@@ -26,6 +26,11 @@ Writing
    * value: write value, may be 0 or 1
    * callback(err): callback function to receive result
 
+Initialise
+* one time initialise GPIO
+* initialize(callback);
+   * callback(err): callback function to receive result
+
 Reference
 * [STM32F4 Discovery Tutorials – GPIO](http://armprogramming.com/stm32f4-discovery-tutorials-gpio/)
 * [Understanding Microcontroller Pin Input/Output Modes ->](http://coactionos.com/embedded%20design%20tips/2013/10/21/Tips-Understanding-Microcontroller-Pin-Input-Output-Modes/)
@@ -46,8 +51,6 @@ Reference
 * How should the API look like?
    * Class: to manage APIs in classes, in functional and usage: GPIO -> I2C -> ZWave
    * Methods
-      * Initialize(): initialise the device
-      * Read, Write, ...
 
      
 #### 3, testing with push button and LED
