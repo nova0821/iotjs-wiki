@@ -13,7 +13,7 @@ Setting the pins
 
 #### 2, implementation
 * Supporting real devices
-   * https://github.com/rwaldron/johnny-five
+   * as an example, visit [johnny-five](https://github.com/rwaldron/johnny-five) and see how it looks like
 * Structure Components
    * Device: Sensors and Actuators attached to the Board
    * Board: Where SoC exist
