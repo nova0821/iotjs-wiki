@@ -15,9 +15,8 @@ Allocate a new buffer of `size` bytes.
 
 Allocate a new buffer copied from given `buffer`.
 
-#### new Buffer(str[,encoding])
+#### new Buffer(str)
 * `str: String`
-* `encoding: String`, Default: `utf8`
 
 Allocate a new buffer containing given `str`.
 
@@ -29,12 +28,11 @@ It is exactly the same with `Buffer.concat(list)`
 
 ### Class Methods
 
-#### Buffer.byteLength(string[,encoding])
+#### Buffer.byteLength(string)
 * `string: String`
-* `encoding: String`, Default: `utf8`
 * Return: `Number`
 
-Returns actual byte length of `string` when it is encoded in `encoding`.
+Returns actual byte length of `string`.
 Note that it may different from `String.prototype.length` since that returns number of characters in a string.
 
 #### Buffer.concat(list)
@@ -61,22 +59,20 @@ Note that the value of `length` is not necessarily the same to the size of conte
 
 ### Methods
 
-#### buf.write(string[,offset[,length]][,encoding])
+#### buf.write(string[,offset[,length]])
 * `string: String` - data to be written to buffer
 * `offset: Number`, Default: `0` - start position of buffer for writing.
 * `length: Number`, Default: `buffer.length - offset` - total length to be written.
-* `encoding: String`, Default: `utf8`
 * Return: `Number` - total number of bytes written.
 
-Writes `string` to buffer using `encoding` starts at `offset`. Returns total number of bytes written to the buffer.
+Writes `string` to buffer starts at `offset`. Returns total number of bytes written to the buffer.
 
-#### buf.toString([encoding][,start][,end])
-* `encoding: String`, Default: `utf8`
+#### buf.toString([,start][,end])
 * `start: Number`, Default: `0`
 * `end: Number`, Default: `buffer.length`
 * Return: `String`
 
-Decodes and returns a string from buffer.
+Returns a string from buffer.
 
 #### buf.copy(targetBuffer[,targetStart][,sourceStart[,sourceEnd]])
 * `targetBuffer: Buffer`
