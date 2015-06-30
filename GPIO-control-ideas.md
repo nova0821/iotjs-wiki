@@ -21,6 +21,13 @@ Setting the pins
    * IoT.js platform codes: C++/JS core codes of IoT.js
    * Board dependent application codes: code that depend on board and device
    * Application codes: 
-* API
+* How should the API look like?
+   * Class: to manage APIs in classes, in functional and usage: GPIO -> I2C -> ZWave
+   * Methods
+      * Initialize(): initialise the device
+      * Read, Write, ...
+
+     
+
 
 
