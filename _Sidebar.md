@@ -4,6 +4,7 @@
 - Roadmap
 - [License](License)
 - [Governance](Governance)
+- [Releases](Releases)
 
 **Documentation**
 - [Getting Started](Getting Started)
