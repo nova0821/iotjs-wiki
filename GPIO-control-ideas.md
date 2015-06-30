@@ -12,6 +12,7 @@ Setting the pins
 
 
 #### 2, implementation
+* Need to know platform is IoT.js?
 * Supporting real devices
    * as an example, visit [johnny-five](https://github.com/rwaldron/johnny-five) and see how it looks like
 * Structure Components
