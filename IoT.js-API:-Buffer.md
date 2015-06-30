@@ -59,6 +59,18 @@ Note that the value of `length` is not necessarily the same to the size of conte
 
 ### Methods
 
+#### buf.equals(otherBuffer)
+* `otherBuffer: Buffer`
+* Return: `Bool`
+
+Returns whether `this` and `otherBuffer` have the same bytes.
+
+#### buf.compare(otherBuffer)
+* `otherBuffer: Buffer`
+* Return: `Number`
+
+Returns a number indicating which buffer comes first between `this` and `otherBuffer` when lexicographical ly sorted. 
+
 #### buf.write(string[,offset[,length]])
 * `string: String` - data to be written to buffer
 * `offset: Number`, Default: `0` - start position of buffer for writing.
@@ -79,5 +91,13 @@ Returns a string from buffer.
 * `targetStart: Number`, Default: `0`
 * `sourceStart: Number`, Default: `0`
 * `sourceEnd: Number`, Default: `buf.length`
+
+
+#### buf.slice([start][,end])
+* `start: Number`, Default: `0
+* `end: Number`, Default: `buf.length`
+* Return: `Buffer`
+
+Returns new buffer containing the same bytes of original buffer cropped by the given indices.
 
 Copies data from `buf[sourceStart..sourceEnd-1]` to `targetBuffer[targetStart..]`.
