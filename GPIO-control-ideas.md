@@ -1,7 +1,7 @@
 ### What is this page ?
 RAW idea as is with GPIO control
 
-#### Step 1, primitive GPIO control
+#### 1, primitive GPIO control
 Setting the pins
 * able to control in unit of PINs
 * set mode of pins: digital output, digital input, analog input
@@ -11,12 +11,16 @@ Setting the pins
 * Multiple OS and H/W Board
 
 
-#### Step 2, 
+#### 2, implementation
 * Supporting real devices
    * https://github.com/rwaldron/johnny-five
-* ...
-
-#### Step 3, 
-* ...
+* Structure Components
+   * Device: Sensors and Actuators attached to the Board
+   * Board: Where SoC exist
+   * Board dependent codes: C++ codes that depend on the board
+   * IoT.js platform codes: C++/JS core codes of IoT.js
+   * Board dependent application codes: code that depend on board and device
+   * Application codes: 
+* API
 
 
