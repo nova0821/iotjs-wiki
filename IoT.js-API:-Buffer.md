@@ -88,7 +88,7 @@ Returns a string from buffer.
 * `sourceEnd: Number`, Default: `buf.length`
 
 
-#### buf.slice([start][,end])
+#### buf.slice([start[,end]])
 * `start: Number`, Default: `0
 * `end: Number`, Default: `buf.length`
 * Return: `Buffer`
