@@ -20,11 +20,6 @@ Allocate a new buffer copied from given `buffer`.
 
 Allocate a new buffer containing given `str`.
 
-#### new Buffer(list)
-* `list: Array of Buffer`
-
-Allocate a new buffer concatenating all the Buffers in the given `list`.
-It is exactly the same with `Buffer.concat(list)`
 
 ### Class Methods
 
