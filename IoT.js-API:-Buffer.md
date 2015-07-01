@@ -74,14 +74,14 @@ Returns a number indicating which buffer comes first between `this` and `otherBu
 
 Writes `string` to buffer starts at `offset`. Returns total number of bytes written to the buffer.
 
-#### buf.toString([,start][,end])
+#### buf.toString([,start[,end]])
 * `start: Number`, Default: `0`
 * `end: Number`, Default: `buffer.length`
 * Return: `String`
 
 Returns a string from buffer.
 
-#### buf.copy(targetBuffer[,targetStart][,sourceStart[,sourceEnd]])
+#### buf.copy(targetBuffer[,targetStart[,sourceStart[,sourceEnd]]])
 * `targetBuffer: Buffer`
 * `targetStart: Number`, Default: `0`
 * `sourceStart: Number`, Default: `0`
