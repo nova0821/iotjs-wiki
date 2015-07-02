@@ -1,4 +1,5 @@
 # IoT.js modules
+* [Assert](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Assert)
 * [Buffer](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Buffer)
 * Console
 * [Events](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Events)
