@@ -90,7 +90,7 @@ Some of the settings are;
 * filter too many debug message for network
 * Add 'ccmram' section in loader script so that to make more room for JerryScript
 * Add 'gpio' device driver to make I/O pin control possible from ECMAScript
-* Add set_jmp, long_jmp to support JerryScript parser
+* Add setjmp, longjmp to support JerryScript parser
 
 The patch include some fixes that occurred when working with current version of IoT.js, some of the fixes are;
 * fix nxflat that had some problem when reading micro SD card
