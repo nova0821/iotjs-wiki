@@ -62,8 +62,10 @@ Assume _harmony_ as a root folder so it may look like this;
 
 ```
 mkdir harmony; cd harmony
+# clone iotjs
 git clone https://github.com/Samsung/iotjs.git
-git clone http://git.code.sf.net/p/nuttx/git nuttx
+# clone nuttx
+git clone https://bitbucket.org/patacongo/nuttx.git nuttx
 ```
 
 #### Apply patch to NuttX for IoT.js
@@ -75,7 +77,7 @@ cd harmony
 # assume you already copied to this folder
 tar xvf iotjs-nuttx-20150702.tar.gz
 cd nuttx
-git checkout -b iotjs 2eba8afab5e8bdc32a0f6365de070eaa7f383149
+git checkout -b iotjs 9388ed9a1780cea6fb349a0b91bfcd657f00ca90
 patch -p1 < ../iotjs-nuttx-20150702.diff
 ```
 
