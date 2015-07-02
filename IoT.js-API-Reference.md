@@ -8,3 +8,5 @@
 * Process
 * [Stream](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Stream)
 * [Timers](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Timers)
+
+* [GPIO](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-GPIO)
