@@ -16,6 +16,7 @@ Current supported platforms are **Linux and NuttX**
 ### Porting to other platforms
 It depends on the platform you're working on whether it's easy or quite complicated to port to another platform. Below guide will show you an example of the steps.
 
+* [Setting Raspberry Pi 2](https://github.com/Samsung/iotjs/wiki/Setting-Raspberry-Pi-2-for-IoT.js)
 * Porting guide to Raspberian for [Raspberry Pi](https://www.raspberrypi.org/downloads/), [Porting-to-Raspberry-Pi-2](https://github.com/Samsung/iotjs/wiki/Porting-to-Raspberry-Pi-2)
 
 ### Supporting direct H/W control
