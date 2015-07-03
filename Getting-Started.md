@@ -17,7 +17,7 @@ Current supported platforms are **Linux and NuttX**
 It depends on the platform you're working on whether it's easy or quite complicated to port to another platform. Below guide will show you an example of the steps.
 
 * [Setting Raspberry Pi 2](https://github.com/Samsung/iotjs/wiki/Setting-Raspberry-Pi-2-for-IoT.js)
-* Porting guide to Raspberian for [Raspberry Pi](https://www.raspberrypi.org/downloads/), [Porting-to-Raspberry-Pi-2](https://github.com/Samsung/iotjs/wiki/Porting-to-Raspberry-Pi-2)
+* [Porting to Raspberry Pi2](https://github.com/Samsung/iotjs/wiki/Porting-to-Raspberry-Pi-2)
 
 ### Supporting direct H/W control
 We may need to control `things` directly from ECMAScript code. How can we make it possible? Let's first describe it at [GPIO-control-ideas](https://github.com/Samsung/iotjs/wiki/GPIO-control-ideas) page.
