@@ -70,15 +70,15 @@ git clone https://bitbucket.org/patacongo/nuttx.git nuttx
 
 #### Apply patch to NuttX for IoT.js
 
-Download [iotjs-nuttx-20150702.tar.gz](https://github.com/Samsung/iotjs/blob/wikiattach/iotjs-nuttx-20150702.tar.gz?raw=true) file to harmony folder.
+Download [iotjs-nuttx-20150706.tar.gz](https://github.com/Samsung/iotjs/blob/wikiattach/iotjs-nuttx-20150706.tar.gz?raw=true) file to harmony folder.
 
 ```
 cd harmony
 # assume you already copied to this folder
-tar xvf iotjs-nuttx-20150702.tar.gz
+tar xvf iotjs-nuttx-20150706.tar.gz
 cd nuttx
 git checkout -b iotjs 9388ed9a1780cea6fb349a0b91bfcd657f00ca90
-patch -p1 < ../iotjs-nuttx-20150702.diff
+patch -p1 < ../iotjs-nuttx-20150706.diff
 ```
 
 
@@ -92,7 +92,7 @@ Some of the settings are;
 * filter too many debug message for network
 * Add 'ccmram' section in loader script so that to make more room for JerryScript
 * Add 'gpio' device driver to make I/O pin control possible from ECMAScript
-* Add setjmp, longjmp to support JerryScript parser
+* Add setjmp header and setjmp, longjmp to support JerryScript parser
 
 The patch include some fixes that occurred when working with current version of IoT.js, some of the fixes are;
 * fix nxflat that had some problem when reading micro SD card
