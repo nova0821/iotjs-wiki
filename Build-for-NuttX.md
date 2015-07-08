@@ -70,15 +70,15 @@ git clone https://bitbucket.org/patacongo/nuttx.git nuttx
 
 #### Apply patch to NuttX for IoT.js
 
-Download [iotjs-nuttx-20150706.tar.gz](https://github.com/Samsung/iotjs/blob/wikiattach/iotjs-nuttx-20150706.tar.gz?raw=true) file to harmony folder.
+Download [iotjs-nuttx-20150706.tar.gz](https://github.com/Samsung/iotjs/blob/wikiattach/iotjs-nuttx-20150708.tar.gz?raw=true) file to harmony folder.
 
 ```
 cd harmony
 # assume you already copied to this folder
-tar xvf iotjs-nuttx-20150706.tar.gz
+tar xvf iotjs-nuttx-20150708.tar.gz
 cd nuttx
 git checkout -b iotjs 9388ed9a1780cea6fb349a0b91bfcd657f00ca90
-patch -p1 < ../iotjs-nuttx-20150706.diff
+patch -p1 < ../iotjs-nuttx-20150708.diff
 ```
 
 
