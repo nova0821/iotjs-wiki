@@ -14,7 +14,7 @@ Release gpio control.
 
 #### gpio.setPin(pinNumber, direction[, mode][, callback])
 * `pinNumber: Number` - pin number to configure
-* `direction: 'in' | 'out'` - direction of the pin.
+* `direction: 'in' | 'out' | 'none'` - direction of the pin. `'none'` will unset the Pin.
 * `mode: String` - pin mode.
 * `callback: Function(err: Error | null)`.
 
@@ -35,7 +35,7 @@ Read value from a pin.
 
 #### gpio.setPort(portNumber, direction[, mode][, callback])
 * `portNumber: Number` - port number to configure.
-* `direction: 'in' | 'out'` - direction of the port.
+* `direction: 'in' | 'out' | 'none'` - direction of the port.
 * `mode: String` - pin mode.
 * `callback: Function(err: Error | null)`.
 
