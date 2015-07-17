@@ -1,3 +1,6 @@
+### Nuttx repo has changed
+bitbucket.org repo structure has changed and this document needs update. Below instruction will not work. Old sourceforge.net is currently not working so cannot go back. Please wait.
+
 ### Overall steps to build for NuttX
 1. Get the sources
 2. Configure NuttX
