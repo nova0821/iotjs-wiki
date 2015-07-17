@@ -58,27 +58,4 @@ Read value from a port.
 * `queryOption: Object`.
 * `callback: Function(err: Error | null, result: Object)`.
 
-
-Reference
-* [STM32F4 Discovery Tutorials – GPIO](http://armprogramming.com/stm32f4-discovery-tutorials-gpio/)
-* [Understanding Microcontroller Pin Input/Output Modes ->](http://coactionos.com/embedded%20design%20tips/2013/10/21/Tips-Understanding-Microcontroller-Pin-Input-Output-Modes/)
-
-
-
-### implementation
-* Need to know platform is IoT.js?
-* Supporting real devices
-   * as an example, visit [johnny-five](https://github.com/rwaldron/johnny-five) and see how it looks like
-* Structure Components
-   * Device: Sensors and Actuators attached to the Board
-   * Board: Where SoC exist
-   * Board dependent codes: C++ codes that depend on the board
-   * IoT.js platform codes: C++/JS core codes of IoT.js
-   * Board dependent application codes: code that depend on board and device
-   * Application codes: 
-* How should the API look like?
-   * Class: to manage APIs in classes, in functional and usage: GPIO -> I2C -> ZWave
-   * Methods
-
-     
-
+
