@@ -19,13 +19,15 @@ Current supported platforms are **Linux and NuttX**
 * Planning OSX 10.10 
 * [Artik 1](https://www.artik.io/hardware/artik-1)
 
-##### H/W boards to support
+##### H/W boards
 * Current supporting
     * STM32F4-Discovery + BB
     * Raspberry Pi 2
 * Plan to support
+    * Samsung Artik 1
     * STM32F429-Discovery
-    * Artik 1
+    * STM32F411-Nucleo
+    * Intel Edison
 
 
 ### Supporting direct H/W control
