@@ -90,7 +90,7 @@ continue with nuttx repo preparation
 git submodule add https://bitbucket.org/patacongo/nuttx nuttx
 git submodule add https://bitbucket.org/nuttx/apps/ apps
 ```
-do not `submodule init`. checking out to old hash, below steps, will fail if `config` and `Documents` folder exist.
+do not `submodule init`. checking out to old hash, below steps, will fail if `config` and `Documentation` folder exist.
 
 #### Apply patch to NuttX for IoT.js
 
