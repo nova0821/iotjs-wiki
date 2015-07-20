@@ -67,20 +67,44 @@ Assume _harmony_ as a root folder so it may look like this;
 mkdir harmony; cd harmony
 # clone iotjs
 git clone https://github.com/Samsung/iotjs.git
-# clone nuttx
-git clone https://bitbucket.org/patacongo/nuttx.git nuttx
+# clone nuttx from bitbucket.org
+mkdir nuttx
+cd nuttx
+git init
+git submodule add https://bitbucket.org/patacongo/nuttx nuttx
+git submodule add https://bitbucket.org/nuttx/apps/ apps
+```
+add `.gitignore file` with below contents
+```
+.depend
+Make.dep
+*.o
+*.a
+*.d
+*.i
+*~
+.swp
+.*.swp
+core
+.gdbinit
+cscope.out
 ```
 
 #### Apply patch to NuttX for IoT.js
 
-Download [iotjs-nuttx-20150706.tar.gz](https://github.com/Samsung/iotjs/blob/wikiattach/iotjs-nuttx-20150708.tar.gz?raw=true) file to harmony folder.
+Download [iotjs-nuttx-20150708.tar.gz](https://github.com/Samsung/iotjs/blob/wikiattach/iotjs-nuttx-20150708.tar.gz?raw=true) file to harmony folder.
 
 ```
 cd harmony
-# assume you already copied to this folder
-tar xvf iotjs-nuttx-20150708.tar.gz
+# assume you already copied patch file to this folder
+tar xvf iotjs-nuttx-20150724.tar.gz
+# checkout nuttx
 cd nuttx
 git checkout -b iotjs 9388ed9a1780cea6fb349a0b91bfcd657f00ca90
+# checkout apps
+cd ../apps
+git checkout -b iotjs fe20f19afe90b3fe661d320bbc3d5af4ab935e10
+cd ..
 patch -p1 < ../iotjs-nuttx-20150708.diff
 ```
 
