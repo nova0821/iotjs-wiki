@@ -28,7 +28,7 @@ Current supported platforms are **Linux and NuttX**
     * STM32F429-Discovery
     * STM32F411-Nucleo
     * Intel Edison
-    * (and your contributions including plans)
+    * (and your contributions including above plans)
 
 
 ### Supporting direct H/W control
