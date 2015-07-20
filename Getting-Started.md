@@ -16,8 +16,8 @@ Current supported platforms are **Linux and NuttX**
     * [Build for ARM Linux (RPi2)](https://github.com/Samsung/iotjs/wiki/Build-for-ARM-Linux-(RPi2))
 
 ##### Platforms to support
-* Planning OSX 10.10 
-* [Artik 1](https://www.artik.io/hardware/artik-1)
+* OSX 10.10 as development host
+* [Artik 1](https://www.artik.io/hardware/artik-1) as target board
 
 ##### H/W boards
 * Current supporting
