@@ -71,10 +71,8 @@ git clone https://github.com/Samsung/iotjs.git
 mkdir nuttx
 cd nuttx
 git init
-git submodule add https://bitbucket.org/patacongo/nuttx nuttx
-git submodule add https://bitbucket.org/nuttx/apps/ apps
 ```
-add `.gitignore file` with below contents
+add `.gitignore` file with below contents. it's for the patch from old repository.
 ```
 .depend
 Make.dep
@@ -90,16 +88,23 @@ core
 cscope.out
 ```
 
+continue with nuttx repo preparation
+```
+git submodule add https://bitbucket.org/patacongo/nuttx nuttx
+git submodule add https://bitbucket.org/nuttx/apps/ apps
+```
+do not `submodule init`. checking out to old hash, below steps, will fail if `config` and `Documents` folder exist.
+
 #### Apply patch to NuttX for IoT.js
 
 Download [iotjs-nuttx-20150708.tar.gz](https://github.com/Samsung/iotjs/blob/wikiattach/iotjs-nuttx-20150708.tar.gz?raw=true) file to harmony folder.
 
 ```
 cd harmony
-# assume you already copied patch file to this folder
-tar xvf iotjs-nuttx-20150724.tar.gz
+# assume you have above patch file to this folder
+tar xvf iotjs-nuttx-20150708.tar.gz
 # checkout nuttx
-cd nuttx
+cd nuttx/nuttx
 git checkout -b iotjs 9388ed9a1780cea6fb349a0b91bfcd657f00ca90
 # checkout apps
 cd ../apps
@@ -107,7 +112,6 @@ git checkout -b iotjs fe20f19afe90b3fe661d320bbc3d5af4ab935e10
 cd ..
 patch -p1 < ../iotjs-nuttx-20150708.diff
 ```
-
 
 ##### What is it about the _patch_ in above?
 
@@ -164,6 +168,7 @@ As noted in [Build for Linux](https://github.com/Samsung/iotjs/wiki/Build-for-Li
 --no-checktest
 ```
 Have to disable 'checktest' as test with Nuttx binaries are not possible.
+`buildlib` for nuttx is turned on for default.
 
 To build IoT.js for nuttx, first, you need to build NuttX to create configuration file 'config.h'.
 
@@ -187,7 +192,7 @@ If you have harmony in /home/maxwell/harmony, for example;
 ```
 cd harmony/iotjs
 ./tools/build.py --buildtype=release --target-arch=arm --target-os=nuttx \
---nuttx-home=/home/maxwell/harmony/nuttx/nuttx --buildlib --no-checktest
+--nuttx-home=/home/maxwell/harmony/nuttx/nuttx --no-checktest
 ```
 
 ### 4. Copy libraries to nuttx/nuttx/lib folder
