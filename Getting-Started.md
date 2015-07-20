@@ -17,7 +17,7 @@ Current supported platforms are **Linux and NuttX**
 
 ##### Platforms to support
 * OSX 10.10 as development host
-* [Artik 1](https://www.artik.io/hardware/artik-1) as target board
+* [Artik 1 =>](https://www.artik.io/hardware/artik-1) as target board
 
 ##### H/W boards
 * Current supporting
