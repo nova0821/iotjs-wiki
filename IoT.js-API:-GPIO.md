@@ -71,7 +71,3 @@ Read value from a port.
 ### Error values
 * GPIO_INUSE: GPIO is already initialised
 * GPIO_INVALIDPARAM: one of the parameter is invalid. 
-
-### H/W dependency
-
-This primitive GPIO function is common to all hardware that supports GPIO. `portpin` value depend on H/W.
