@@ -22,9 +22,12 @@ Release GPIO device driver and frees used memory.
 #### gpio.setPin(pinNumber, direction[, mode][, callback])
 * `pinNumber: Number`: pin number to configure
 * `direction: 'in' | 'out' | 'none'`: direction of the pin. `'none'` will unset the Pin.
-* `mode: String` - pin mode. depends on board.
+* `mode: 'pullup' | 'pulldn' | 'float' | 'pushpull' | 'opendrain' | 'none' | '' | undefined` : pin mode. 
 * `callback: Function(err: Error | null)`.
   * if callback is not provided and error occurs, throws `Error` object
+
+_TODO_ 
+* describe `mode`
 
 #### gpio.writePin(pinNumber, value[, callback])
 * `pinNumber: Number` - pin number to wirte
