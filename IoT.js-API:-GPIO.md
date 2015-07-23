@@ -24,14 +24,13 @@ Release GPIO device driver and frees used memory.
 * `direction: 'in' | 'out' | 'none'`: direction of the pin. `'none'` will unset the Pin.
 * `mode: String` - pin mode. depends on board.
 * `callback: Function(err: Error | null)`.
-* Return: Undefined or error code 
-
-Configure single pin. 
+  * if callback is not provided and error occurs, throws `Error` object
 
 #### gpio.writePin(pinNumber, value[, callback])
 * `pinNumber: Number` - pin number to wirte
 * `value: Boolean`.
 * `callback: Function(err: Error | null)`.
+  * if callback is not provided and error occurs, throws `Error` object
 
 Write a boolean value to a pin.
 
@@ -46,6 +45,7 @@ Read value from a pin.
 * `direction: 'in' | 'out' | 'none'` - direction of the port.
 * `mode: String` - pin mode.
 * `callback: Function(err: Error | null)`.
+  * if callback is not provided and error occurs, throws `Error` object
 
 Configure single port. All pins bound to this port will have the configuration. 
 
@@ -54,6 +54,7 @@ Configure single port. All pins bound to this port will have the configuration.
 * `portNumber: Number` - port number to write
 * `value: Number(1 Byte)`.
 * `callback: Function(err: Error | null)`.
+  * if callback is not provided and error occurs, throws `GpioError` object
 
 Write a byte value to a port.
 
@@ -67,7 +68,8 @@ Read value from a port.
 #### gpio.query(queryOption, callback)
 * `queryOption: Object`.
 * `callback: Function(err: Error | null, result: Object)`.
+* _Need mode discussion for this_
 
-### Error values
-* GPIO_INUSE: GPIO is already initialised
-* GPIO_INVALIDPARAM: one of the parameter is invalid. 
+### Error
+* _GpioError_ object for Gpio Error may be better.
+
