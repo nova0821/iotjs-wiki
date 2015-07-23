@@ -15,7 +15,6 @@
 Initialises GPIO device driver. 
 
 #### release()
-* Return: undefined
 
 Release GPIO device driver and frees used memory.
 
