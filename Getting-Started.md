@@ -32,7 +32,7 @@ Current supported platforms are **Linux and NuttX**
 
 
 ### Supporting direct H/W control
-We may need to control `things` directly from ECMAScript code. How can we make it possible? Let's first describe it at [GPIO-control-ideas](https://github.com/Samsung/iotjs/wiki/GPIO-control-ideas) page.
+We may need to control `things` directly from ECMAScript code. How can we make it possible? Let's first describe it at [GPIO-API-candidate](https://github.com/Samsung/iotjs/wiki/GPIO-API-candidate) page.
 
 ### IoT.js Package
 IoT.js also uses NPM tool, node package manager, as for package development and sharing. Visit [IoT.js Package](https://github.com/Samsung/iotjs/wiki/IoT.js-Package) page for more information.
