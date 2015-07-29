@@ -1,9 +1,9 @@
 # Inside IoT.js
 
 * [Design](#design)
-* [Native Modules](#nativemodules)
-* Javascript Binding
-* libuv Binding
+* [Native Modules](#native-modules)
+* Javascript Binding(#javascript-binding)
+* libuv Binding(#libuv-binding)
 
 ## Design
 
