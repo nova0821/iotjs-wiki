@@ -2,8 +2,8 @@
 
 * [Design](#design)
 * [Native Modules](#native-modules)
-* Javascript Binding(#javascript-binding)
-* libuv Binding(#libuv-binding)
+* [Javascript Binding](#javascript-binding)
+* [libuv Binding](#libuv-binding)
 
 ## Design
 
