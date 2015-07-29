@@ -7,6 +7,8 @@
 
 ## Design
 
+IoT.js is built on top of [JerryScript](http://samsung.github.io/jerryscript) and [libuv](http://github.com/joyent/libuv)
+
 ## Native Modules
 
 ## Javascript Binding
