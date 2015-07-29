@@ -9,6 +9,7 @@
 **Documentation**
 - [Getting Started](Getting Started)
 - [IoT.js API Reference](IoT.js API Reference)
+- [Inside IoT.js](Inside IoT.js)
 - [Coding Style Guideline](Coding_Style_Guideline)
 
 **Development**
