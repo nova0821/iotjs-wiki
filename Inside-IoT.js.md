@@ -7,7 +7,7 @@
 
 ## Design
 
-IoT.js is built on top of [JerryScript](http://samsung.github.io/jerryscript) and [libuv](https://github.com/libuv/libuv)
+IoT.js is built on top of [JerryScript](http://samsung.github.io/jerryscript) and [libuv](http://libuv.org). JerryScript is a lightweight Javascript engine intended to run on small devices for IoT and libuv is a library for supporting asynchronous I/O. 
 
 ## Native Modules
 
