@@ -2,8 +2,8 @@
 
 ### Methods
 
-#### setTimeout(callback, delay)
-* `callback: Function()`
+#### setTimeout(callback, delay[, args..])
+* `callback: Function([args..])`
 * `delay: Int`
 * Return: `timeoutObject`
 
@@ -14,8 +14,8 @@ Schedules to call one-time to `callback` function after `delay` milliseconds.
 
 Disables timeout call from `setTimeout` method.
 
-#### setInterval(callback, delay)
-* `callback: function`
+#### setInterval(callback, delay[, args..])
+* `callback: Function([args..])`
 * `delay: Int`
 * Return: `intervalObject`
 
