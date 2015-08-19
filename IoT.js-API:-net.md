@@ -132,12 +132,39 @@ If `data` is given it is equivalent to `socket.write(data)` followed by `socket.
 
 ### Events
 
-#### lookup
-#### connect
-#### data
-#### drain
-#### end
-#### timeout
-#### close
-#### error
+#### `'lookup(err, address, family)'`
+* `err: Error | Null`
+* `address: String`
+* `family: String | Null`
+
+Emitted after resolving hostname.
+
+#### `'connect'`
+
+Emitted after connection is established.
+
+#### `'data(data)'`
+* data: Buffer | String
+
+Emitted when data is received from the connection.
+
+#### `'drain'`
+
+Emitted when the write buffer becomes empty.
+
+#### `'end'`
+
+Emitted when FIN packet received.
+
+#### `'timeout'`
+
+Emitted when the connection remains idle for specified timeout.
+
+#### `'close'`
+
+Emitted when the socket closed.
+
+#### `'error'`
+
+Emitted when an error occurs.
 
