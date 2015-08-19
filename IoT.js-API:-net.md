@@ -124,11 +124,36 @@ Half-closes the socket.
 If `data` is given it is equivalent to `socket.write(data)` followed by `socket.end()`.
 
 * `data: String | Buffer`
+
 #### socket.destroy()
+
+Destroys the socket.
+
 #### socket.pause()
+
+Pauses reading data.
+
 #### socket.resume()
+
+Resumes reading data after a call to `pause()`.
+
 #### socket.setTimeout(timeout[, callback])
+
+* `timeout: Number`
+* `callback: Function()`
+
+Sets timeout for the socket.
+
+If the socket is inactive for `timeout` milliseconds, `'timeout'` event will emit.
+
+`callback` is registered as `timeout` event listener.
+
 #### socket.setKeepAlive([enable][, initialDelay])
+
+* `enable: Boolean`
+* `initilalDelay: Number`, Default: `0`
+
+Enables or disables keep-alive functionality.
 
 ### Events
 
