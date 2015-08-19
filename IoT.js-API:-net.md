@@ -26,11 +26,7 @@ Creates a TCP server according to `options`.
 
 Creates a `net.Socket` and connects to the supplied host.
 
-`options` is an object specifying following information:
-* `port: Number` - port connect to (required)
-* `host: String` - host connect to (optional, default: `'127.0.0.1'`)
-
-`connectionListner` is automatically registered as `connect` event listener which will be emitted when the connection is established.
+It is equivalent to `new net.Socket()` followed by `socket.connect()`.
 
 ***
 
@@ -85,11 +81,49 @@ Emitted when an error occurs.
 
 #### new net.Socket([options])
 
+* `options: Object`
+
+Creates a new socket object.
+
+`options` is an object specifying following information:
+
+* `allowHalfOpen: Boolean`
+
 ### Instance Methods
 
+#### socket.connect(options[, connectListener])
 #### socket.connect(port[, host][, connectListener])
+* `options: Object`
+* `port: Number`
+* 'host: String`, Default: `'localhost'`
+
+Opens the connection with supplied port and host.
+
+`options` is an object specifying following information:
+* `port: Number` - port connect to (required)
+* `host: String` - host connect to (optional, default: `'127.0.0.1'`)
+
+`connectionListner` is automatically registered as `connect` event listener which will be emitted when the connection is established.
+
 #### socket.write(data[, callback])
-#### socket.end([data])
+
+* `data: String | Buffer`
+* `callback: Funciton()`
+
+Sends `data` on the socket.
+
+`callback` function will be called after given data is flushed through the connection.
+
+#### socket.end([data][, callback])
+
+* `data: String | Buffer`
+* `callback: Funciton()`
+
+Half-closes the socket.
+
+If `data` is given it is equivalent to `socket.write(data)` followed by `socket.end()`.
+
+* `data: String | Buffer`
 #### socket.destroy()
 #### socket.pause()
 #### socket.resume()
