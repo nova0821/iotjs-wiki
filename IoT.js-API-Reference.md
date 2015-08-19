@@ -6,6 +6,7 @@
 * [File System](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-File-Systen)
 * Global
 * [GPIO](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-GPIO)
+* [Net](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Net)
 * Process
 * [Stream](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Stream)
 * [Timers](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Timers)
