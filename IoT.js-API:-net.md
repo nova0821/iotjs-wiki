@@ -16,25 +16,23 @@ Creates a TCP server according to `options`.
 
 
 #### net.connect(options[, connectListener])
-#### net.createConnection(options[, connectnListener])
-* `options: Object`
-* `connectListner: Function()`
-
-Creates a `net.Socket` and connects to the supplied host.
-
-`connectionListner` is automatically registered as `connect` event listener which will be emitted when the connection is established.
-
-
 #### net.connect(port[, host][, connectListener])
+#### net.createConnection(options[, connectnListener])
 #### net.createConnnection(port[, host][, connectListener])
+* `options: Object`
 * `port: Number`
 * `host: String`, Default: `localhost`
 * `connectListner: Function()`
 
-Creates a `net.Socket` and connects to the `port` on `host`.
+Creates a `net.Socket` and connects to the supplied host.
 
-See `net.connect(options[, connectListener])`
+`options` is an object specifying following information:
+* `port: Number` - port connect to (required)
+* `host: String` - host connect to (optional, default: `'127.0.0.1'`)
 
+`connectionListner` is automatically registered as `connect` event listener which will be emitted when the connection is established.
+
+***
 
 ## class: net.Server
 
@@ -44,14 +42,42 @@ You can create `net.Server` instance with `net.createServer()`.
 
 #### server.listen(port[, host][, backlog][, listenListener])
 #### server.listen(options[, listenListener])
-#### server.close()
+
+* `port: Number`
+* `host: String`
+* `backlog: Number`
+* `listenListener: Function()`
+
+Start listening and accepting connections on specified port and host.
+
+
+#### server.close([closeListener])
+
+* `closeListener: Function()`
+
+Stop listening new arriving connection.
+
+Server socket will finally close when all existing connections are closed, then emit 'close' event.
+
+`closeListener` is registered as `close` event listener.
 
 ### Event
 
-#### listening
-#### connectoin
-#### close
-#### error
+#### `'listening'`
+Emittied when server has been started listening.
+
+#### `'connection(socket)'`
+* `socket: net.Socket`
+
+Emitted when new connection is established.
+
+#### `'close'`
+Emitted when server closed.
+
+#### `'error'`
+Emitted when an error occurs.
+
+***
 
 ## class: net.Socket
 
