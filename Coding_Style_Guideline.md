@@ -171,11 +171,11 @@ Use either // or /* */ style comments. However, // style is much prefered.
 
 
 
-# Coding Style Guideline for Javarscript
+# Coding Style Guideline for Javascript
 
-This coding standard is based on google javarscript coding standard(https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
+This coding standard is based on google javascript coding standard(https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
 
-# Javarscript Language Rules
+# Javascript Language Rules
 
 ## var
 Always declare variable before use.
@@ -195,7 +195,7 @@ Do not use `with` statement.
 ## Modifying prototypes of builtin objects
 Do not modify prototypes of builtin objects
 
-# Javarscript Style Rules
+# Javascript Style Rules
 
 ## Naming
 Use lowerCamelCase for varible names and function names.
