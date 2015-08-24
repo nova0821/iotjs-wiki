@@ -70,6 +70,8 @@ Emitted when new connection is established.
 #### `'close'`
 Emitted when server closed.
 
+Note that this event will be emitted after all existing connections are closed.
+
 #### `'error'`
 Emitted when an error occurs.
 
