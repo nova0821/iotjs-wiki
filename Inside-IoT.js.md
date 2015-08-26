@@ -1,7 +1,7 @@
 # Inside IoT.js
 
 * [Design](#design)
-* [Native Modules](#native-modules)
+* [IoT.js Core](#IoT.js Core)
 * [Javascript Binding](#javascript-binding)
 * [libuv Binding](#libuv-binding)
 
@@ -15,9 +15,9 @@ A big picture of IoT.js is looks like following figure.
 
 The layer related to IoT.js project is green colored box on above figure.
 
-As you can see, it runs upon JerryScript  and libuv. There is a layer that binds JerryScript and libuv to IoT.js. We will discuss about that layer on [Javascript Binding](https://github.com/Samsung/iotjs/wiki/Inside-IoT.js#javascript-binding) and [libuv Binding](https://github.com/Samsung/iotjs/wiki/Inside-IoT.js#javascript-binding) section on this document respectively.
+As you can see, it runs upon JerryScript  and libuv. There is a layer that binds JerryScript and libuv to IoT.js. We will discuss about that layer on [Javascript Binding](#javascript-binding) and [libuv Binding](#javascript-binding) section on this document respectively.
 
-## Native Modules
+## IoT.js Core
 
 ## Javascript Binding
 
