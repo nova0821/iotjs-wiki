@@ -31,7 +31,7 @@ Many modern Javascript Engines are supporting embedding API to provide functiona
 
 Javascript Binding layer of IoT.js is for providing interface between upper layer (IoT.js core) and  underlying Javascript engine. Although IoT.js only supports JerryScript for now, there is a chance that we extend supporting Javascript engine (such as [Duktape](http://duktape.org/) or [V8](https://code.google.com/p/v8/)) in the future. For this reason, we want to keep the interface of Javascript binding layer independent from a specific Javascript engine. You can see the interface of the layer in [iotjs_binding.h](https://github.com/Samsung/iotjs/blob/master/src/iotjs_binding.h).
 
-### JObject
+### `JObject`
 
 `JObject` class stands for a real Javascript object. Upper layer will access Javascript object via this interface. This class provides following functionalities:
 
