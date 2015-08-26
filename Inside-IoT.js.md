@@ -19,6 +19,8 @@ As you can see, it runs upon JerryScript  and libuv. There is a layer that binds
 
 IoT.js core layer locates above these binding layer. This core layer play a central role in this project that it provides API implementation layer with fundamental functionality for running main event loop, interacting with Javascript engine, managing I/O resources via libuv, managing life cycle of objects, supplies builtin modules, an so forth. We will discuss this topic further in [IoT.js Core](#iotjs-core) secton.
 
+IoT.js provides APIs for user applications to help creating IoT friendly services more easily. You can see the list of API from [IoT.js API Reference](https://github.com/Samsung/iotjs/wiki/IoT.js%20API%20Reference).
+
 ## IoT.js Core
 
 ## Javascript Binding
