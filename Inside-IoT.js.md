@@ -17,7 +17,7 @@ The layer related to IoT.js project is green colored box on above figure.
 
 As you can see, it runs upon JerryScript  and libuv. There is a layer that binds JerryScript and libuv to IoT.js. We will discuss about that layer in [Javascript Binding](#javascript-binding) and [libuv Binding](#javascript-binding) section on this document respectively.
 
-IoT.js core layer locates above these binding layer. This core layer play a central role in this project that it provides API implementation layer with fundamental functionality for running main event loop, interacting with Javascript engine, managing I/O resources via libuv, managing life cycle of objects, supplies builtin modules, an so forth. We will discuss this topic further in [IoT.js Core](#iot.js-core) secton.
+IoT.js core layer locates above these binding layer. This core layer play a central role in this project that it provides API implementation layer with fundamental functionality for running main event loop, interacting with Javascript engine, managing I/O resources via libuv, managing life cycle of objects, supplies builtin modules, an so forth. We will discuss this topic further in [IoT.js Core](#iotjs-core) secton.
 
 ## IoT.js Core
 
