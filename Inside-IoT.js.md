@@ -1,9 +1,9 @@
 # Inside IoT.js
 
 * [Design](#design)
-* [IoT.js Core](#IoT.js Core)
 * [Javascript Binding](#javascript-binding)
 * [libuv Binding](#libuv-binding)
+* [IoT.js Core](#IoT.js Core)
 
 ***
 
