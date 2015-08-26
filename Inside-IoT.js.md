@@ -25,9 +25,20 @@ IoT.js provides APIs for user applications to help creating IoT friendly service
 
 Many modern Javascript Engines are supporting embedding API to provide functionality for compiling and executing Javascript program, accessing Javascript object and its value, handling errors, managing lifecyles of objects and so on. 
 
-Javascript Binding layer of IoT.js is for providing interface between upper layer (IoT.js core) and  underlying Javascript engine. Although IoT.js only supports JerryScript for now, there is a chance that we extend supporting Javascript engine (such as [Duktape](http://duktape.org/) or [V8](https://code.google.com/p/v8/)) in the future. For this reason, we want to keep the interface of Javascript binding layer be engine independent. You can see the interface of the layer in [iotjs_binding.h](https://github.com/Samsung/iotjs/blob/master/src/iotjs_binding.h).
+Javascript Binding layer of IoT.js is for providing interface between upper layer (IoT.js core) and  underlying Javascript engine. Although IoT.js only supports JerryScript for now, there is a chance that we extend supporting Javascript engine (such as [Duktape](http://duktape.org/) or [V8](https://code.google.com/p/v8/)) in the future. For this reason, we want to keep the interface of Javascript binding layer independent from a specific Javascript engine. You can see the interface of the layer in [iotjs_binding.h](https://github.com/Samsung/iotjs/blob/master/src/iotjs_binding.h).
 
+`JObject` class stands for a real Javascript object. Upper layer will access Javascript object via instance of this class. This class provides following functionalities:
 
+* Creating a Javascript object using `Object()` constructor.
+* Creating a Javascript object by a value.
+* Creating a Javascript function object where its body is implemented in C/C++.
+* Creating a Javascript Error object.
+* Increasing reference count.
+* Decreasing reference count.
+* Checking object type.
+* Retrieving value.
+* Calling a Javascript function.
+* Evaluating a Javascript script.
 
 ## libuv Binding
 
