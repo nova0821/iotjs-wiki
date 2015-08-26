@@ -5,6 +5,8 @@
 * [Javascript Binding](#javascript-binding)
 * [libuv Binding](#libuv-binding)
 
+***
+
 ## Design
 
 IoT.js is built on top of [JerryScript](http://samsung.github.io/jerryscript) and [libuv](http://libuv.org). JerryScript is a lightweight Javascript engine intended to run on small devices for IoT and libuv is a library for supporting asynchronous I/O. 
@@ -21,11 +23,15 @@ IoT.js core layer locates above these binding layer. This core layer play a cent
 
 IoT.js provides APIs for user applications to help creating IoT friendly services more easily. You can see the list of API from [IoT.js API Reference](https://github.com/Samsung/iotjs/wiki/IoT.js%20API%20Reference).
 
+***
+
 ## Javascript Binding
 
 Many modern Javascript Engines are supporting embedding API to provide functionality for compiling and executing Javascript program, accessing Javascript object and its value, handling errors, managing lifecyles of objects and so on. 
 
 Javascript Binding layer of IoT.js is for providing interface between upper layer (IoT.js core) and  underlying Javascript engine. Although IoT.js only supports JerryScript for now, there is a chance that we extend supporting Javascript engine (such as [Duktape](http://duktape.org/) or [V8](https://code.google.com/p/v8/)) in the future. For this reason, we want to keep the interface of Javascript binding layer independent from a specific Javascript engine. You can see the interface of the layer in [iotjs_binding.h](https://github.com/Samsung/iotjs/blob/master/src/iotjs_binding.h).
+
+### JObject
 
 `JObject` class stands for a real Javascript object. Upper layer will access Javascript object via this interface. This class provides following functionalities:
 
@@ -40,6 +46,10 @@ Javascript Binding layer of IoT.js is for providing interface between upper laye
 * Calling a Javascript function.
 * Evaluating a Javascript script.
 
+***
+
 ## libuv Binding
+
+***
 
 ## IoT.js Core
