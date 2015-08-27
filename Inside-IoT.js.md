@@ -244,4 +244,4 @@ And for next step, main event loop checks if there were no more request to be tr
       more = uv_loop_alive(env.loop());
     }
 ```
-If not main event loop ends.
+If there are another iteration of the loop executed. Otherwise, main event loop ends.
