@@ -53,6 +53,7 @@ You can see the interface of the layer in [iotjs_binding.h](https://github.com/S
 * Retrieving value.
 * Calling a Javascript function.
 * Evaluating a Javascript script.
+* Set and Get corresponding native data to the Javascript object.
 
 ### JObjectWrap
 
@@ -60,10 +61,14 @@ You can see the interface of the layer in [iotjs_binding.h](https://github.com/S
 The main purpose of this wrapper is to hand object's life cycle managing over to Javascript engine while linking the object with other data structure.
 To create a instance of `JObjectWrap`, you need to supply a Javascript object and free handler.
 
-To make sure the Javascript object could be reclaimed by GC when there are no more references to that object, this wrapper will not increase reference count for the Javascript object.
+To make sure that the Javascript object could be reclaimed by GC when there are no more references to that object, this wrapper will not increase reference count for the Javascript object.
 Free handler will be invoked just before the Javascript object actually being reclaimed by GC and it will free the wrapper instance.
 
-Make sure that wrapper should not be a local variable for it could lead double free of wrapper instance. If you really want to use local wrapper just using `JObject` would be enough.
+Make sure that wrapper should not be a created at stack, it could lead double free of wrapper instance (when it goes out scope and when corresponding object is being collected by GC). If you really want to use local wrapper just using `JObject` would be enough. This wrapper must be create with C++ 'new' keyword.
+
+And do not hold pointer to the wrapper in native code side globally because even if you are holding a wrapper by pointer, there is a chance that Javascript engine release the corresponding Javascript object that results freeing wrapper from free handler. Consequentially it will be dangling pointer.
+
+The only safe way to get wrapper is to get it from Javascript object. When a wrapper is being created, it will link itself with corresponding Javascript object with `SetNative()` method of [`JObject`](#jobject). And you will get the wrapper from the object later with `GetNative()` method of [`JObject`](#jobject) when you need it.
 
 ### Native handler
 
@@ -78,7 +83,7 @@ Usually main purpose of [FFI](https://en.wikipedia.org/wiki/Foreign_function_int
 After a routine was invoked, it is common that the routine just do what it is supposed to do without knowing the context except arguments.
 Whereas native handler does know that it is being called from Javascript (actually it is a Javascript function although not written in Javascript) and does access surrounding Javascript execution context.
 
-### Embedding API supporting from Javascript engine
+### Embedding API
 
 Many Javascript engines these days provide embedding API for this purpose. IoT.js uses the API to create [builtin module](#builtin) and [native handler](#native-handler). See following link if you want further information about the API:
  * [JerryScript API](https://samsung.github.io/jerryscript/API/)
@@ -144,7 +149,7 @@ The process of IoT.js can be summarized as follow:
 
 ### Builtin
 
-Javascript object fully implemented in C/C++ using [embedding API](#embedding-api-supporting-from-javascript-engine) are called "builtin".
+Javascript object fully implemented in C/C++ using [embedding API](#embedding-api) are called "builtin".
 You can find list of builtin object at `MAP_MODULE_LIST` macro in ['iotjs_module.h'](https://github.com/Samsung/iotjs/blob/master/src/iotjs_module.h).
 
 Builtin modules are very useful since it can accesss underlying system using libuv, C/C++ library, and system call. And it may be used for optimizing performance of CPU bound routine and reduce binary size.
