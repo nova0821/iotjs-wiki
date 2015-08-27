@@ -46,6 +46,13 @@ Javascript Binding layer of IoT.js is for providing interface between upper laye
 * Calling a Javascript function.
 * Evaluating a Javascript script.
 
+### `JObjectWrap`
+
+`JObjectWrap` is used for wrapping a Javascript object to a C++ instance. The main purpose of this wrapper is to hand object's life cycle managing over to Javascript engine while linking the object with other data structure. To create a instance of `JObjectWrap`, you need to supply a Javascript object and free handler.
+
+To make sure the Javascript object could be reclaimed by GC when there are no more references to that object, this wrapper will not increase reference count for the Javascript object. Free handler will be invoked just before the Javascript object actually being reclaimed by GC and it will free the wrapper instance.
+
+Make sure that wrapper should not be a local variable for it could lead double free of wrapper instance. If you really want to use local wrapper just using `JObject` would be enough.
 
 ### Native handler
 
@@ -65,6 +72,8 @@ Many Javascript engines these days provide embedding API for this purpose. IoT.j
 ***
 
 ## libuv Binding
+
+
 
 ***
 
