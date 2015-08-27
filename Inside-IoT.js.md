@@ -102,7 +102,7 @@ Because every libuv I/O handle (e.g. file descriptor) in IoT.js links to a Javas
 `ReqWrap` if for wrapping libuv request (e.g. read file).
 Because every libuv I/O request in IoT.js links to a Javascript function that treats result of the request, `ReqWrap` manages the lifecycle of the callback function object and has member function called `jcallback()` to retrieve the function object.
 
-Note that `ReqWrap` does not inherits `[HandleWrap](#handlewrap)` to wrapping the callback function object.
+Note that `ReqWrap` does not inherits [`HandleWrap`](#handlewrap) to wrapping the callback function object.
 This is because it need to prevent the callback function from being reclaimed by GC until finish handling the result.
 As `HandleWrap` just hand over the managing lifecycle to Javascript engine without increasing reference count, we could not guarantee liveness of the callback function object if we use `HandleWrap`.
 
