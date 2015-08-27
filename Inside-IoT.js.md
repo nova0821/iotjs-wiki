@@ -78,6 +78,8 @@ Usually main purpose of FFI is to call a routine written in one language from a 
 After a routine was invoked, it is common that the routine just do what it is supposed to do without knowing the context except arguments.
 Whereas native handler does know that it is being called from Javascript (actually it is a Javascript function although not written in Javascript) and does access surrounding Javascript execution context.
 
+### Embedding API supporting from Javascript engine
+
 Many Javascript engines these days provide embedding API for this purpose. IoT.js uses the API to enable native handler. See following link if you want further information about the API:
  * [JerryScript API](https://samsung.github.io/jerryscript/API/)
  * [Duktape API](http://duktape.org/api.html)
@@ -140,7 +142,11 @@ The process of initializing IoT.js can be summarized as follow:
 
 ### Builtin
 
+Javascript object fully implemented in C/C++ using [embedding API](#embeddingapisupportingfromjavascriptengine) are called "builtin".
+You can find list of builtin object at `MAP_MODULE_LIST` macro in 'iotjs_module.h'.
+
 ### Native module
 
-### Event loop
 
+
+### Event loop
