@@ -1,0 +1,1 @@
+[Top of this article](https://github.com/Samsung/iotjs/wiki/Inside%20IoT.js)
