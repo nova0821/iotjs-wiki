@@ -152,7 +152,7 @@ The process of IoT.js can be summarized as follow:
 Javascript object fully implemented in C/C++ using [embedding API](#embedding-api) are called "builtin".
 You can find list of builtin object at `MAP_MODULE_LIST` macro in ['iotjs_module.h'](https://github.com/Samsung/iotjs/blob/master/src/iotjs_module.h).
 
-Builtin modules are very useful since it can accesss underlying system using libuv, C/C++ library, and system call. And it may be used for optimizing performance of CPU bound routine and reduce binary size.
+Builtin modules are very useful since it can accesss underlying system using libuv, C/C++ library, and system call by implementing its method as [native handler](#native-handler). And it may be used for optimizing performance of CPU bound routine and reduce binary size.
 
 Builtin modules are initialized during [intializing step of IoT.js](#life-cycle-of-iotjs) and released just before the process terminates.
 
