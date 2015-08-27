@@ -190,7 +190,7 @@ You can find main loop of the program at the file ['iotjs.cpp'](https://github.c
 While running a IoT.js application, it could make I/O operations request using [IoT.js API](https://github.com/Samsung/iotjs/wiki/IoT.js-API-Reference).
 For example, You can code a logic for opening 'hello.txt' file and printing file descriptor out like this:
 ```
-fs.open('hello.txt', 'r', function(err, _fd) {
+fs.open('hello.txt', 'r', function(err, fd) {
   console.log('fd:' + fd);
 });
 conosle.log('requested');
@@ -231,6 +231,13 @@ And calling the javascript callback function with the result.
 
   // callback
   MakeCallback(cb, JObject::Null(), jarg);
+```
+
+For above file open example, calling javascript callback function would result execution of the handler.
+```
+function(err, fd) {
+  console.log('fd:' + fd);
+}
 ```
 
 One iteration of event loop is finished and 'uv_run()' finally returns after all results were handled.
