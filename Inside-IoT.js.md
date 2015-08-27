@@ -171,6 +171,10 @@ On demand modules will be created at the moment when it is first required and wi
 _Note:_
 _It would be helpful to read [libuv design overview](http://docs.libuv.org/en/v1.x/design.html) to understand asynchronous I/O programming model if you are not familiar with it._
 
+Note:
+In this section we will see simple file open example and relevant code segment. You can see the hole code at ['iotjs.cpp'](https://github.com/Samsung/iotjs/blob/master/src/iotjs.cpp), ['iotjs_module_fs.cpp'](https://github.com/Samsung/iotjs/blob/master/src/iotjs_module_fs.cpp) and ['fs.js'](https://github.com/Samsung/iotjs/blob/master/src/js/fs.js)
+
+
 IoT.js follows asynchronous I/O programming model proposed by libuv to perform non-blocking, single-threaded, asynchronous I/O.
 
 You can find main loop of the program at the file ['iotjs.cpp'](https://github.com/Samsung/iotjs/blob/master/src/iotjs.cpp) in the source tree. It looks like this:
