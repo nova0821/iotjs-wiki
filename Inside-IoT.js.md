@@ -192,7 +192,7 @@ You can find main loop of the program at the file ['iotjs.cpp'](https://github.c
 ```
 
 While running a IoT.js application, it could make requests for I/O operations using [IoT.js API](https://github.com/Samsung/iotjs/wiki/IoT.js-API-Reference).
-For example, You can code a logic for opening 'hello.txt' file and printing file descriptor out like this:
+For example, You can write a code for opening 'hello.txt' file and printing file descriptor out like this:
 ```
 fs.open('hello.txt', 'r', function(err, fd) {
   console.log('fd:' + fd);
