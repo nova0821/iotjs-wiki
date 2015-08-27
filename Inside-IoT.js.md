@@ -46,6 +46,15 @@ Javascript Binding layer of IoT.js is for providing interface between upper laye
 * Calling a Javascript function.
 * Evaluating a Javascript script.
 
+
+### Native handler
+
+Some operations - such as file I/O, networking, device control, multitasking, and etc - can not be performed by pure Javascript. IoT.js uses a mechanism called "native handler" to perform such operations via Javascript. You can regard native handler as Javascript function implemented in C/C++.
+
+You might think it's a little similar concept to FFI. In a wide sense it's true for native handler is for calling C/C++ function from Javascript but in a narrow sense it's not true.
+
+Usually main purpose of FFI is to call a routine written in one language from a program written in another. After a routine was invoked, it is common that the routine just do what it suppose to do without knowing the context except arguments. Whereas native handler does know that it is being called from Javascript (actually it is a Javascript function although not written in Javascript) and does access surrounding Javascript execution context.
+
 ***
 
 ## libuv Binding
