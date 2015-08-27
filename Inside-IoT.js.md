@@ -80,7 +80,7 @@ Whereas native handler does know that it is being called from Javascript (actual
 
 ### Embedding API supporting from Javascript engine
 
-Many Javascript engines these days provide embedding API for this purpose. IoT.js uses the API to enable native handler. See following link if you want further information about the API:
+Many Javascript engines these days provide embedding API for this purpose. IoT.js uses the API to create [builtin module](#builtin) and [native handler](#native-handler). See following link if you want further information about the API:
  * [JerryScript API](https://samsung.github.io/jerryscript/API/)
  * [Duktape API](http://duktape.org/api.html)
  * [V8 embedder's guide](https://developers.google.com/v8/embed)
