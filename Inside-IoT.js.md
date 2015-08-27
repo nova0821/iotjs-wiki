@@ -138,5 +138,9 @@ The process of initializing IoT.js can be summarized as follow:
 6. Run event loop until there are no more events to be handled.
 7. Clean up.
 
+### Builtin
+
+### Native module
+
 ### Event loop
 
