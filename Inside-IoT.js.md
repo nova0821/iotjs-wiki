@@ -55,6 +55,13 @@ You might think it's a little similar concept to FFI. In a wide sense it's true 
 
 Usually main purpose of FFI is to call a routine written in one language from a program written in another. After a routine was invoked, it is common that the routine just do what it suppose to do without knowing the context except arguments. Whereas native handler does know that it is being called from Javascript (actually it is a Javascript function although not written in Javascript) and does access surrounding Javascript execution context.
 
+Native handler Many Javascript engines these days provide embedding API for this purpose. IoT.js uses the API to enable native handler. See following link if you want further information about the API:
+ * [JerryScript API](https://samsung.github.io/jerryscript/API/)
+ * [Duktape API](http://duktape.org/api.html)
+ * [V8 embedder's guide](https://developers.google.com/v8/embed)
+ * [SpiderMonkey API](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/JSAPI_reference)
+
+
 ***
 
 ## libuv Binding
