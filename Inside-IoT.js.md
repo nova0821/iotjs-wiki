@@ -77,7 +77,7 @@ IoT.js is using libuv to perform various asynchronous I/O and threading. Because
 
 ### `HandleWrap`
 
-IoT.js is wrapping libuv handle (e.g. file descriptor) using `HandleWrap` class. Here "handle" stands for "libuv request handle". Because every libuv I/O handle (e.g. file descriptor) in IoT.js links to a Javascript object that correspond with the handle, `HandleWrap` inherits [`JObjectWrap`](#JObjectWrap).
+IoT.js is wrapping libuv handle (e.g. file descriptor) using `HandleWrap` class. Here "handle" stands for "libuv request handle". Because every libuv I/O handle (e.g. file descriptor) in IoT.js links to a Javascript object that correspond with the handle, `HandleWrap` inherits [`JObjectWrap`](#jobjectwrap).
 
 ***
 
