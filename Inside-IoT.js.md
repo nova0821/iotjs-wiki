@@ -66,7 +66,7 @@ Free handler will be invoked just before the Javascript object actually being re
 
 Make sure that wrapper should not be a created at stack, it could lead double free of wrapper instance (when it goes out scope and when corresponding object is being collected by GC). If you really want to use local wrapper just using `JObject` would be enough. This wrapper must be create with C++ 'new' keyword.
 
-And do not hold pointer to the wrapper in native code side globally because even if you are holding a wrapper by pointer, there is a chance that Javascript engine release the corresponding Javascript object that results freeing wrapper from free handler. Consequentially it will be dangling pointer.
+And do not hold pointer to the wrapper in native code side globally because even if you are holding a wrapper by pointer, there is a chance that Javascript engine release the corresponding Javascript object that results freeing wrapper from free handler. Consequentially your pointer turned into dangling.
 
 The only safe way to get wrapper is to get it from Javascript object. When a wrapper is being created, it will link itself with corresponding Javascript object with `SetNative()` method of [`JObject`](#jobject). And you will get the wrapper from the object with `GetNative()` method of [`JObject`](#jobject) later when you need it.
 
