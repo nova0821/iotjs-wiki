@@ -167,3 +167,81 @@ Some native modules are bound to global object while others are on demand.
 On demand modules will be created at the moment when it is first required and will not released until the program terminates.
 
 ### Event loop
+
+_Note:_
+_It would be helpful to read [libuv design overview](http://docs.libuv.org/en/v1.x/design.html) to understand asynchronous I/O programming model if you are not familiar with it._
+
+IoT.js follows asynchronous I/O programming model proposed by libuv to perform non-blocking, single-threaded, asynchronous I/O.
+
+You can find main loop of the program at the file ['iotjs.cpp'](https://github.com/Samsung/iotjs/blob/master/src/iotjs.cpp) in the source tree. It looks like this:
+
+```
+  // Run event loop.
+  bool more;
+  do {
+    more = uv_run(env.loop(), UV_RUN_ONCE);
+    more |= ProcessNextTick();
+    if (more == false) {
+      more = uv_loop_alive(env.loop());
+    }
+  } while (more);
+```
+
+While running a IoT.js application, it could make I/O operations request using [IoT.js API](https://github.com/Samsung/iotjs/wiki/IoT.js-API-Reference).
+For example, You can code a logic for opening 'hello.txt' file and printing file descriptor out like this:
+```
+fs.open('hello.txt', 'r', function(err, _fd) {
+  console.log('fd:' + fd);
+});
+conosle.log('requested');
+```
+
+To handle the request, IoT.js will wrapping the request and callback function using [`ReqWrap`](#reqwrap). 
+```
+  FsReqWrap* req_wrap = new FsReqWrap(jcallback); 
+```
+
+libuv will take charge of actual I/O processing taking the request.
+```
+  uv_fs_t* fs_req = req_wrap->req(); \
+  int err = uv_fs_open(env->loop(), \
+                       fs_req, \
+                       path, flags, mode, \
+                       After);
+```
+
+Since all I/O are treated as non-blocking, calling for async I/O API returns immediately right after request was sent to libuv.
+And then next line of javascript program will be executed continuously.
+Thus in the above example, for example, 'requested' will be printed out right after file open request made.
+
+If there were I/O requests, `uv_run()` in the main loop waits until at least one of the request were processed by polling the requests.
+When a result for a request was produced, internal part of libuv will be calling corresponding handler function(let's it be after function) back. 
+
+The after function will retrieve I/O result and `ReqWrap` object from request data.
+And calling the javascript callback function with the result.
+
+```
+  FsReqWrap* req_wrap = static_cast<FsReqWrap*>(req->data); // get request wrapper
+  JObject cb = req_wrap->jcallback(); // javascript callback function
+
+  JArgList jarg(2);
+  jarg.Add(JObject::Null()); // in case of success.
+  JObject arg1(static_cast<int>(req->result));
+  jarg.Add(arg1); // result - file descriptor for open syscall
+
+  // callback
+  MakeCallback(cb, JObject::Null(), jarg);
+```
+
+One iteration of event loop is finished and 'uv_run()' finally returns after all results were handled.
+Next, it calls next tick handler.
+```
+    more |= ProcessNextTick();
+```
+And for next step, main event loop checks if there were no more request to be treated.
+```
+    if (more == false) {
+      more = uv_loop_alive(env.loop());
+    }
+```
+If not main event loop ends.
