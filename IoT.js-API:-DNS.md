@@ -11,11 +11,6 @@ IoT.js provides dns module
 
 Resolves a hostname into the first found A (IPv4) or AAAA (IPv6) record. 
 
-#### dns.lookupService(address, port, callback)
-* `address: String`
-* `port: Number`
-* `callback: Function`
-
 #### dns.resolve(hostname[, rrtype], callback)
 * `hostname: String`
 * `rrtype: String`
