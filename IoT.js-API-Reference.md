@@ -2,6 +2,7 @@
 ## Basic API
 * [Assert](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Assert)
 * [Buffer](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Buffer)
+* [DNS](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-DNS)
 * [Events](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Events)
 * [File System](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-File-Systen)
 * HTTP
@@ -15,7 +16,6 @@
 ## Extended API
 * CoAP
 * Console
-* DNS
 * Encoding
 * REPL
 * UDP/Datagram
