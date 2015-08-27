@@ -143,7 +143,7 @@ The process of initializing IoT.js can be summarized as follow:
 ### Builtin
 
 Javascript object fully implemented in C/C++ using [embedding API](#embedding-api-supporting-from-javascript-engine) are called "builtin".
-You can find list of builtin object at `MAP_MODULE_LIST` macro in 'iotjs_module.h'.
+You can find list of builtin object at `MAP_MODULE_LIST` macro in ['iotjs_module.h'](https://github.com/Samsung/iotjs/blob/master/src/iotjs_module.h).
 
 ### Native module
 
