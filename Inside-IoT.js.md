@@ -53,7 +53,7 @@ Some operations - such as file I/O, networking, device control, multitasking, an
 
 You might think it's a little similar concept to FFI. In a wide sense it's true for native handler is for calling C/C++ function from Javascript but in a narrow sense it's not true.
 
-Usually main purpose of FFI is to call a routine written in one language from a program written in another. After a routine was invoked, it is common that the routine just do what it suppose to do without knowing the context except arguments. Whereas native handler does know that it is being called from Javascript (actually it is a Javascript function although not written in Javascript) and does access surrounding Javascript execution context.
+Usually main purpose of FFI is to call a routine written in one language from a program written in another. After a routine was invoked, it is common that the routine just do what it is supposed to do without knowing the context except arguments. Whereas native handler does know that it is being called from Javascript (actually it is a Javascript function although not written in Javascript) and does access surrounding Javascript execution context.
 
 Many Javascript engines these days provide embedding API for this purpose. IoT.js uses the API to enable native handler. See following link if you want further information about the API:
  * [JerryScript API](https://samsung.github.io/jerryscript/API/)
