@@ -116,7 +116,7 @@ Also the function will be collected by GC when it need to be.
 
 ## IoT.js Core
 
-### Initializing IoT.js
+### Life cycle of IoT.js
 
 _Note:_
 _We are currently focusing on implementing IoT.js upon JerryScript engine._
@@ -124,7 +124,7 @@ _The manner of implementing initialization is depends on JerryScript API._
 _This could be changed when we adopt other Javascript engines._
 _This chapter will explain initialization process based on current implementation._
 
-The process of initializing IoT.js can be summarized as follow:
+The process of IoT.js can be summarized as follow:
 
 1. Initialize JerryScript engine.
 2. Execute empty script
@@ -137,7 +137,7 @@ The process of initializing IoT.js can be summarized as follow:
  1. Initialize 'process' module.
  2. Load user application script.
  3. Run the user application.
-6. Run event loop until there are no more events to be handled.
+6. Run [event loop](#event-loop) until there are no more events to be handled.
 7. Clean up.
 
 ### Builtin
@@ -147,7 +147,7 @@ You can find list of builtin object at `MAP_MODULE_LIST` macro in ['iotjs_module
 
 Builtin modules are very useful since it can accesss underlying system using libuv, C/C++ library, and system call. And it may be used for optimizing performance of CPU bound routine and reduce binary size.
 
-Builtin modules are initialized during [intializing step of IoT.js](#initializing-iotjs).
+Builtin modules are initialized during [intializing step of IoT.js](#life-cycle-of-iotjs) and released just before the process terminates.
 
 ### Native module
 
