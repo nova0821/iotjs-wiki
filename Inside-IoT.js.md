@@ -130,7 +130,7 @@ The process of initializing IoT.js can be summarized as follow:
 2. Execute empty script
  * This will create initial Javascript context.
 3. Initialize builtin modules. 
- * This will create builin modules including 'process'.
+ * This will create builin modules including ['process'](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Process).
 4. Evaluate 'iotjs.js'
  * This will generate entry function.
 5. Run the entry function passing 'process'.
