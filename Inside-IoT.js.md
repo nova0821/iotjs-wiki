@@ -68,7 +68,7 @@ Make sure that wrapper should not be a created at stack, it could lead double fr
 
 And do not hold pointer to the wrapper in native code side globally because even if you are holding a wrapper by pointer, there is a chance that Javascript engine release the corresponding Javascript object that results freeing wrapper from free handler. Consequentially it will be dangling pointer.
 
-The only safe way to get wrapper is to get it from Javascript object. When a wrapper is being created, it will link itself with corresponding Javascript object with `SetNative()` method of [`JObject`](#jobject). And you will get the wrapper from the object later with `GetNative()` method of [`JObject`](#jobject) when you need it.
+The only safe way to get wrapper is to get it from Javascript object. When a wrapper is being created, it will link itself with corresponding Javascript object with `SetNative()` method of [`JObject`](#jobject). And you will get the wrapper from the object with `GetNative()` method of [`JObject`](#jobject) later when you need it.
 
 ### Native handler
 
