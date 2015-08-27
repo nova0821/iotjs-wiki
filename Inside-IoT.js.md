@@ -113,3 +113,30 @@ Also the function will be collected by GC when it need to be.
 ***
 
 ## IoT.js Core
+
+### Initializing IoT.js
+
+_Note:_
+_We are currently focusing on implementing IoT.js upon JerryScript engine._
+_The manner of implementing initialization is depends on JerryScript API._
+_This could be changed when we adopt other Javascript engines._
+_This chapter will explain initialization process based on current implementation._
+
+The process of initializing IoT.js can be summarized as follow:
+
+1. Initialize JerryScript engine.
+2. Execute empty script
+ * This will create initial Javascript context.
+3. Initialize builtin modules. 
+ * This will create builin modules including 'process'.
+4. Evaluate 'iotjs.js'
+ * This will generate entry function.
+5. Run the entry function passing 'process'.
+ 1. Initialize 'process' module.
+ 2. Load user application script.
+ 3. Run the user application.
+6. Run event loop until there are no more events to be handled.
+7. Clean up.
+
+### Event loop
+
