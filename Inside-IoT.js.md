@@ -153,6 +153,10 @@ Builtin modules are initialized during [intializing step of IoT.js](#life-cycle-
 
 The [basic modules and extended modules](https://github.com/Samsung/iotjs/wiki/IoT.js-API-Reference) provides by IoT.js are called 'native module' because that modules will be included IoT.js native binary. 
 There is a [tool](https://github.com/Samsung/iotjs/blob/master/tools/js2c.pl) that transfer Javascript script source file into C++ header file.
+
 Usually native modules need help from [builtin](#builtin) modules which are implemented in C/C++ thus able to access underlying system.
+
+Some native modules are bound to global object while others are on demand.
+On demand modules will be created at the moment when it is first required and will not released until the program terminates.
 
 ### Event loop
