@@ -8,7 +8,7 @@
 * HTTP
 * Modules
 * [Net](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Net)
-* Process
+* [Process](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Process)
 * [Stream](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Stream)
 * [Timers](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Timers)
 * [(GPIO)](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-GPIO)
