@@ -106,8 +106,8 @@ Note that `ReqWrap` does not inherits `[HandleWrap](#handlewrap)` to wrapping th
 This is because it need to prevent the callback function from being reclaimed by GC until finish handling the result.
 As `HandleWrap` just hand over the managing lifecycle to Javascript engine without increasing reference count, we could not guarantee liveness of the callback function object if we use `HandleWrap`.
 
-On the other hand, `ReqWrap` manages the reference count for callback function by itself - increasing reference count for the callback function when it is being created and decreasing reference count when it is being freed
-that guarantees the liveness of callback function during request processing.
+On the other hand, `ReqWrap` manages the reference count for callback function by itself - increasing reference count for the callback function when it is being created and decreasing when it is being freed
+guaranteeing the liveness of callback function during request processing.
 Also the function will be collected by GC when it need to be.
 
 ***
