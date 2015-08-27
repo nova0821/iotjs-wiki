@@ -39,7 +39,7 @@ Although IoT.js only supports JerryScript for now, there is a chance that we ext
 For this reason, we want to keep the interface of Javascript binding layer independent from a specific Javascript engine.
 You can see the interface of the layer in [iotjs_binding.h](https://github.com/Samsung/iotjs/blob/master/src/iotjs_binding.h).
 
-### `JObject`
+### JObject
 
 `JObject` class stands for a real Javascript object. Upper layer will access Javascript object via this interface. This class provides following functionalities:
 
@@ -54,7 +54,7 @@ You can see the interface of the layer in [iotjs_binding.h](https://github.com/S
 * Calling a Javascript function.
 * Evaluating a Javascript script.
 
-### `JObjectWrap`
+### JObjectWrap
 
 `JObjectWrap` is used for wrapping a Javascript object to a C++ instance.
 The main purpose of this wrapper is to hand object's life cycle managing over to Javascript engine while linking the object with other data structure.
@@ -92,12 +92,12 @@ IoT.js is using libuv to perform various asynchronous I/O and threading.
 Because IoT.js adopt asynchronous programming model, libuv plays very important role in this project. Actually the main loop of IoT.js is libuv event loop that waits until an event occurs, picks the event, and dispatches the event through corresponding callback function.
 You may read [this document](http://docs.libuv.org/en/v1.x/design.html) to get detailed information about asynchronous programming model based on libuv.
 
-### `HandleWrap`
+### HandleWrap
 
 IoT.js is wrapping libuv handle (e.g. file descriptor) using `HandleWrap` class. Here "handle" stands for "libuv request handle".
 Because every libuv I/O handle (e.g. file descriptor) in IoT.js links to a Javascript object that correspond with the handle, `HandleWrap` inherits [`JObjectWrap`](#jobjectwrap).
 
-### `ReqWrap`
+### ReqWrap
 
 `ReqWrap` if for wrapping libuv request (e.g. read file).
 Because every libuv I/O request in IoT.js links to a Javascript function that treats result of the request, `ReqWrap` manages the lifecycle of the callback function object and has member function called `jcallback()` to retrieve the function object.
