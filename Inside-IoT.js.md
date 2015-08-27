@@ -147,10 +147,12 @@ You can find list of builtin object at `MAP_MODULE_LIST` macro in ['iotjs_module
 
 Builtin modules are very useful since it can accesss underlying system using libuv, C/C++ library, and system call. And it may be used for optimizing performance of CPU bound routine and reduce binary size.
 
+Builtin modules are initialized during [intializing step of IoT.js](#initializing-iotjs).
+
 ### Native module
 
 The [basic modules and extended modules](https://github.com/Samsung/iotjs/wiki/IoT.js-API-Reference) provides by IoT.js are called 'native module' because that modules will be included IoT.js native binary. 
 There is a [tool](https://github.com/Samsung/iotjs/blob/master/tools/js2c.pl) that transfer Javascript script source file into C++ header file.
-Usually native modules need help from builtin module that is able to access underlying system.
+Usually native modules need help from [builtin](#builtin) modules which are implemented in C/C++ thus able to access underlying system.
 
 ### Event loop
