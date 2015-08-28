@@ -32,7 +32,7 @@ You can see the list of API from [IoT.js API Reference](https://github.com/Samsu
 
 ## Javascript Binding
 
-Many modern Javascript Engines come with embedding API to provide functionality for compiling and executing Javascript program, accessing Javascript object and its value, handling errors, managing lifecyles of objects and so on. 
+Many modern Javascript Engines come with [embedding API](#embedding-api) to provide functionality for compiling and executing Javascript program, accessing Javascript object and its value, handling errors, managing lifecyles of objects and so on. 
 
 You can think of Javascript binding layer as an interface between upper layer (IoT.js core) and  underlying Javascript engine.
 Although IoT.js only supports JerryScript for now, there will be a chance that we extend supporting Javascript engine (such as [Duktape](http://duktape.org/) or [V8](https://code.google.com/p/v8/)) in the future.
