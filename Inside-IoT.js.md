@@ -87,7 +87,7 @@ Whereas native handler does know that it is being called from Javascript (actual
 
 ### Embedding API
 
-Many Javascript engines these days provide embedding API for this purpose. IoT.js uses the API to create [builtin module](#builtin) and [native handler](#native-handler). See following link if you want further information about the API:
+Many Javascript engines these days provide embedding API. IoT.js uses the API to create [builtin module](#builtin) and [native handler](#native-handler). See following link if you want further information about the API:
  * [JerryScript API](https://samsung.github.io/jerryscript/API/)
  * [Duktape API](http://duktape.org/api.html)
  * [V8 embedder's guide](https://developers.google.com/v8/embed)
@@ -97,29 +97,30 @@ Many Javascript engines these days provide embedding API for this purpose. IoT.j
 
 ## libuv Binding
 
-IoT.js is using libuv to perform various asynchronous I/O and threading.
-Because IoT.js adopt asynchronous programming model, libuv plays very important role in this project. Actually the [main loop](#event-loop) of IoT.js is libuv event loop that waits until an event occurs, picks the event, and dispatches the event through corresponding callback function.
-You may read [libuv design document](http://docs.libuv.org/en/v1.x/design.html) to get detailed information about asynchronous programming model based on libuv.
+IoT.js is using [libuv](http://libuv.org/) to perform various asynchronous I/O and threading.
+Because IoT.js adopts asynchronous programming model, libuv plays very important role in this project. Actually the [main loop](#event-loop) of IoT.js is libuv event loop waiting I/O event, picks the event, and dispatches it to corresponding callback function.
+You can read [libuv design document](http://docs.libuv.org/en/v1.x/design.html) to get detailed information about asynchronous programming model based on libuv.
 
 ### HandleWrap
 
-IoT.js is wrapping libuv handle (e.g. file descriptor) using `HandleWrap` class. Here "handle" stands for "libuv request handle".
+libuv handles (e.g. file descriptor) are wrapped using `HandleWrap`.
+Here "handle" stands for "libuv handle".
 Because every libuv I/O handle (e.g. file descriptor) in IoT.js links to a Javascript object that correspond with the handle, `HandleWrap` inherits [`JObjectWrap`](#jobjectwrap).
 
 ### ReqWrap
 
-`ReqWrap` if for wrapping libuv request (e.g. read file).
-Because every libuv I/O request in IoT.js links to a Javascript function that treats result of the request, `ReqWrap` manages the lifecycle of the callback function object and has member function called `jcallback()` to retrieve the function object.
-
+When you want I/O operation over a handle (e.g. read file), libuv creates a request representing the operation.
+`ReqWrap` wraps the libuv request (e.g. read file).
+Because every libuv I/O request in IoT.js links to a Javascript function that treats result of the request.
 Normally `ReqWrap` is created when there is a request and freed after the request is treated.
 
 Note that `ReqWrap` does not inherits [`HandleWrap`](#handlewrap) to wrapping the callback function object.
-This is because it need to prevent the callback function from being reclaimed by GC until finish handling the result.
-As `HandleWrap` just hand over the managing lifecycle to Javascript engine without increasing reference count, we could not guarantee liveness of the callback function object if we use `HandleWrap`.
+Because it need to prevent the callback function from being reclaimed by GC until finish of the request.
+As `HandleWrap` do not hold Javascript object by itself, it could not guarantee liveness of the object that it wrapping even if the wrapper class is alive.
 
-On the other hand, `ReqWrap` manages the reference count for callback function by itself - increasing reference count for the callback function when it is being created and decreasing when it is being freed
-guaranteeing the liveness of callback function during processing request.
-Also the function could be collected by GC when it need to be after request finished.
+On the other hand, `ReqWrap` manages the reference count for the callback function by itself - increasing reference count when it is being created and decreasing when it is being freed -
+to guarantee the liveness of callback function while the request is undergoing processed.
+After request is finished, the function could be collected by GC when it need to be.
 
 ***
 
