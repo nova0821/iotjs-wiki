@@ -116,7 +116,7 @@ Normally `ReqWrap` is created when there is a request and freed after the reques
 
 Note that `ReqWrap` does not inherits [`HandleWrap`](#handlewrap) to wrapping the callback function object.
 Because it need to prevent the callback function from being reclaimed by GC until finish of the request.
-As `HandleWrap` do not hold Javascript object by itself, it could not guarantee liveness of the object that it wrapping even if the wrapper class is alive.
+As `HandleWrap` does not hold Javascript object by itself, it could not guarantee liveness of the object that it wrapping even if the wrapper class is alive.
 
 On the other hand, `ReqWrap` manages the reference count for the callback function by itself - increasing reference count when it is being created and decreasing when it is being freed -
 to guarantee the liveness of callback function while the request is undergoing processed.
