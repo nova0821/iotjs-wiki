@@ -32,16 +32,17 @@ You can see the list of API from [IoT.js API Reference](https://github.com/Samsu
 
 ## Javascript Binding
 
-Many modern Javascript Engines are supporting embedding API to provide functionality for compiling and executing Javascript program, accessing Javascript object and its value, handling errors, managing lifecyles of objects and so on. 
+Many modern Javascript Engines come with embedding API to provide functionality for compiling and executing Javascript program, accessing Javascript object and its value, handling errors, managing lifecyles of objects and so on. 
 
-Javascript Binding layer of IoT.js is for providing interface between upper layer (IoT.js core) and  underlying Javascript engine.
-Although IoT.js only supports JerryScript for now, there is a chance that we extend supporting Javascript engine (such as [Duktape](http://duktape.org/) or [V8](https://code.google.com/p/v8/)) in the future.
-For this reason, we want to keep the interface of Javascript binding layer independent from a specific Javascript engine.
-You can see the interface of the layer in [iotjs_binding.h](https://github.com/Samsung/iotjs/blob/master/src/iotjs_binding.h).
+You can think of Javascript binding layer as an interface between upper layer (IoT.js core) and  underlying Javascript engine.
+Although IoT.js only supports JerryScript for now, there will be a chance that we extend supporting Javascript engine (such as [Duktape](http://duktape.org/) or [V8](https://code.google.com/p/v8/)) in the future.
+For this reason, we want to keep the layer independent from a specific Javascript engine.
+You can see interface of the layer in [iotjs_binding.h](https://github.com/Samsung/iotjs/blob/master/src/iotjs_binding.h).
 
 ### JObject
 
-`JObject` class stands for a real Javascript object. Upper layer will access Javascript object via this interface. This class provides following functionalities:
+`JObject` class stands for a real Javascript object. Upper layers will access Javascript object via this class.
+This class provides following functionalities:
 
 * Creating a Javascript object using `Object()` constructor.
 * Creating a Javascript object by a value.
@@ -58,30 +59,31 @@ You can see the interface of the layer in [iotjs_binding.h](https://github.com/S
 ### JObjectWrap
 
 `JObjectWrap` is used for wrapping a Javascript object to a C++ instance.
-The main purpose of this wrapper is to hand object's life cycle managing over to Javascript engine while linking the object with other data structure.
+The main purpose is to hand managing object's life cycle over to Javascript engine while linking the object with other data structures.
 To create a instance of `JObjectWrap`, you need to supply a Javascript object and free handler.
 
 To make sure that the Javascript object could be reclaimed by GC when there are no more references to that object, this wrapper will not increase reference count for the Javascript object.
 Free handler will be invoked just before the Javascript object actually being reclaimed by GC and it will free the wrapper instance.
 
-Make sure that wrapper should not be a created at stack, it could lead double free of wrapper instance (when it goes out scope and when corresponding object is being collected by GC). If you really want to use local wrapper just using `JObject` would be enough. This wrapper must be create with C++ 'new' keyword.
+Make sure that wrapper should not be a created in stack space, it could lead double free(when it goes out scope and when corresponding object is being collected by GC). If you really want to use local wrapper, just using `JObject` would be enough. This wrapper must be create with C++ 'new' keyword.
 
-And do not hold pointer to the wrapper in native code side globally because even if you are holding a wrapper by pointer, there is a chance that Javascript engine release the corresponding Javascript object that results freeing wrapper from free handler. Consequentially your pointer turned into dangling.
+And do not hold pointer to the wrapper in native code side globally because even if you are holding a wrapper by pointer, Javascript engine probably releases the corresponding Javascript object resulting  deallocation of wrapper. Consequentially your pointer turned into dangling.
 
-The only safe way to get wrapper is to get it from Javascript object. When a wrapper is being created, it will link itself with corresponding Javascript object with `SetNative()` method of [`JObject`](#jobject). And you will get the wrapper from the object with `GetNative()` method of [`JObject`](#jobject) later when you need it.
+The only safe way to get wrapper is to get it from Javascript object. When a wrapper is being created, it links itself with corresponding Javascript object with `SetNative()` method of [`JObject`](#jobject). And you can get the wrapper from the object with `GetNative()` method of [`JObject`](#jobject) later when you need it.
 
 ### Native handler
 
 Some operations - such as file I/O, networking, device control, multitasking, and etc - can not be performed by pure Javascript.
-IoT.js uses a mechanism called "native handler" to perform such operations via Javascript.
-You can regard native handler as Javascript function implemented in C/C++.
+IoT.js uses a mechanism called "native handler" to enable such operations performed from Javascript.
+You can regard native handler as Javascript function object with its body implemented in C/C++.
 
-You might think it's a little similar concept to [FFI](https://en.wikipedia.org/wiki/Foreign_function_interface).
-In a wide sense it's true for native handler is for calling C/C++ function from Javascript but in a narrow sense it's not true.
+You might think it is somewhat similar to [FFI](https://en.wikipedia.org/wiki/Foreign_function_interface).
+In a wide sense, it's true for native handler is for calling C/C++ function from Javascript.
+But in a narrow sense, it's not true.
 
 Usually main purpose of [FFI](https://en.wikipedia.org/wiki/Foreign_function_interface) is to call a routine written in one language from a program written in another.
-After a routine was invoked, it is common that the routine just do what it is supposed to do without knowing the context except arguments.
-Whereas native handler does know that it is being called from Javascript (actually it is a Javascript function although not written in Javascript) and does access surrounding Javascript execution context.
+After a routine was invoked, it is common that the routine just do what it is supposed to do without knowing the surrounding context except arguments.
+Whereas native handler does know that it is being called from Javascript (actually it is a Javascript function although not written in Javascript) and does access surrounding Javascript execution context using [embedding API](#embedding-api).
 
 ### Embedding API
 
