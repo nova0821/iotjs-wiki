@@ -48,6 +48,7 @@ This class provides following functionalities:
 * Creating a Javascript object by a value.
 * Creating a Javascript function object where its body is implemented in C/C++.
 * Creating a Javascript Error object.
+* Creating reference for a Javascript object increasing reference count.
 * Increasing reference count.
 * Decreasing reference count.
 * Checking object type.
@@ -58,18 +59,43 @@ This class provides following functionalities:
 
 ### JObjectWrap
 
-`JObjectWrap` is used for wrapping a Javascript object to a C++ instance.
-The main purpose is to hand managing object's life cycle over to Javascript engine while linking the object with other data structures.
-To create a instance of `JObjectWrap`, you need to supply a Javascript object and free handler.
+You can refer Javascript object from C/C++ code side using `JObject` as saw above.
+When a reference for a Javascript object was made using `JObject`, it will increase the reference count and will decrease the count when it goes out of scope.
+```
+{
+  // create reference
+  JObject jobject(obj);
+  // using `jboject`
+  ...
+} // jobject goes out of scope, decrease reference count.
+```
+Cool! it works like smart point.
+But the situation is different if you want refer a Javascript object through out program execution.
+If you want hold reference for a Javascript object until it lives.
+You may write code like this:
+```
+  JObject* jobject = new JObject(obj);
+```
+But here, we strongly do not recommend use that kind of pattern.
+Since it increases reference count for the object, the reference count will not go down to zero
+until you delete the reference even if the object no longer referenced from Javascript world.
+It prevent objects from turning into garbage.
 
-To make sure that the Javascript object could be reclaimed by GC when there are no more references to that object, this wrapper will not increase reference count for the Javascript object.
-Free handler will be invoked just before the Javascript object actually being reclaimed by GC and it will free the wrapper instance.
+To achieve your wish we recommend using `JObjectWrap` for that purpose.
+```
+  JObjectWrap* wrap = new JObjectWrap(obj);
+  // Be careful, `wrap` can turn into dangling at any point.
+```
+`JObjectWrap` is kind of weak pointer to a Javascript Object.
+It refers a Javascript object but never increase reference count so that Javascript engine can collect the object when it turns into garbage.
+The `JObjectWrap` instance will be released at the time the corresponding Javascript object is being reclaimed.
 
 Make sure that wrapper should not be a created in stack space, it could lead double free(when it goes out scope and when corresponding object is being collected by GC). If you really want to use local wrapper, just using `JObject` would be enough. This wrapper must be create with C++ 'new' keyword.
 
 And do not hold pointer to the wrapper in native code side globally because even if you are holding a wrapper by pointer, Javascript engine probably releases the corresponding Javascript object resulting  deallocation of wrapper. Consequentially your pointer turned into dangling.
 
 The only safe way to get wrapper is to get it from Javascript object. When a wrapper is being created, it links itself with corresponding Javascript object with `SetNative()` method of [`JObject`](#jobject). And you can get the wrapper from the object with `GetNative()` method of [`JObject`](#jobject) later when you need it.
+
 
 ### Native handler
 
