@@ -11,8 +11,11 @@
  - [Getting Started](Getting Started)
  - [Developer Tutorial](Developer Tutorial)
  - [IoT.js API Reference](IoT.js API Reference)
-- [Inside IoT.js](Inside IoT.js)
-- [Coding Style Guideline](Coding_Style_Guideline)
+- [Getting Involved](Getting Involved)
+ - [Coding Style Guideline](Coding_Style_Guideline)
+ - [Inside IoT.js](Inside IoT.js)
+ - [Development Process](Development-Process)
+
 
 **Development**
 - [Certificate of Origin](IoT.js-Developer's-Certificate-of-Origin-1.0)
