@@ -7,6 +7,7 @@
 - [Releases](Releases)
 
 **Documentation**
+- [Developer's Guide](Developer's Guide)
 - [Getting Started](Getting Started)
 - [IoT.js API Reference](IoT.js API Reference)
 - [Inside IoT.js](Inside IoT.js)
