@@ -130,41 +130,43 @@ After request is finished, the function could be collected by GC when it need to
 
 _Note:_
 _We are currently focusing on implementing IoT.js upon JerryScript engine._
-_The manner of implementing initialization is depends on JerryScript API._
-_This could be changed when we adopt other Javascript engines._
-_This chapter will explain initialization process based on current implementation._
+_Implementation of initializing process depends on JerryScript API._
+_That could be changed when we adopt other Javascript engines._
+_Anyway, in this chapter we will explain initialization process based on current implementation._
 
 The process of IoT.js can be summarized as follow:
 
 1. Initialize JerryScript engine.
 2. Execute empty script
- * This will create initial Javascript context.
+ * Create initial Javascript context.
 3. Initialize builtin modules. 
- * This will create builin modules including ['process'](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Process).
+ * Create builin modules including ['process'](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Process).
 4. Evaluate ['iotjs.js'](https://github.com/Samsung/iotjs/blob/master/src/js/iotjs.js).
- * This will generate entry function.
+ * Generate entry function.
 5. Run the entry function passing 'process'.
  1. Initialize 'process' module.
  2. Load user application script.
- 3. Run the user application.
+ 3. Run user application.
 6. Run [event loop](#event-loop) until there are no more events to be handled.
 7. Clean up.
 
 ### Builtin
 
-Javascript object fully implemented in C/C++ using [embedding API](#embedding-api) are called "builtin".
-You can find list of builtin object at `MAP_MODULE_LIST` macro in ['iotjs_module.h'](https://github.com/Samsung/iotjs/blob/master/src/iotjs_module.h).
+"Builtin" is Javascript objects fully implemented in C/C++ using [embedding API](#embedding-api).
+The list of builtin objects can be found at `MAP_MODULE_LIST` macro in ['iotjs_module.h'](https://github.com/Samsung/iotjs/blob/master/src/iotjs_module.h).
 
-Builtin modules are very useful since it can accesss underlying system using libuv, C/C++ library, and system call by implementing its method as [native handler](#native-handler). And it may be used for optimizing performance of CPU bound routine and reduce binary size.
+Because methods of builtin modules are implemented as [native handler](#native-handler),
+are able to access underlying system using libuv, C/C++ library, and system call.
+Also, builtin modules could be used for optimizing performance of CPU bound routine or reduce binary size.
 
-Builtin modules are initialized during [intializing step of IoT.js](#life-cycle-of-iotjs) and released just before the process terminates.
+Builtin modules are initialized during [intializing step of IoT.js](#life-cycle-of-iotjs) and released just before program terminates.
 
 ### Native module
 
-The [basic modules and extended modules](https://github.com/Samsung/iotjs/wiki/IoT.js-API-Reference) provides by IoT.js are called 'native module' because that modules will be included IoT.js native binary. 
+The [basic modules and extended modules](https://github.com/Samsung/iotjs/wiki/IoT.js-API-Reference) provided by IoT.js are called 'native module' because it will be included IoT.js as binary format.(not as script).
 There is a [tool](https://github.com/Samsung/iotjs/blob/master/tools/js2c.pl) that transfer Javascript script source file into C++ header file.
 
-Usually native modules need help from [builtin](#builtin) modules which are implemented in C/C++ thus able to access underlying system.
+Usually a native module needs help from couple of [builtin](#builtin) modules which are implemented in C/C++ thus able to access underlying system.
 
 Some native modules are bound to global object while others are on demand.
 On demand modules will be created at the moment when it is first required and will not released until the program terminates.
