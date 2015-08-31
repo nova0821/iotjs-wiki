@@ -5,6 +5,7 @@ To contribute to the IoT.js Project (such as reporting bugs and submitting patch
 ### [Community Guideline](Community-Guidelines)
 ### [IoT.js Developer's Certificate of Origin 1.0](IoT.js-Developer's-Certificate-of-Origin-1.0)
 ### [Coding Style Guideline](Coding_Style_Guideline)
+### [Inside IoT.js](https://github.com/Samsung/iotjs/wiki/Inside%20IoT.js)
 ### [Development Process](Development-Process)
 ### [Patch Submission Process](Patch-Submission-Process)
 ### [Governance](Governance)
