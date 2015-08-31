@@ -69,19 +69,19 @@ When a reference for a Javascript object was made using `JObject`, it will incre
   ...
 } // jobject goes out of scope, decrease reference count.
 ```
-Cool! it works like smart point.
-But the situation is different if you want refer a Javascript object through out program execution.
-If you want hold reference for a Javascript object until it lives.
+Cool! it works like smart pointer.
+
+But the situation is different if you want to refer a Javascript object through out program execution until the object is live.
 You may write code like this:
 ```
   JObject* jobject = new JObject(obj);
 ```
-But here, we strongly do not recommend use that kind of pattern.
+Unfortunately, we strongly do not recommend that kind of pattern.
 Since it increases reference count for the object, the reference count will not go down to zero
-until you delete the reference even if the object no longer referenced from Javascript world.
-It prevent objects from turning into garbage.
+until you delete the reference even if the object is no longer referenced from any other objects.
+`JObject` prevents the Javascript objects from turning into garbage.
 
-To achieve your wish we recommend using `JObjectWrap` for that purpose.
+To achieve your wish, we recommend using `JObjectWrap` for that purpose.
 ```
   JObjectWrap* wrap = new JObjectWrap(obj);
   // Be careful, `wrap` can turn into dangling at any point.
