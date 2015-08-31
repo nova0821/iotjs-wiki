@@ -77,8 +77,8 @@ You may write code like this:
   JObject* jobject = new JObject(obj);
 ```
 Unfortunately, we strongly do not recommend that kind of pattern.
-Since it increases reference count for the object, the reference count will not go down to zero
-until you delete the reference even if the object is no longer referenced from any other objects.
+Since it increases reference count for the object, the reference count will never go down to zero
+even if the object is no longer referenced from any other objects.
 `JObject` prevents the Javascript objects from turning into garbage.
 
 To achieve your wish, we recommend using `JObjectWrap` for that purpose.
