@@ -80,7 +80,7 @@ All pins bound to this port will have the given configuration.
 
 'setport' event will be emitted after port is set.
 
-'setpin' event will be emitted after port is set.
+'setpin' event will be emitted for pins that are bound to the port after port is set.
 
 
 #### gpio.writePort(portNumber, value[, callback])
