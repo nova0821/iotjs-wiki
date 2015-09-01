@@ -9,65 +9,97 @@
 
 ### Methods
 
-#### initialize(callback)
-* `callback: Function(err: Error | null)`
+#### gpio.initialize(callback)
+
+* `callback: Function(err: GpioError | null)`
 
 Initializes GPIO device.
+This function must be called before other GPIO functions.
+
+`callback` will be called after after GPIO device is initialized.
+
+'initialize' event will be emitted after GPIO device is initialized.
 
 
-Initialises GPIO device driver. 
+#### gpio.release(callback)
 
-#### release()
+* `callback: Function(err: GpioError | null)`
 
-Release GPIO device driver and frees used memory.
+Release GPIO device.
+After this function any other GPIO function call except `initialize()` will be failed.
+
+`callback` will be called after GPIO device is released.
+
+'release' event will be emitted after GPIO device is released.
+
 
 #### gpio.setPin(pinNumber, direction[, mode][, callback])
-* `pinNumber: Number`: pin number to configure
-* `direction: 'in' | 'out' | 'none'`: direction of the pin. `'none'` will unset the Pin.
-* `mode: 'pullup' | 'pulldn' | 'float' | 'pushpull' | 'opendrain' | 'none' | '' | undefined` : pin mode. 
-* `callback: Function(err: Error | null)`.
-  * if callback is not provided and error occurs, throws `Error` object
 
-_TODO_ 
-* describe `mode`
+* `pinNumber: Number`: pin number to configure
+* `direction: 'in' | 'out' | 'none'`: direction of the pin. `'none'` for releasing GPIO pin.
+* `mode: 'pullup' | 'pulldn' | 'float' | 'pushpull' | 'opendrain' | 'none' | '' | undefined` : pin mode. 
+* `callback: Function(err: GpioError | null)`.
+
+Set GPIO pin configuration.
+
+`callback` will be called after GPIO pin is set.
+
+'setpin' event will be emitted after pin is set.
+
 
 #### gpio.writePin(pinNumber, value[, callback])
 * `pinNumber: Number` - pin number to wirte
 * `value: Boolean`.
 * `callback: Function(err: Error | null)`.
-  * if callback is not provided and error occurs, throws `Error` object
 
-Write a boolean value to a pin.
+Write out a boolean value to a GPIO pin.
+
+`callback` will be called after the value flushed.
+
 
 #### gpio.readPin(pinNumber, callback)
 * `pinNumber: Number` - pin number to read.
 * `callback: Function(err: Error | null, value: Boolean)`.
 
-Read value from a pin.
+Read boolean value from a GPIO pin.
+
+`callback` will be called with the value.
+
 
 #### gpio.setPort(portNumber, direction[, mode][, callback])
 * `portNumber: Number` - port number to configure.
 * `direction: 'in' | 'out' | 'none'` - direction of the port.
 * `mode: String` - pin mode.
 * `callback: Function(err: Error | null)`.
-  * if callback is not provided and error occurs, throws `Error` object
 
-Configure single port. All pins bound to this port will have the configuration. 
+Set GPIO port configuration.
+
+All pins bound to this port will have the given configuration. 
+
+`callback` will be called after GPIO port is set.
+
+'setport' event will be emitted after port is set.
+
+'setpin' event will be emitted after port is set.
 
 
 #### gpio.writePort(portNumber, value[, callback])
 * `portNumber: Number` - port number to write
-* `value: Number(1 Byte)`.
+* `value: Number`.
 * `callback: Function(err: Error | null)`.
-  * if callback is not provided and error occurs, throws `GpioError` object
 
-Write a byte value to a port.
+Write out the given value to a GPIO port.
+
+`callback` will be called after the value flushed.
+
 
 #### gpio.readPort(portNumber, callback)
 * `portNumber: Number` - port number to read.
-* `callback: Function(err: Error | null, value: Number(1 byte))`.
+* `callback: Function(err: Error | null, value: Number)`.
 
-Read value from a port.
+Read value from a GPIO port.
+
+`callback` will be called with the value.
 
 
 #### gpio.query(queryOption, callback)
@@ -75,6 +107,28 @@ Read value from a port.
 * `callback: Function(err: Error | null, result: Object)`.
 * _Need mode discussion for this_
 
-### Error
-* _GpioError_ object for Gpio Error may be better.
+### Events
+
+#### `'initialize'`
+
+Emitted after GPIO device is successfully initialized.
+
+#### `'release'`
+
+Emitted after GPIO device is successfully released.
+
+#### `'setpin(pin: Number, direction: String, mode:String'`
+
+Emitted after GPIO pin is set.
+
+
+#### `'setpin(port: Number, direction: String, mode:String'`
+
+Emitted after GPIO port is set.
+
+
+### class: GpioError
+
+`GpioError` is for represent error occurs during GPIO processing.
+`GpioError` inherits `Error`.
 
