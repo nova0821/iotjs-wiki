@@ -9,8 +9,11 @@
 
 ### Methods
 
-#### initialize()
-* Return: 0 or positive for success. negative value for error.
+#### initialize(callback)
+* `callback: Function(err: Error | null)`
+
+Initializes GPIO device.
+
 
 Initialises GPIO device driver. 
 
