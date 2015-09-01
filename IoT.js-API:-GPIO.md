@@ -127,6 +127,11 @@ Emitted after GPIO pin is set.
 Emitted after GPIO port is set.
 
 
+#### `'error(error: GpioError)'`
+
+Emitted when there is an erorr.
+
+
 ### class: GpioError
 
 `GpioError` is for represent error occurs during GPIO processing.
