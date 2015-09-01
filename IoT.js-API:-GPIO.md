@@ -129,7 +129,7 @@ Emitted after GPIO port is set.
 
 #### `'error(error: GpioError)'`
 
-Emitted when there is an erorr.
+Emitted when there is an error.
 
 
 ### class: GpioError
