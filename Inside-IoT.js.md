@@ -124,7 +124,7 @@ Many Javascript engines these days provide embedding API. IoT.js uses the API to
 ## libuv Binding
 
 IoT.js is using [libuv](http://libuv.org/) to perform various asynchronous I/O and threading.
-Because IoT.js adopts asynchronous programming model, libuv plays very important role in this project. Actually the [main loop](#event-loop) of IoT.js is libuv event loop waiting I/O event, picks the event, and dispatches it to corresponding callback function.
+Because IoT.js adopts asynchronous programming model, libuv plays very important role in this project. Actually the [main loop](#event-loop) of IoT.js is libuv event loop waiting I/O event, picks the event, and dispatches it to corresponding event handler function.
 You can read [libuv design document](http://docs.libuv.org/en/v1.x/design.html) to get detailed information about asynchronous programming model based on libuv.
 
 ### HandleWrap
