@@ -138,6 +138,7 @@ Because every libuv I/O handle (e.g. file descriptor) in IoT.js links to a Javas
 `ReqWrap` is for wrapping libuv request data and Javascript callback function. And make sure that the Javascript callback function is alive during the I/O operation.
 
 Let's look at how asynchronous I/O are treated in IoT.js:
+
 1. Javascript module calls builtin function to perform I/O applying arguments including callback.
 2. Builtin creates `ReqWrap` to wrap `uv_req_s` and Javascript callback function.
 3. Builtin calls libuv to perform the I/O.
