@@ -9,3 +9,10 @@ IoT.js provides HTTP to support HTTP server and client enabling users to receive
 * `options: Object`
 * `callback: Function`
 * Return: `http.ClientRequest` instance
+
+### http.get(options[, callback])
+* `options: Object`
+* `callback: Function`
+* Return: `http.ClientRequest` instance
+
+Same as http.request except that `http.get` automatically call `req.end()` at the end.
