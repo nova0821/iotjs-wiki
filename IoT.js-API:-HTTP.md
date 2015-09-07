@@ -31,7 +31,14 @@ After request header is parsed, this event will be fired.
 * `response: http.ServerResponse` instance.
 
 ## Class: http.ClientRequest
+### Event
+#### 'end'
+This event triggered when no more data to be received remains from client request.
 
 ## Class: http.ServerResponse
+### Event
+#### 'end'
+This event triggered when no more data to be received remains from server response.
 
 ## Class: http.IncomingMessage
+### Event
