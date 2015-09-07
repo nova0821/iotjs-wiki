@@ -26,14 +26,19 @@ Same as http.request except that `http.get` automatically call `req.end()` at th
 ### Event
 
 #### 'request'
-After request header is parsed, this event will be fired. 
 * `request: http.IncomingMessage` instance. 
 * `response: http.ServerResponse` instance.
+After request header is parsed, this event will be fired. 
 
 ## Class: http.ClientRequest
 ### Event
 #### 'end'
 This event triggered when no more data to be received remains from client request.
+
+#### 'response'
+* `response: http.IncomingMessage` instance
+After response header is parsed, this event will be fired. 
+
 
 ## Class: http.ServerResponse
 ### Event
