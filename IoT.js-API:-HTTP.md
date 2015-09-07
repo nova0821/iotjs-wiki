@@ -23,6 +23,11 @@ Same as http.request except that `http.get` automatically call `req.end()` at th
 
 ## Class: http.Server
 
+### Event
+
+#### 'request'
+After request header is parsed, this event will be fired. 
+
 ## Class: http.ClientRequest
 
 ## Class: http.ServerResponse
