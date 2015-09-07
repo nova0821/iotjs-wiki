@@ -246,7 +246,7 @@ libuv will take charge of actual I/O processing taking the request.
 ```
 
 Since all I/O are treated as non-blocking, calling for async I/O API returns immediately right after request was sent to libuv.
-And then next line of javascript program will be executed continuously.
+And then next line of javascript program will be executed immediately without waiting the I/O.
 Thus in the above example 'requested' will be printed out right after file open request was made.
 
 If there were I/O requests, `uv_run()` in the main loop waits by polling the requests until at least one of the request processing were finished.
