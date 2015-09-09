@@ -44,7 +44,7 @@ Set GPIO pin configuration.
 
 `callback` will be called after GPIO pin is set.
 
-'setpin' event will be emitted after pin is set.
+'setPin' event will be emitted after pin is set.
 
 
 #### gpio.writePin(pinNumber, value[, callback])
@@ -54,16 +54,20 @@ Set GPIO pin configuration.
 
 Write out a boolean value to a GPIO pin.
 
-`callback` will be called after the value flushed.
+`callback` will be called after I/O finishes.
+
+'writePin' event will be emitted after I/O finishes.
 
 
-#### gpio.readPin(pinNumber, callback)
+#### gpio.readPin(pinNumber[, callback])
 * `pinNumber: Number` - pin number to read.
 * `callback: Function(err: Error | null, value: Boolean)`.
 
 Read boolean value from a GPIO pin.
 
 `callback` will be called with the value.
+
+'readPin' event will be emitted after I/O finishes.
 
 
 #### gpio.setPort(portNumber, direction[, mode][, callback])
@@ -117,20 +121,21 @@ Emitted after GPIO device is successfully initialized.
 
 Emitted after GPIO device is successfully released.
 
-#### `'setpin(pin: Number, direction: String, mode:String'`
+#### `'setPin(pin: Number, direction: String, mode:String'`
 
 Emitted after GPIO pin is set.
 
+#### `'writePin(pin: Number, value: Boolean)'`
 
-#### `'setpin(port: Number, direction: String, mode:String'`
+Emitted after GPIO write pin is finished.
 
-Emitted after GPIO port is set.
+#### `'readPin(pin: Number, value: Boolean)'`
 
+Emitted after GPIO read pin is finished.
 
 #### `'error(error: GpioError)'`
 
 Emitted when there is an error.
-
 
 ### class: GpioError
 
