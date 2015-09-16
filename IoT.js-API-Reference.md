@@ -6,7 +6,7 @@
 * [Events](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Events)
 * [File System](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-File-System)
 * [HTTP](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-HTTP)
-* Modules
+* [Modules](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Module)
 * [Net](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Net)
 * [Process](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Process)
 * [Stream](https://github.com/Samsung/iotjs/wiki/IoT.js-API:-Stream)
