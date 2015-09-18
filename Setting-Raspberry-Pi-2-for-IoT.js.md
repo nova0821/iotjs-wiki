@@ -60,3 +60,8 @@ append your nameservers
 
 ### Reference
 * https://www.raspberrypi.org/documentation/installation/installing-images/linux.md
+
+### Using Ubuntu image
+You can also use Ubuntu instead of Raspbian.
+Setup instructions are the same as above, the only difference is to burn sdcard with Ubuntu image.
+You can download the image from [here](https://wiki.ubuntu.com/ARM/RaspberryPi).
