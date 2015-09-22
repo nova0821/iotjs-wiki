@@ -1,5 +1,5 @@
 ### Getting Started with Examples
-As **IoT.js** is asynchronous and event-driven, programming style is pretty much different from traditional blocking synchronous programming. This tutorial lets you know how to code with **IoT.js** mainly focused on asynchronous style.
+As **IoT.js** is asynchronous and event-driven, programming style is pretty much different from traditional blocking synchronous style. This tutorial lets you know how to code with **IoT.js** mainly focused on asynchronous and event-driven style.
 
 #### Hello World
 Firstly, create a javascript file (e.g. `hello.js`) and open it. Then type as following.
@@ -31,7 +31,7 @@ When importing a module, we use function `require`.
 var fs = require('fs');
 ```
 
-Then we can use APIs of `fs`. To open a file, use `open()`.
+Then we can use APIs of `fs`. To read the whole file, use `readFile()`.
 ```javascript
 fs.readFile("hello_iotjs.txt",   // path
             readFileCallback);   // callback
@@ -63,7 +63,69 @@ function readFileCallback(err, data) {
 }
 ```
 
-#### Echo Server
-.
+#### TCP Echo Server
+`net` module provides APIs for creating servers and clients. In this tutorial, we are going to create a server only. We can connect to the server and test it with external tools(e.g. `nc`).
+
+Firstly, we need to require `net` module. 
+```javascript
+var net = require('net');
+var port = 1235;  // custom port number
+```
+Then create a server with `net.createServer()`. It could have some arguments
+```javascript
+var server = net.createServer();
+```
+After creating a server, make the server listen for connections.
+```javascript
+server.listen(port);
+```
+By calling `listen`, object `server` starts listening with given port. Of course `listen` is processed asynchronously but we do not have to specify a callback. What we want to do next is not necessarily done in the callback because we are just going to add some event handlers.
+
+**IoT.js** is event-driven. We can do a lot of stuff with event handlers.
+Both `Server` and `Socket` object inherits from `EventsEmitter`, so we can add event listeners for them. For servers, we probably want to add a listener for `'connection'` event which is emitted when a new connection is made. Take a look at the following.
+```javascript
+server.on('connection', function(socket) {
+  socket.on('data', function(data) {
+    socket.write("echo: " + data);
+  });
+});
+```
+In `File Reader` example, we defined callbacks outside and referred them as arguments. In this time the function is embedded as a Function Expression.
+
+When `'connection'` event is emitted, it creates a socket and we can get it from the first argument. In the same way we did for server, add a ``data`` listener for each socket which is emitted when data is received. As we are creating an echo server, what we want to do here is just send the `data` back to client. Note that to clarify this is an echoed data, `"echo: "` is prepended to it.
+
+That is all. We just implemented an echo server less than 10 lines. Actually, the server will run forever because we did not add code for closing the server. As long as the server is listening, it does not terminate even if there is no more *javascript* code to run. As this is a simple tutorial, just kill the process manually like pressing `Ctrl+C`
+
+##### full code list
+
+```javascript
+var net = require('net');
+var port = 1235;
+
+var server = net.createServer();
+server.listen(port, 5);
+server.on('connection', function(socket) {
+  socket.on('data', function(data) {
+    socket.write("echo: " + data);
+  });
+});
+```
+##### test the server
+We have created a server but not a client. Instead of implementing a client, we are going to use a unix tool `nc`.
+
+Run the server first:
+```
+$ ./iotjs echo_server.js &
+```
+
+Connect to the server with `nc`
+```
+$ nc localhost 1235 
+```
+Type whatever you want to send, and the message will be echoed back.
+```
+hello, echo server!   
+echo: hello, echo server!
+```
 
 ### Module System
