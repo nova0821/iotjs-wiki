@@ -124,8 +124,13 @@ $ nc localhost 1235
 ```
 Type whatever you want to send, and the message will be echoed back.
 ```
-hello, echo server!   
+hello, echo server!
 echo: hello, echo server!
 ```
 
 ### Module System
+Javascript(ECMAScript 5.1 or under) itself does not support module system. In web browsers, even though a web page loads several Javascript files, they are evaluated in the same context. To overcome this language limit, **IoT.js** supports [CommonJS](http://www.commonjs.org/) modules.
+
+We have used some of native modules through the examples above. When importing those modules, we use `require` function. Once required, we can use its APIs that are exported. It will be covered in the section `Writing user modules`.
+
+#### Writing user modules
