@@ -144,16 +144,16 @@ exports.add = function(a, b) {      // function
 }
 var local = 'local string';         // string (not exported)
 ```
-Let's write another module that uses the module we just wrote. By calling `require`, we get its `exports` object.
+Let's write another module that uses the module we just wrote. By calling `require`, we get its `exports` object. We will name it `mymodule_test.js`
 ```javascript
 var mymodule = require('mymodule');
 console.log(mymodule.hello);
 console.log(mymodule.add(1, 2));
 console.log(mymodule.local);
 ```
-Save two files in the same directory so **IoT.js** can automatically find `mymodule.js`. Now we are ready to go. Execute the later script then you will see:
+Save two files in the same directory so **IoT.js** can automatically find `mymodule.js`. Then we are ready to go. Execute the later script then you will see:
 ```
-$ ./iotjs test.js
+$ ./iotjs mymodule_test.js
 Hello, IoT.js!
 3
 undefined
