@@ -131,6 +131,31 @@ echo: hello, echo server!
 ### Module System
 Javascript(ECMAScript 5.1 or under) itself does not support module system. In web browsers, even though a web page loads several Javascript files, they are evaluated in the same context. To overcome this language limit, **IoT.js** supports [CommonJS](http://www.commonjs.org/) modules.
 
-We have used some of native modules through the examples above. When importing those modules, we use `require` function. Once required, we can use its APIs that are exported. It will be covered in the section `Writing user modules`.
+We have used some of native modules through the examples above. When importing those modules, we use `require` function. Once `require`ed a module, we can use its APIs that are exported from the module. It will be covered in the section [Writing user modules](#writing-user-modules).
 
 #### Writing user modules
+When writing a module, APIs must be exposed by adding it in `exports` object. Otherwise it can be used only inside the module. Object `exports` will be returned when another module calls `require`.
+
+Let's write a sample module. Save it as `mymodule.js`
+```javascript
+exports.hello = 'Hello, IoT.js!';   // string
+exports.add = function(a, b) {      // function
+  return a + b;
+}
+var local = 'local string';         // string (not exported)
+```
+Let's write another module that uses the module we just wrote. By calling `require`, we get its `exports` object.
+```javascript
+var mymodule = require('mymodule');
+console.log(mymodule.hello);
+console.log(mymodule.add(1, 2));
+console.log(mymodule.local);
+```
+Save two files in the same directory so **IoT.js** can automatically find `mymodule.js`. Now we are ready to go. Execute the later script then you will see:
+```
+$ ./iotjs test.js
+Hello, IoT.js!
+3
+undefined
+```
+Note that `console.log(local)` prints `undefined`. It cannot be referred because it is not added in `exports`.
