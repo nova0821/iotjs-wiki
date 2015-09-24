@@ -1,14 +1,40 @@
 (Preliminary)
+This page describes short version to use with latest version (Currently 7.12) of NuttX
+
+Please read [Build for NuttX](https://github.com/Samsung/iotjs/wiki/Build-for-NuttX) page and understand full procedure.
 
 #### Get NuttX for IoT.js
 
-#### NuttX first build
+Follow [Building nuttx for iotjs](https://bitbucket.org/seanshpark/nuttx/wiki/Home) page
 
 #### Build IoT.js for NuttX
 
+Giving these options are needed
+```
+--target-arch=arm
+--target-os=nuttx
+--nuttx-home=(where .config file exist)
+--target-board=stm32f4disco
+```
+
+for example,
+```
+./tools/build.py \
+--target-arch=arm --target-os=nuttx --nuttx-home=/home/user/harmony/nuttx/nuttx \
+--target-board=stm32f4disco --jerry-heaplimit=64 \
+--buildtype=release
+```
+
 #### NuttX build and flashing
 
-#### Testing network on NuttX
+in nuttx
+```
+make
+../../stlink/st-flash write nuttx.bin 0x8000000
+```
+
+#### ETC
+##### Testing network on NuttX
 
 * ping to subnet gateway
 * ping to other subnet gateway
