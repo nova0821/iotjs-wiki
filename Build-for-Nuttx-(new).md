@@ -1,5 +1,6 @@
 (Preliminary)
-This page describes short version to use with latest version (Currently 7.12) of NuttX
+
+This page describes short version to use with latest version of NuttX.
 
 Please read [Build for NuttX](https://github.com/Samsung/iotjs/wiki/Build-for-NuttX) page and understand full procedure.
 
