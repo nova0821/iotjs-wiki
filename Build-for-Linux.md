@@ -10,7 +10,7 @@ Ubuntu 14.04 is recommended. Other Unix like platforms can be used. If it doesn'
 
 #### Directory structure
 
-This document assumes 'harmony' as the root directory. _JerryScript_ and _libuv_ are included as sub-modules in deps folder.
+This document assumes 'harmony' as the root directory. _JerryScript_, _libtuv_ and _libuv_ are included as sub-modules in deps folder.
 
 * harmony
     * iotjs
