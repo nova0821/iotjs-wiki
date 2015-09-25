@@ -15,8 +15,11 @@ This document assumes 'harmony' as the root directory. _JerryScript_ and _libuv_
 * harmony
     * iotjs
         * deps
+            * http-parser
             * jerry
             * libuv
+            * libtuv
+
 
 ※ harmony? It's from initial code name of our project. (_Sounds good, isn't it? :)_)
 
@@ -41,7 +44,7 @@ git clone https://github.com/Samsung/iotjs.git
 cd iotjs
 ```
 
-Sub modules(_JerryScript_ and _libuv_) will be pulled. And matching hash will be checked out for your current IoT.js version when you run the build script.
+Sub modules(_http-parser_, _JerryScript_, _libuv_ and _libtuv_) will be pulled. And matching hash will be checked out for your current IoT.js version when you run the build script.
 
 
 ### 2. Set build options
@@ -61,6 +64,8 @@ init-submodule (default is True)
 tidy (default is True)
 jerry-memstats (default is False)
 checktest (default is True)
+jerry-heaplimit (default is 81, may change)
+tuv (default is False)
 ```
 
 To give options, please use two dashes '--' before the option name as described in following sections.
@@ -73,6 +78,8 @@ Options that may need explanations.
 * tidy: checks codes are tidy. we recommend to use this option. use __--notidy__ if you want to turn it off.
 * jerry-memstats: turn on the flag so that jerry dumps byte codes and literals and memory usage while parsing and execution.
 * checktest: after build makes it run all tests in test folder
+* jerry-heaplimit: JerryScript default heap size (as of today) is 256Kbytes. This option is to change the size for embedded systems, nuttx for now, and current default is 81KB. For linux, this has no effect. While building nuttx if you see an error `region sram overflowed by xxxx bytes`, you may have to decrease about that amount.
+* tuv: Use `libtuv` instead of `libuv`. When we think tuv is ready, this will be default option.
 
 ### 3. Build all at once
 
@@ -102,6 +109,12 @@ To build release version and with different jerry revision. assume you have alre
 ./tools/build.py --buildtype=release --noinit-submodule
 ```
 
+To build with tuv,
+```
+./tools/build.py --tuv
+```
+
+
 #### Build only IoT.js with given build option
 
 This section for explaining how to build only IoT.js when you did some modification. IoT.js uses [CMake](http://www.cmake.org/) for makefile generation. You can go inside the build folder and build with 'make' command. Go inside where your target platform name is, for example x86_64 linux,
@@ -116,12 +129,12 @@ Executable name is **'iotjs'** and resides in (target-arch)-(target-os)/(buildty
 To run greetings JavaScript in test folder, for example;
 
 ```
-./build/x86_64-linux/debug/iotjs/iotjs ./test/hello_iot.js
+./build/x86_64-linux/debug/iotjs/iotjs ./test/run_pass/test_console.js
 ```
 
 #### What build script does
 
-1. It will clone sub-modules(JerryScript and libuv), this will be done only once when version hash has not changed.
+1. It will clone sub-modules, this will be done only once when version hash has not changed.
 2. Checkout matching version for each sub-modules.
 3. Build sub-modules, you can see the outputs at build/(target-arch)-(target-os)/(buildtype)/libs folder.
 4. Build IoT.js
