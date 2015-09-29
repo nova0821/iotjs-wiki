@@ -16,6 +16,7 @@ Giving these options are needed
 --target-os=nuttx
 --nuttx-home=(where .config file exist)
 --target-board=stm32f4disco
+--tuv
 ```
 
 for example,
@@ -23,6 +24,7 @@ for example,
 ./tools/build.py \
 --target-arch=arm --target-os=nuttx --nuttx-home=/home/user/harmony/nuttx/nuttx \
 --target-board=stm32f4disco --jerry-heaplimit=64 \
+--tuv
 --buildtype=release
 ```
 
