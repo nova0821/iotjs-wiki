@@ -247,6 +247,17 @@ INFO src/stlink-common.c: Starting verification of write complete
 INFO src/stlink-common.c: Flash written and verified! jolly good!
 ```
 
+##### Permission denied
+
+If you get something like
+```
+WARN src/stlink-usb.c: Error -3 (Permission denied) opening ST-Link/V2 device 004:004
+```
+You can simply overcome this by adding write permission
+```
+sudo chmod 777 /dev/bus/usb/004/004
+```
+Number `004:004` should match `/004/004` 
 
 ### Running IoT.js
 
