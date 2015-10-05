@@ -28,7 +28,8 @@ As for STM32F4-discovery uses ARM, we recommend gcc-arm-none-eabi version 4.8. R
 
 You may need to install below packages as follows;
 ```
-sudo apt-get install autoconf libtool gperf flex bison
+sudo apt-get install autoconf libtool gperf flex bison autoconf2.13 
+sudo apt-get install libncurses-dev
 sudo apt-get install libusb-1.0-0-dev
 sudo apt-get install libsgutils2-dev
 ```
@@ -41,7 +42,7 @@ To use menuconfig in NuttX, you may need to install kconfig frontend.
 git clone https://github.com/jameswalmsley/kconfig-frontends.git
 cd kconfig-frontends
 ./bootstrap
-./configure
+./configure --enable-mconf
 make
 sudo make install
 sudo ldconfig
