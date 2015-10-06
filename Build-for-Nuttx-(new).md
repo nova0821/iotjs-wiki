@@ -1,6 +1,6 @@
-(Preliminary)
+#### About
 
-This page describes short version to use with latest version of NuttX.
+This page describes short version to use with latest version of NuttX for STM32F4-Discovery with BB.
 
 Please read [Build for NuttX](https://github.com/Samsung/iotjs/wiki/Build-for-NuttX) page and understand full procedure.
 
@@ -23,7 +23,7 @@ for example,
 ```
 ./tools/build.py \
 --target-arch=arm --target-os=nuttx --nuttx-home=/home/user/harmony/nuttx/nuttx \
---target-board=stm32f4disco --jerry-heaplimit=64 \
+--target-board=stm32f4disco --jerry-heaplimit=78 \
 --tuv
 --buildtype=release
 ```
