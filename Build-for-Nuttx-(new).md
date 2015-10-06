@@ -33,7 +33,7 @@ for example,
 in nuttx
 ```
 make
-../../stlink/st-flash write nuttx.bin 0x8000000
+sudo ../../stlink/st-flash write nuttx.bin 0x8000000
 ```
 
 #### ETC
