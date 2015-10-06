@@ -239,7 +239,7 @@ Relative path is used when executing _stlink_ tools. You may have to change them
 
 ```
 # Assume you are in nuttx/nuttx folder where nuttx.bin file exists.
-../../stlink/st-flash write nuttx.bin 0x8000000
+sudo ../../stlink/st-flash write nuttx.bin 0x8000000
 ```
 With successful flashing you'll get something at the bottom like;
 ```
@@ -247,17 +247,6 @@ INFO src/stlink-common.c: Starting verification of write complete
 INFO src/stlink-common.c: Flash written and verified! jolly good!
 ```
 
-##### Permission denied
-
-If you get something like
-```
-WARN src/stlink-usb.c: Error -3 (Permission denied) opening ST-Link/V2 device 004:004
-```
-You can simply overcome this by adding write permission
-```
-sudo chmod 777 /dev/bus/usb/004/004
-```
-Number `004:004` should match `/004/004` 
 
 ### Running IoT.js
 
