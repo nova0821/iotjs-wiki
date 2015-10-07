@@ -6,7 +6,9 @@ Please read [Build for NuttX](https://github.com/Samsung/iotjs/wiki/Build-for-Nu
 
 #### Get NuttX for IoT.js
 
-Follow [Building nuttx for iotjs](https://bitbucket.org/seanshpark/nuttx/wiki/Home) page
+Follow [Building nuttx for iotjs](https://bitbucket.org/seanshpark/nuttx/wiki/Home) page.
+
+You should first build NuttX before building IoT.js, it depends on system header files. When NuttX tells you that it needs `libtuv` then come here again and continue with below sections.
 
 #### Build IoT.js for NuttX
 
@@ -28,6 +30,10 @@ for example,
 --buildtype=release
 ```
 
+Library files will be copied to nuttx/lib folder when build is success.
+
+Now continue on with NuttX build.
+
 #### NuttX build and flashing
 
 in nuttx
@@ -36,11 +42,11 @@ make
 sudo ../../stlink/st-flash write nuttx.bin 0x8000000
 ```
 
-#### ETC
-##### Testing network on NuttX
+#### NuttX configuration
 
-* ping to subnet gateway
-* ping to other subnet gateway
-* tuvtester (local loopback send/receive)
-* nettest with client mode
-* nettest with server mode 
+Below is current NuttX configuration so that you can try with IoT.js
+
+1) Ethernet for network, TCP/IP is available
+2) Micro SD-Card, to save JavaScript files for your application
+
+
