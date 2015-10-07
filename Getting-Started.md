@@ -11,6 +11,7 @@ Current supported platforms are **Linux and NuttX**
 
 * [Build for Linux](Build-for-Linux): Ubuntu 14.04 is used as a base platform.
 * [Build for NuttX](Build-for-NuttX): NuttX 7.9 (Feb 15, 2015)
+* [Build for Nuttx (new)](https://github.com/Samsung/iotjs/wiki/Build-for-Nuttx-(new)): NuttX latest version
 * Raspberry Pi 2
     * [Setting Raspberry Pi 2](https://github.com/Samsung/iotjs/wiki/Setting-Raspberry-Pi-2-for-IoT.js)
     * [Build for ARM Linux (RPi2)](https://github.com/Samsung/iotjs/wiki/Build-for-ARM-Linux-(RPi2))
