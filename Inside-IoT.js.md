@@ -125,13 +125,15 @@ Many Javascript engines these days provide embedding API. IoT.js uses the API to
 
 IoT.js is using [libuv](http://libuv.org/) to perform various asynchronous I/O and threading.
 Because IoT.js adopts asynchronous programming model, libuv plays very important role in this project. Actually the [main loop](#event-loop) of IoT.js is libuv event loop waiting I/O event, picks the event, and dispatches it to corresponding event handler function.
+
 You can read [libuv design document](http://docs.libuv.org/en/v1.x/design.html) to get detailed information about asynchronous programming model based on libuv.
 
 ### HandleWrap
 
-libuv handles (e.g. file descriptor) are wrapped using `HandleWrap`.
-Here "handle" stands for "libuv handle".
-Because every libuv I/O handle (e.g. file descriptor) in IoT.js links to a Javascript object, `HandleWrap` inherits [`JObjectWrap`](#jobjectwrap).
+HandleWrap is to bind a Javascript object and a libuv handle(e.g. file descriptor) together.
+HandleWrap inherits [`JObjectWrap`](#jobjectwrap) since it is linked with a Javascript object.
+
+Unlike JObjectWrap, HandleWrap increases RC for the Javascript object when an instance of it is created to prevent GC while the handle is alive. The reference counter will be decreased after the handle is closed, allowing GC.
 
 ### ReqWrap
 
