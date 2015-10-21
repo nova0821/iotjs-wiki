@@ -94,7 +94,7 @@ extern "C" {
 ```
 target_link_libraries(${TUVTESTNAME} LINK_PUBLIC
                       #${TARGETLIBNAME}
-                      "/(absolute path to libuv/libuv.a"
+                      "/(absolute path to libuv)/libuv.a"
                       ${TUV_LINK_LIBS})
 ```
 
