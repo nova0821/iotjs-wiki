@@ -60,13 +60,23 @@ valgrind ./build/i686-linux/release/iotjs/iotjs ./test/run_pass/test_httpserver.
 
 #### binary size
 
-1) build is same as above
+1) build
+```
+./tools/build.py --buildtype=release --nochecktest --target-arch=arm --target-os=linux
+./tools/build.py --buildtype=release --nochecktest --target-arch=arm --target-os=linux --tuv
+```
 
-2) binary size
+2) binary size in i686-linux
 
 * libuv : 213,130 / iotjs: 2,512,292, stripped: 782,152
 * libtuv: 103,158 / iotjs: 2,460,357, stripped: 732,776
 * itself: 109,972 smaller, iotjs: 51,935(striped 49,376) saved
+
+3) binary size in arm-linux
+
+* libuv : 176,614 / iotjs: 2,543,525, stripped: 536,460
+* libtuv:  83,458 / iotjs: 2,506,455, stripped: 507,548
+* itself:  93,156 smaller, iotjs:    37,070(stripped: 28,912) saved
 
 #### libuv vs libtuv itself
 
