@@ -6,6 +6,9 @@ IoT.js is built based on JerryScript(lightweight JavaScript engine) and libuv fo
 * JerryScript: https://github.com/Samsung/jerryscript.git
 * libuv: https://github.com/Samsung/libuv.git 
 
+### Build script
+There is a script to help you build IoT.js called "build.py" in source repository.
+
 ### Supported platforms 
 Current supported platforms are **Linux and NuttX**
 
