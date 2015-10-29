@@ -23,7 +23,7 @@ You can also build release binary with;
 ./tools/build.py --buildtype=release
 ```
 
-## Parameters
+## Parameters Candidates
 **NOTE: some parameters are not supported by current version of build.py**
 
 --
@@ -148,6 +148,11 @@ If you have multiple ldflags, supply it with multiple use of this option;
 Specify whether JerryScript will be built with LTO or not.
 
 --
+#### `--init-submodule`
+#### `--no-init-submodule`
+Specify whether submoduls need to be initialized before start build or not.
+
+--
 #### `--check-tidy`
 #### `--no-check-tidy`
 Specify whether tidy checking will be carried out after build finished or not.
@@ -156,3 +161,13 @@ Specify whether tidy checking will be carried out after build finished or not.
 #### `--check-test`
 #### `--no-check-test`
 Specify whether unit test checking will be carried out after build finished or not.
+
+--
+#### `--config`
+Specify build configuration file path.
+
+If not specified, `build.default.config` file will be applied.
+
+Parameters specified by the config file is applied, and then the parameters given by command line overwrite over the settings.
+
+If you need to apply the same set of parameters for each build, making your own config file and trigger build.py with the config file would be more convenient.
