@@ -34,7 +34,15 @@ Specify whether build output will be for 'debug' or 'release'.
 
 --
 #### `--builddir`
+
 Specify a directory where build outputs will be generated.
+
+If given path is not exist, build.py will create it.
+
+--
+#### `--clean`
+#### `--no-clean`
+Specify whether build.py should claer all the build directory before start new build or not.
 
 --
 #### `--buildlib`
