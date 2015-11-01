@@ -48,6 +48,10 @@ sudo make install
 sudo ldconfig
 ```
 
+#### USB Connection
+
+There are two USB Connection on the Target board. USB mini CN1 and USB micro CN5. Both USB ports need to be connected to your Host. CN1 is used for power and Flashing but will not appear as a device in Linux. CN5 is used for NSH and will appear as /dev/ttyACM0 when things are working ok.
+
 
 ### 1. Get the sources
 
