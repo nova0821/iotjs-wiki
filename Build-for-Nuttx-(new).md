@@ -50,3 +50,14 @@ Below is current NuttX configuration so that you can try with IoT.js
 2) Micro SD-Card, to save JavaScript files for your application
 
 
+#### Trouble shooting
+
+##### conversion to 'unsigned char:1' from 'uint32_t
+
+If you get an error something like this,
+```
+iotjs/deps/jerry/jerry-core/jerry.cpp:1605:26: 
+  error: conversion to 'unsigned char:1' from 'uint32_t {aka unsigned int}' 
+  may alter its value [-Werror=conversion]
+```
+it's about [this, #279](https://github.com/Samsung/iotjs/pull/279). Updating nuttx/configs source to latest version may solve the problem.
