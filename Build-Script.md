@@ -41,13 +41,11 @@ If given path is not exist, build.py will create it.
 
 --
 #### `--clean`
-#### `--no-clean`
-Specify whether build.py should claer all the build directory before start new build or not.
+With given this option, build.py will claer all the build directory before start new build.
 
 --
 #### `--buildlib`
-#### `--no-buildlib`
-Specify whether build output will be a library or not (executable).
+With given this option, build.py will generate IoT.js output as a library.
 
 --
 #### `--target-arch`
@@ -152,23 +150,19 @@ If you have multiple ldflags, supply it with multiple use of this option;
 
 --
 #### `--jerry-lto`
-#### `--no-jerry-lto`
-Specify whether JerryScript will be built with LTO or not.
+With given this option, JerryScript will be built with LTO.
 
 --
-#### `--init-submodule`
 #### `--no-init-submodule`
-Specify whether submoduls need to be initialized before start build or not.
+With given this option, submoduls will not initialized before start build.
 
 --
-#### `--check-tidy`
 #### `--no-check-tidy`
-Specify whether tidy checking will be carried out after build finished or not.
+With given this option, tidy checking will not performed.
 
 --
-#### `--check-test`
 #### `--no-check-test`
-Specify whether unit test checking will be carried out after build finished or not.
+With given this option, unit test checking will not performed.
 
 --
 #### `--config`
