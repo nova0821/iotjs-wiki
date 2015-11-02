@@ -60,4 +60,4 @@ iotjs/deps/jerry/jerry-core/jerry.cpp:1605:26:
   error: conversion to 'unsigned char:1' from 'uint32_t {aka unsigned int}' 
   may alter its value [-Werror=conversion]
 ```
-it's about [this, #279](https://github.com/Samsung/iotjs/pull/279). Updating nuttx/configs source to latest version may solve the problem.
+it's about [this, #279](https://github.com/Samsung/iotjs/pull/279). Updating nuttx/configs source to latest version and run `./configure.sh stm32f4discovery/iotjs` in `nuttx/tools` may solve the problem.
