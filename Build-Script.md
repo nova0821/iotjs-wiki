@@ -172,7 +172,9 @@ With given this option, unit test checking will not performed.
 #### `--config`
 Specify build configuration file path.
 
-If not specified, `build.default.config` file will be applied.
+`build.default.config` file is in the source tree for default setting.
+
+If this option is not specified, `build.config` file will be applied. If the file is not exist, it will be copied from `build.default.config`.
 
 Parameters specified by the config file is applied, and then the parameters given by command line overwrite over the settings.
 
