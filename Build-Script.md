@@ -75,21 +75,21 @@ If you have multiple parameters, supply it with multiple use of this option;
 ```
 
 --
-#### `--cflag`
+#### `--compile-flag`
 Specify C compiler flags for IoT.js.
 
 If you have multiple cflags, supply it with multiple use of this option;
 ```
---cflag=<cflag1> --cflag=<cflag2>
+--compile-flag=<cflag1> --compile-flag=<cflag2>
 ```
 
 --
-#### `--ldflag`
+#### `--link-flag`
 Specify linker flags for IoT.js.
 
 If you have multiple ldflags, supply it with multiple use of this option;
 ```
---ldflag=<ldflag1> --ldflag=<ldflag2>
+--link-flag=<ldflag1> --link-flag=<ldflag2>
 ```
 
 --
@@ -131,22 +131,26 @@ If you have multiple parameters, supply it with multiple use of this option;
 ```
 
 --
-#### `--jerry-cflag`
+#### `--jerry-compile-flag`
 Specify C compiler flags for JerryScript.
 
 If you have multiple cflags, supply it with multiple use of this option;
 ```
---jerry-cflag=<cflag1> --jerry-cflag=<cflag2>
+--jerry-compile-flag=<cflag1> --jerry-compile-flag=<cflag2>
 ```
 
 --
-#### `--jerry-ldflag`
+#### `--jerry-link-flag`
 Specify linker flags for JerryScript.
 
 If you have multiple ldflags, supply it with multiple use of this option;
 ```
---jerry-ldflag=<ldflag1> --jerry-ldflag=<ldflag2>
+--jerry-link-flag=<ldflag1> --jerry-link-flag=<ldflag2>
 ```
+
+--
+#### `--jerry-heaplimit`
+Specify object heap limit for JerryScript engine.
 
 --
 #### `--jerry-lto`
