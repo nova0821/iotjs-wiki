@@ -3,6 +3,7 @@
 ### `pins` and `ports`
 
 * pin number is logical number starts from 1. Thus logical pin number *k* is not necessarily bound to physical pin number *k* in your board.
+* port is not supported(2015 Nov. 03)
 * port number is logical number starts from 1. Thus logical port number *k* is not necessarily bound to physical port number *k* in your board.
 * 8 logical pin will be bound to a logical port. For example, pin number 1~8 will bound to port 1, pin number 9~16 bound to port 2, and so forth.
 * If you write a byte value to a port, the result is the same as writing each bit to corresponding pin. For example, let's say you write (10101011)2 to port 1. the operation will write up bit to pin 1, up bit to pin 2, down bit to pin 3, ... , up bit to pin 8.
