@@ -153,6 +153,10 @@ Specify C compiler flags for JerryScript.
 
 If you have multiple cflags, supply it with multiple use of this option
 
+```
+./tools/build.py --jerry-compile-flag="-DCONFIG_ECMA_LCACHE_DISABLE"
+```
+
 --
 #### `--jerry-link-flag`
 Specify linker flags for JerryScript.
