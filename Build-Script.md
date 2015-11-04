@@ -32,6 +32,10 @@ You can also build release binary with;
 
 Specify whether build output will be for 'debug' or 'release'.
 
+```
+./tools/build.py --buildtype=release
+```
+
 --
 #### `--builddir`
 
@@ -39,13 +43,25 @@ Specify a directory where build outputs will be generated.
 
 If given path is not exist, build.py will create it.
 
+```
+./tools/build.py --builddir=./build
+```
+
 --
 #### `--clean`
 With given this option, build.py will claer all the build directory before start new build.
 
+```
+./tools/build.py --clean
+```
+
 --
 #### `--buildlib`
 With given this option, build.py will generate IoT.js output as a library.
+
+```
+./tools/build.py ---buildlib
+```
 
 --
 #### `--target-arch`
@@ -53,16 +69,28 @@ With given this option, build.py will generate IoT.js output as a library.
 
 Specify target architecture.
 
+```
+./tools/build.py --target-arch=arm
+```
 --
 #### `--target-os`
 * `linux` | `darwin` | `osx` | `nuttx`
 
 Specify target OS.
 
+```
+./tools/build.py --target-os=nuttx --target-arch=arm
+```
+
 --
 #### `--target-board`
+* `stm32f4dis` | empty
+
 Specify target board.
 
+```
+./tools/build.py --target-os=nuttx --target-arch=arm --target-board=stm32f4dis
+```
 --
 #### `--cmake-param`
 Specify CMake parameters for IoT.js.
@@ -70,26 +98,27 @@ Specify CMake parameters for IoT.js.
 "cmake" command for IoT.js will be executed with the given parameter applied.
 
 If you have multiple parameters, supply it with multiple use of this option;
+
 ```
---cmake-param=<param1> --cmake-param=<param2>
+./tools/build.py --cmake-param="..." --cmake-param="..."
 ```
 
 --
 #### `--compile-flag`
 Specify C compiler flags for IoT.js.
 
-If you have multiple cflags, supply it with multiple use of this option;
+If you have multiple compile flags, supply it with multiple use of this option;
 ```
---compile-flag=<cflag1> --compile-flag=<cflag2>
+./tools/build.py --compile-flag="..." --compile-flag="..."
 ```
 
 --
 #### `--link-flag`
 Specify linker flags for IoT.js.
 
-If you have multiple ldflags, supply it with multiple use of this option;
+If you have multiple link flags, supply it with multiple use of this option;
 ```
---link-flag=<ldflag1> --link-flag=<ldflag2>
+./tools/build.py --link-flag="..." --link-flag="..."
 ```
 
 --
@@ -98,7 +127,7 @@ Specify external include directory for IoT.js.
 
 If you have multiple external include directoies, supply it with multiple use of this option;
 ```
---external-include-dir=<dir1> --external-include-dir=<dir2>
+./tools/build.py --external-include-dir="..." --external-include-dir="..."
 ```
 
 --
@@ -107,16 +136,7 @@ Specify external static library that will be liked with IoT.js statically.
 
 If you have multiple such libraries, supply it with multiple use of this option;
 ```
---external-static-lib=<lib1> --external-static-lib=<lib2>
-```
-
---
-#### `--external-shared-lib`
-Specify external shared library that will be liked with IoT.js dynamically.
-
-If you have multiple such libraries, supply it with multiple use of this option;
-```
---external-shared-lib=<lib1> --external-shared-lib=<lib2>
+./tools/build.py --external-static-lib="libxxx.a"
 ```
 
 --
@@ -125,52 +145,91 @@ Specify CMake parameters for JerryScript.
 
 "cmake" command for JerryScript will be executed with the given parameter applied.
 
-If you have multiple parameters, supply it with multiple use of this option;
-```
---jerry-cmake-param=<param1> --jerry-cmake-param=<param2>
-```
+If you have multiple parameters, supply it with multiple use of this option
 
 --
 #### `--jerry-compile-flag`
 Specify C compiler flags for JerryScript.
 
-If you have multiple cflags, supply it with multiple use of this option;
-```
---jerry-compile-flag=<cflag1> --jerry-compile-flag=<cflag2>
-```
+If you have multiple cflags, supply it with multiple use of this option
 
 --
 #### `--jerry-link-flag`
 Specify linker flags for JerryScript.
 
-If you have multiple ldflags, supply it with multiple use of this option;
-```
---jerry-link-flag=<ldflag1> --jerry-link-flag=<ldflag2>
-```
+If you have multiple ldflags, supply it with multiple use of this option
 
 --
 #### `--jerry-heaplimit`
 Specify object heap limit for JerryScript engine.
 
+```
+./tools/build.py --jerry-heaplimit=80
+```
+
+--
+#### `--jerry-memstat`
+Enable memstat of JerryScript engine.
+
+```
+./tools/build.py --jerry-memstat
+```
+
 --
 #### `--jerry-lto`
 With given this option, JerryScript will be built with LTO.
+
+```
+./tools/build.py --jerry-lto
+```
 
 --
 #### `--no-init-submodule`
 With given this option, submoduls will not initialized before start build.
 
+```
+./tools/build.py --no-init-submodule
+```
+
 --
 #### `--no-check-tidy`
 With given this option, tidy checking will not performed.
+
+```
+./tools/build.py --no-check-tidy
+```
 
 --
 #### `--no-check-test`
 With given this option, unit test checking will not performed.
 
+```
+./tools/build.py --no-check-test
+```
+
+--
+#### `--no-parallel-build`
+With given this option, compilation process will not run in parallel. In other words, executes `make` without `-j` option.
+
+```
+./tools/build.py --no-parallel-build
+```
+
+--
+#### `--nuttx-home`
+To build for nuttx os, nuttx home directory must be given.
+
+```
+./tools/build.py --target-os=nuttx --target-arch=arm --target-board=stm32f4dis --nuttx-home="..."
+```
+
 --
 #### `--config`
 Specify build configuration file path.
+
+```
+./tools/build.py --config=build.arm.nuttx.stm32f4dis.config
+```
 
 `build.default.config` file is in the source tree for default setting.
 
