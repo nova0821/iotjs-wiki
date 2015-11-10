@@ -11,7 +11,7 @@
 
 The IoT.js project recognizes the following formal roles: Contributor, Committer, and Maintainer.
 
-* [Assigned people](assigned_people)
+* [Assigned people](Assigned-people)
 
 #### Contributor
 A _Contributor_ is a developer who wishes to contribute to the project, at any level. Contributors who show dedication and skill are rewarded with additional rights and responsibilities. Their opinions weigh more when decisions are made, in a fully meritocratic fashion.
