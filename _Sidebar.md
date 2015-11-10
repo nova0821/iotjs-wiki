@@ -12,8 +12,8 @@
  - [Developer Tutorial](Developer Tutorial)
  - [IoT.js API Reference](IoT.js API Reference)
 - [Getting Involved](Getting Involved)
- - [Coding Style Guideline](Coding_Style_Guideline)
  - [Inside IoT.js](Inside IoT.js)
+ - [Coding Style Guideline](Coding_Style_Guideline)
  - [Development Process](Development-Process)
 
 
