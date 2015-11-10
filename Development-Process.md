@@ -52,7 +52,7 @@ The IoT.js Project development process is marked by the following highlights:
 5. If Developer has to rework the solution then goto step 3
 6. If everything is OK, then Maintainer should approve the PR with +1(or LGTM)
    - Code review can be performed by all the members of the project. However only Maintainer can give binding scores.
-7. When the PR get +2(2 LGTM), it should be merged.
+7. When the PR get +2(2 LGTM from 2 mainatiners respectively), it should be merged.
 
 ### Tips on GitHub Issues
 
