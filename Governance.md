@@ -11,6 +11,7 @@
 
 The IoT.js project recognizes the following formal roles: Contributor, Committer, and Maintainer.
 
+* [Assigned people](assigned_people)
 
 #### Contributor
 A _Contributor_ is a developer who wishes to contribute to the project, at any level. Contributors who show dedication and skill are rewarded with additional rights and responsibilities. Their opinions weigh more when decisions are made, in a fully meritocratic fashion.
@@ -45,9 +46,6 @@ A _Maintainer_ is a Contributor who is also responsible for knowing, directing a
 Maintainers have the following rights and responsibilities, in addition to those listed for Contributors and Committers:
 * right to set the overall organization of the source code of the project
 * right to participate in the decision-making of the project, in conjunction with the Committers.
-* responsibility to oversee and facilitate the development of the IoT.js source code under the governance rules of the IoT.js Open Source project.
-* responsibility to guide and direct the development towards goals.
-* responsibility to sets the goals and roadmap for the project
 
 #### Selection of Committers and Maintainers
 
@@ -60,6 +58,17 @@ The selection process should be achieved by consensus of the Contributors active
 #### Revocation of Committers/Maintainers Status
 
 A Maintainer or a Committer who intentionally abused his review privilege may have it temporarily suspended on the request of other Committers or Maintainers. Committers and Maintainers not including the person under consideration should discuss on the revocation of the person. If consensus cannot be reached, Maintainers will make the decision by voting.
+
+#### Steering Committee
+
+_Steering Committee_ oversees and guides the progress of IoT.js project.
+
+The Steering Committee have the following responsibilities:
+
+* responsibility to oversee the health of the project community.
+* responsibility to oversee and facilitate the development of the IoT.js source code under the governance rules of the IoT.js Open Source project.
+* responsibility to guide and direct the development towards goals.
+* responsibility to sets the goals and roadmap for the project
 
 ## Decision Making Process
 
