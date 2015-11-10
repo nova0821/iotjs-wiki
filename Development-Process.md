@@ -1,3 +1,10 @@
+* [Proposals, Get Answers and Report a Bug via Github Issues](#proposals-get-answers-and-report-a-bug-via-github-issues)
+* [Feature development process](#feature-development-process)
+* [Approval Path for PR(Pull Request)](#approval-path-for-prpull-request)
+* [Tips on GitHub Issues](#tips-on-github-issues)
+
+***
+
 It is the responsibility of IoT.js Maintainers and Reviewers to decide whether submitted code should be integrated into the master branch, returned for revision, or rejected.
 
 Individual developers maintain a local copy of the IoT.js codebase using the git revision control system. Git ensures that all participants are working with a common and up-to-date code base at all times. Each developer works to develop, debug, build, and validate their own code against the current codebase, so that when the time comes to integrate into the master branch of the project, their changes apply cleanly and with a minimum amount of merging effort.
@@ -34,6 +41,18 @@ The IoT.js Project development process is marked by the following highlights:
 * After the code passes code review, the Maintainers and Reviewers accept the code(integrated into the master branch), which completes the development process.
 * After a patch has been accepted, it remains the authoring developer's responsibility to maintain the code throughout its lifecycle, and to provide security and feature updates as needed.
 
+### Approval Path for PR(Pull Request)
+1. Developer should create/update PR to a given issue or enhancement
+2. If Developer works in a team, then peer-review by a colleague developer should be performed
+3. If peer-review was OK, then Developer should summon the component's maintainer
+4. Maintainer should check the code:
+   - make precommit testing is OK (performed automatically)
+   - No minor issues (unified implementation style, comments, etc.)
+   - No major issues (memory leak, crashes, breakage of ECMA logic, etc.)
+5. If Developer has to rework the solution then goto step 3
+6. If everything is OK, then Maintainer should approve the PR with +1(or LGTM)
+   - Code review can be performed by all the members of the project. However only Maintainer can give binding scores.
+7. When the PR get +2(2 LGTM), it should be merged.
 
 ### Tips on GitHub Issues
 
