@@ -46,7 +46,8 @@ A _Maintainer_ is a Contributor who is also responsible for knowing, directing a
 Maintainers have the following rights and responsibilities, in addition to those listed for Contributors and Committers:
 * right to set the overall organization of the source code of the project
 * right to participate in the decision-making of the project, in conjunction with the Committers.
-* Responsibility to ensure all contributions of the project have been reviewed within reasonable time. In the reviewing, only Maintainers can give binding scores(refer to [Approval Path for PR(Pull Request)](#approval-path-for-prpull-request))
+* Responsibility to ensure all contributions of the project have been reviewed within reasonable time. 
+  - In the reviewing, only Maintainers can give binding scores(refer to [Approval Path for PR(Pull Request)](#approval-path-for-prpull-request))
 
 #### Selection of Committers and Maintainers
 
