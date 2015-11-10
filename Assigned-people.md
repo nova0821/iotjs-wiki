@@ -1,6 +1,7 @@
 #### Maintainers
 * ILyoan (core)
 * chunseoklee (module)
+* wateret (module)
 * seanshpark (port)
 * zherczeg (Steering Committee)
 * egavrin (Steering Committee)
