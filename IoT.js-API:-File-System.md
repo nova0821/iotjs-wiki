@@ -51,7 +51,7 @@
 
 Asynchronously read entire file.
 
-#### fs.readFile(path[, options], callback)
+#### fs.readFileSync(path[, options], callback)
 
 * `path: String` - file path to be opened.
 * `options: Object` - options for the operation.
