@@ -23,13 +23,6 @@ Allocate a new buffer containing given `str`.
 
 ### Class Methods
 
-#### Buffer.byteLength(string)
-* `string: String`
-* Return: `Number`
-
-Returns actual byte length of `string`.
-Note that it may different from `String.prototype.length` since that returns number of characters in a string.
-
 #### Buffer.concat(list)
 * `list: Array of Buffer`
 * Return: `Buffer`
