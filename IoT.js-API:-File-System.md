@@ -60,6 +60,24 @@ Asynchronously read entire file.
 
 synchronously read entire file.
 
+#### fs.write(fd, buffer, offset, length, position, callback) 
+
+* `fd: Int` - file descriptor.
+* `buffer: Buffer` - buffer that the data will be written from.
+* `offset: Number` - offset of the buffer where from start reading.
+* `length: Number` - number of bytes to write.
+* `position: Number` - specifying where to start write data to the file, if `null`, read from current position.
+* callback: Function(err, byteWrite)` - callback function.
+ * `err: Error`
+ * `byteWrite: Int`
+
+#### fs.writeSync(fd, buffer, offset, length, position) 
+
+* `fd: Int` - file descriptor.
+* `buffer: Buffer` - buffer that the data will be written from.
+* `offset: Number` - offset of the buffer where from start reading.
+* `length: Number` - number of bytes to write.
+* `position: Number` - specifying where to start write data to the file, if `null`, read from current position.
 
 #### fs.close(fd, callback)
 
