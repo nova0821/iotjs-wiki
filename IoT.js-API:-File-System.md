@@ -59,3 +59,16 @@ Asynchronously read entire file.
  * `flag: String`, Default: `r` - file open flag.
 
 synchronously read entire file.
+
+
+#### fs.close(fd, callback)
+
+* `fd: Int` - file descriptor.
+
+Close the file of fd asynchronously.
+
+#### fs.closeSync(fd)
+
+* `fd: Int` - file descriptor.
+
+Close the file of fd synchronously.
