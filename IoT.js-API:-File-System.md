@@ -90,3 +90,14 @@ Close the file of fd asynchronously.
 * `fd: Int` - file descriptor.
 
 Close the file of fd synchronously.
+
+#### fs.stat(path, callback)
+
+* `path: String` - file path to be stated
+* callback: Function(err, stat)` - callback function.
+ * `err: Error`
+ * `stat: Object`
+
+#### fs.statSync(path)
+
+* `path: String` - file path to be stated
