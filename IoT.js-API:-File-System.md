@@ -101,3 +101,14 @@ Close the file of fd synchronously.
 #### fs.statSync(path)
 
 * `path: String` - file path to be stated
+
+#### fs.fstat(fd, callback)
+
+* `fd: Number` - file descriptor to be stated
+* callback: Function(err, stat)` - callback function.
+ * `err: Error`
+ * `stat: Object`
+
+#### fs.statSync(path)
+
+* `fd: Number` - file descriptor to be stated
