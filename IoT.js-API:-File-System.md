@@ -109,6 +109,6 @@ Close the file of fd synchronously.
  * `err: Error`
  * `stat: Object`
 
-#### fs.statSync(path)
+#### fs.fstatSync(path)
 
 * `fd: Number` - file descriptor to be stated
