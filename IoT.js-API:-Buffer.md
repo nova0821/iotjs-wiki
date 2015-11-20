@@ -18,7 +18,7 @@ Allocate a new buffer copied from given `buffer`.
 #### new Buffer(str)
 * `str: String`
 
-Allocate a new buffer containing given `str`.
+Allocate a new buffer containing given `str` of UTF-8 encoded.  
 
 
 ### Class Methods
