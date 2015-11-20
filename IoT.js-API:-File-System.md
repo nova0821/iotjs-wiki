@@ -112,3 +112,17 @@ Close the file of fd synchronously.
 #### fs.fstatSync(fd)
 
 * `fd: Number` - file descriptor to be stated
+
+## Class: fs.Stats
+
+fs.Stats class is a object returned from ```fs.stats()```,```fs.fstats()``` and their synchronous counterparts.
+
+### Methods
+
+#### stats.isDirectory()
+
+return true if stated file is a directory
+
+#### stats.isFile()
+
+return true if stated file is a file
