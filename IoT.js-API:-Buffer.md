@@ -23,11 +23,12 @@ Allocate a new buffer containing given `str`.
 
 ### Class Methods
 
-#### Buffer.byteLength(string)
+#### Buffer.byteLength(string[, encoding])
 * `string: String`
+* `encoding: String`
 * Return: `Number`
 
-Returns actual byte length of `string`.
+Returns actual byte length of `string` encoded by `encoding`. UTF-8 encoding is on default.
 Note that it may different from `String.prototype.length` since that returns number of characters in a string.
 
 #### Buffer.concat(list)
