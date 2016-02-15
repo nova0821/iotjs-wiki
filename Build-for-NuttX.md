@@ -1,6 +1,6 @@
 ### About this page
 
-Please read this page as historical information and follow [Build-for-Nuttx-(new)](https://github.com/Samsung/iotjs/wiki/Build-for-Nuttx-(new)) page for actual build and flashing. IoT.js has changed so some parts won't compile with previous version of NuttX.
+**Please read this page as historical information and follow [Build-for-Nuttx-(new)](https://github.com/Samsung/iotjs/wiki/Build-for-Nuttx-(new)) page for actual build and flashing. IoT.js has changed so some parts won't compile with previous version of NuttX.**
 
 ### Overall steps to build for NuttX
 1. Get the sources
